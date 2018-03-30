@@ -18,6 +18,8 @@
 
 ###Sketch of interface:
 
+![alt text] (./asssets/images/image.png)
+
 ###Group members:
     *Madison Koch
     *Abe Anderson
