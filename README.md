@@ -18,7 +18,7 @@
 
 ### Sketch of interface:
 
-![alt text] (./asssets/images/image.png)
+![alt text](./asssets/images/image.png)
 
 ### Group members:
     *Madison Koch
