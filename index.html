@@ -38,8 +38,12 @@ crossorigin="anonymous"></script>
 
 <script>
 $(document).on('click',function(){
- FB.login(function(){
-  
+ FB.login(function(response){
+  if(response === 'connected'){
+    alert("login worked");
+  }else{
+    alert('login Failure');
+  }
  })
 } );
    
