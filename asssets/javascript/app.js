@@ -22,7 +22,8 @@ $('.test-btn').on('click', function(){
       });
       // for this next step to work need to ste up auth token
       var body = 'Testing';
-      FB.api('/me/feed', 'post', { message: body }, function(response) {
+      FB.api( '/user-id/feed', 'post', { message: body }, function(response) {
+          console.log()
         if (!response || response.error) {
           alert('Error occured');
         } else {
