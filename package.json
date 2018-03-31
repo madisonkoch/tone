@@ -4,8 +4,7 @@
   "description": "An App to check your toxic leves",
   "main": "app.js",
   "scripts": {
-    
-    
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
