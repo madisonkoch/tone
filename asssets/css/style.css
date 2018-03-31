@@ -1,0 +1,35 @@
+    h1{
+        color: #ffffff;
+        font-family: 'Poiret One', cursive;  
+    }
+
+/* INDEX */
+    #index-body{
+        background-color: #c7c7c7;
+    }
+    #login-h1{
+        text-align: center; 
+        margin: 3rem 0 1.68rem 0;
+        font-size: 7rem;
+        text-shadow: 1px 1px 12px #000000d1;
+    }
+    #fb-btn{
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+/* Content - Facebook */
+    #fb-body{
+        background-color: #ffffff;
+    }
+    header{
+        margin-bottom:unset;
+        background-color: #c7c7c7;
+    }
+    #fb-h1{
+        margin: unset;
+        font-size: 3rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 1px 1px 5px #000000d1;
+    }
