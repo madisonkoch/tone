@@ -1,0 +1,19 @@
+
+html{
+    background-color: #c7c7c7;
+  }
+
+/* INDEX */
+h1{
+    color: #ffffff;
+    font-size: 7rem;
+    font-family: 'Poiret One', cursive;  
+    text-align: center; 
+    margin: 3rem 0 1.68rem 0;
+}
+
+#fb-btn{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
