@@ -4,43 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <!-- Needs to go on top of body per FB docs -->
-        <script>
-                window.fbAsyncInit = function() {
-                  FB.init({
-                    appId      : '359010251274036', //we will need to figure out how to store the app key since we will not want it on github to be public
-                    xfbml      : true,
-                    version    : 'v2.12'
-                  });
-                
-                  FB.AppEvents.logPageView();
-                
-                };
-              
-                (function(d, s, id){
-                   var js, fjs = d.getElementsByTagName(s)[0];
-                   if (d.getElementById(id)) {return;}
-                   js = d.createElement(s); js.id = id;
-                   js.src = "https://connect.facebook.net/en_US/sdk.js";
-                   fjs.parentNode.insertBefore(js, fjs);
-                 }(document, 'script', 'facebook-jssdk'));
+    <title>TONE</title>
 
-                 
+     <!-- Materialized CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
-              </script>
+
+   
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="./asssets/css/style.css">
+  
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 ></script>
 
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline|Fredericka+the+Great|Poiret+One|Unica+One|Yeseva+One" rel="stylesheet">
 
-     <div>click Me to test FB connection</div>   
-     <button class="test-btn"> test name </button>
+</head>
+<body id="index-body">
+    <!-- Needs to go on top of body per FB docs -->
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '359010251274036', //we will need to figure out how to store the app key since we will not want it on github to be public
+              xfbml      : true,
+              version    : 'v2.12'
+            });
+          
+            FB.AppEvents.logPageView();
+          
+          };
+        
+          (function(d, s, id){
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement(s); js.id = id;
+              js.src = "https://connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous">
+        </script>
+
+  <header class="col s12">
+    <h1 id="login-h1">TONE</h1>
+  </header>
+<main class="container">
+  <div id="fb-btn">
+      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>          
+  </div>
+</main>
+     <!-- <div>click Me to test FB connection</div>    -->
+     <!-- <button class="test-btn"> test name </button> -->
      
-     <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-    <script src="asssets/javascript/app.js" ></script>
+     <!-- Login with facebook button -->
+    
+     <!-- Link to JS file -->
+     <script src="asssets/javascript/app.js" ></script>
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 </body>
 </html> 
