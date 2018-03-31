@@ -20,8 +20,8 @@ $('.test-btn').on('click', function(){
         $('body').append(response);
         console.log(response);
       });
-      
-      var body = 'Reading JS SDK documentation';
+      // for this next step to work need to ste up auth token
+      var body = 'Testing';
       FB.api('/me/feed', 'post', { message: body }, function(response) {
         if (!response || response.error) {
           alert('Error occured');
