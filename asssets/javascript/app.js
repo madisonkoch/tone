@@ -17,14 +17,14 @@ $(".fb-login-button").on('click',function(){
 $('.test-btn').on('click', function(){
     $('body').append('test');
   
-      FB.api( '/user-id/feed', 'post', { message: 'body' }, function(response) {
-          console.log(response)
-        if (!response || response.error) {
-          alert('somethinggit ad');
-          console.log(response)
-        } else {
-          alert('Post ID: ' + response.id);
+    FB.api(
+        "/page-id/feed",
+        function (response) {
+            console.log(response);
+          if (response && !response.error) {
+            /* handle the result */
+          }
         }
-      });
+    );
 
 })
