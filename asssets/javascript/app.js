@@ -15,9 +15,9 @@ $(".fb-login-button").on('click',function(){
 });
       
 $('.test-btn').on('click', function(){
-    $(body).append('test');
+    $('body').append('test');
     FB.api('/me', {fields: 'last_name'}, function(response) {
-        $(body).append(response);
+        $('body').append(response);
       });
 
 })
