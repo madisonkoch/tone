@@ -1,0 +1,19 @@
+{
+  "name": "tone",
+  "version": "1.0.0",
+  "description": "An App to check your toxic leves",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holgermueller/tone.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Holgermueller/tone/issues"
+  },
+  "homepage": "https://github.com/Holgermueller/tone#readme"
+}
