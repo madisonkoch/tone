@@ -18,6 +18,15 @@ $('.test-btn').on('click', function(){
     $('body').append('test');
     FB.api('/me', {fields: 'last_name'}, function(response) {
         $('body').append(response);
+        console.log(response);
+      });
+
+      FB.api('/me/feed', 'post', { message: body }, function(response) {
+        if (!response || response.error) {
+          alert('Error occured');
+        } else {
+          alert('Post ID: ' + response.id);
+        }
       });
 
 })
