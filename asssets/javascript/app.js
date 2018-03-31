@@ -20,7 +20,8 @@ $('.test-btn').on('click', function(){
       FB.api( '/user-id/feed', 'post', { message: body }, function(response) {
           console.log(response)
         if (!response || response.error) {
-          alert('Error occured');
+          alert('something');
+          console.log(response)
         } else {
           alert('Post ID: ' + response.id);
         }
