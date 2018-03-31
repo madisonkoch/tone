@@ -9,10 +9,15 @@ $(".fb-login-button").on('click',function(){
         }
     });
 
-    FB.api('/me', {fields: 'last_name'}, function(response) {
-        console.log(response);
-      });
+    
 
 
 });
       
+$('.test-btn').on('click', function(){
+    $(body).append('test');
+    FB.api('/me', {fields: 'last_name'}, function(response) {
+        $(body).append(response);
+      });
+
+})
