@@ -20,7 +20,7 @@ $('.test-btn').on('click', function(){
     FB.api(
         "/page-id/feed",
         function (response) {
-            console.log(response);
+            console.log(response)
           if (response && !response.error) {
             /* handle the result */
           }
