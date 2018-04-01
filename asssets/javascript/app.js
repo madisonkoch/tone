@@ -1,6 +1,4 @@
 'use strict'
-
-
 //Facebook Connection
     $('.fb-login-button').on('click',function(){
         FB.login(function(response){
@@ -30,7 +28,49 @@
             }
         });
 
-    })
+    });
+      
+$('.test-btn').on('click', function(){
+    $('body').append('test');
+  
+      FB.api( '/user-id/feed', 'post', { message: 'body' }, function(response) {
+          console.log(response)
+        if (!response || response.error) {
+          alert('somethinggit ad');
+          console.log(response)
+        } else {
+          alert('Post ID: ' + response.id);
+        }
+      });
+
+})
+
+//let example = userInput;
+
+/*$ curl -H "Content-Type: application/json" --data \
+    '{comment: {text: "what kind of idiot name is foo?"},
+      languages: ["en"],
+      requestedAttributes: {TOXICITY:{}} }' \
+    https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyCY4GjmWVO7suPMSdD-V-Pm8tlExBkIFJE*/
+
+    $.ajax({
+        contentType: "application/json",
+        data: JSON.stringify({
+                comment: {
+                        text: "what a lovely hat"
+                },
+                languages: ["en"],
+                requestedAttributes: {
+                        TOXICITY: {}
+                }
+        }),
+        method: 'POST',
+        url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+        success: function(response) {
+                console.log(response);
+        }
+});
+
 //Content Pages
     // Floating Action Button(s)
         //Setup Menu FAB
