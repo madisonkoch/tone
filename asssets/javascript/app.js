@@ -90,8 +90,7 @@ $('.test-btn').on('click', function(){
         $.ajax({
             data: 'payload=' + JSON.stringify({
                 "Authorization": 'Bearer xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
-                "text": message,
-                "as_user": true
+                
             }),
             dataType: 'json',
             processData: false,
