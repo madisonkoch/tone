@@ -1,123 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TONE</title>
-
-    <!-- Materialize -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css"  media="screen,projection"/>
-
-    <!--Viewport-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- Link to CSS file -->
-      <link rel="stylesheet" href="./asssets/css/style.css">
-
-    <!-- Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TONE</title>
+  <!-- Style sheets -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css" media="screen,projection" />
+  <link rel="stylesheet" href="./asssets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
 </head>
 <body id="index-body">
-    <!-- Needs to go on top of body per FB docs -->
-        <script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '359010251274036', //we will need to figure out how to store the app key since we will not want it on github to be public
-              xfbml      : true,
-              version    : 'v2.12'
-            });
-          
-            FB.AppEvents.logPageView();
-          
-          };
-        
-          (function(d, s, id){
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) {return;}
-              js = d.createElement(s); js.id = id;
-              js.src = "https://connect.facebook.net/en_US/sdk.js";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script
-          src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous">
-        </script>
-
+  <!-- Needs to go on top of body per FB docs -->
+  <script src="asssets/javascript/fbloadScripts.js"></script>
+  <!-- Masthead start -->
   <header class="col s12">
     <h1 id="login-h1">TONE</h1>
   </header>
-<main class="container">
-  <div id="fb-btn">
-      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>          
-  </div>
-  <button class="test-btn" > Test Button</button>
-</main>
-     <!-- <div>click Me to test FB connection</div>    -->
-     <!-- <button class="test-btn"> test name </button> -->
-     
-     <!-- Login with facebook button -->
-    
-     <!-- Link to JS file -->
-     <script src="asssets/javascript/app.js" ></script>
-    
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <!-- Main content start -->
+  <main class="container">
+    <div id="spacer">
+      <p><a href="fbContent.html">Next Page (temp link)</a></p>
+    </div>
+    <!-- Facebook Btn -->
+    <div id="fb-btn">
+      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
+    <div>
+      <!-- send to slack button -->
+      <input type="text" class="slack-message">
+      <button class="gi"> Send Message to Slack</button>
+    </div>
+  </main> <!-- Main Content End -->
 
-  <div id="spacer">
-    <p><a href="fbContent.html">Next Page (temp link)</a></p>    
-  </div>
-  <div id="fb-btn">
-      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>          
-  </div>
-
-</main>
-
-<!-- JQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
-
-<!-- Link to JS file -->
-  <script src="asssets/javascript/app.js" ></script>
-    
+  <script src="asssets/javascript/app.js"></script>
 </body>
-</html> 
 
-<!-- 
-API KEY
-181771025798391
-SECRET KEU
-64dbf47f16996774c0b4ab103c7704e4
-
-
-https://graph.facebook.com/oauth/access_token?client_id=181771025798391&client_secret=64dbf47f16996774c0b4ab103c7704e4&grant_type=client_credentials
-
-ACESS TOKEN
-181771025798391|8yiB69KixI0vCk2XVOud9MPYrTw
-https://graph.facebook.com/v2.9/LADbible/posts?access_token=181771025798391|8yiB69KixI0vCk2XVOud9MPYrTw
--->
-
-
-<!-- 
-
-    non test
-API key
-359010251274036
-
-APi secret
-9e71e3404187f99d7190cac4ab0d23de
-
-https://graph.facebook.com/oauth/access_token?client_id=359010251274036&client_secret=9e71e3404187f99d7190cac4ab0d23de&grant_type=client_credentials
-
-Acess Token
-359010251274036|kO_p3XRZrnehK2UNrtQohL6kvxc
-https://graph.facebook.com/v2.9/LADbible/posts?access_token=359010251274036|kO_p3XRZrnehK2UNrtQohL6kvxc
-
-
--->
+</html>
