@@ -1,62 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TONE</title>
-
-     <!-- Materialized CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
-
-   
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" href="./asssets/css/style.css">
-  
-<script
-src="https://code.jquery.com/jquery-3.3.1.min.js"
-></script>
-
-
-            });
-          
-            FB.AppEvents.logPageView();
-          
-          };
-        
-          (function(d, s, id){
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) {return;}
-              js = d.createElement(s); js.id = id;
-              js.src = "https://connect.facebook.net/en_US/sdk.js";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script
-          src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous">
-        </script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TONE</title>
+  <!-- Style sheets -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css" media="screen,projection" />
+  <link rel="stylesheet" href="./asssets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
+</head>
+<body id="index-body">
+  <!-- Needs to go on top of body per FB docs -->
+  <script src="asssets/javascript/fbloadScripts.js"></script>
+  <!-- Masthead start -->
   <header class="col s12">
     <h1 id="login-h1">TONE</h1>
   </header>
-<main class="container">
-  <div id="fb-btn">
-      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>          
-  </div>
-</main>
-     <!-- <div>click Me to test FB connection</div>    -->
-     <!-- <button class="test-btn"> test name </button> -->
-     
-     <!-- Login with facebook button -->
-    
-     <!-- Link to JS file -->
-     <script src="asssets/javascript/app.js" ></script>
-    
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <!-- Main content start -->
+  <main class="container">
+    <div id="spacer">
+      <p><a href="fbContent.html">Next Page (temp link)</a></p>
+    </div>
+    <!-- Facebook Btn -->
+    <div id="fb-btn">
+      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
+    <div>
+      <!-- send to slack button -->
+      <input type="text" class="slack-message">
+      <button class="gi"> Send Message to Slack</button>
+    </div>
+  </main> <!-- Main Content End -->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
+  <script src="asssets/javascript/app.js"></script>
 </body>
-</html> 
+
+</html>
