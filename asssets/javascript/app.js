@@ -85,24 +85,35 @@ $('.test-btn').on('click', function(){
     });
 
     $('.slack-submit').on('click', function(){
- 
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
                 "Authorization": 'Bearer xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
-                
+                "text": message,
+                "as_user": true,
+                'username':'Evryone'
             }),
             dataType: 'json',
             processData: false,
             type: 'POST',
-            url: 'https://hooks.slack.com/services/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',
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(data) {
-                console.log(data);
-            }
+            url: 'https://hooks.slack.com/services/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'
 
         });
        })
 
+       
+
+       function getMessageFromSlack(){
+        $.ajax({
+            type: 'GET',
+            url: "/slack/channels.history?channel=" + 'C9Z8JTEMA' + "&token=" + 'xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
+            async: false,
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(data){
+                console.log(data);
+            }
+          })
+       
+       }
