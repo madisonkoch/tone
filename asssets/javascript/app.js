@@ -45,6 +45,10 @@ $('.test-btn').on('click', function(){
 
 })
 
+//modal for age verification/login
+
+    $(".modal").modal();
+
 //let example = userInput;
 
 /*$ curl -H "Content-Type: application/json" --data \
