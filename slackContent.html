@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TONE</title>
+
+    <!-- Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css"  media="screen,projection"/>
+
+    <!--Viewport-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Link to CSS file -->
+        <link rel="stylesheet" href="./asssets/css/style.css">
+
+    <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
+
+</head>
+<body class="content-body">
+    <header class="row z-depth-2 content-header">
+        <h1 class="col s12 content-h1">TONE</h1>
+    </header>
+    <main class="content-main container">
+      
+        <div>
+      
+        <div class="row">
+            <button class="getSlack">Get The Slack Info</button>
+        </div>
+        <div id="all-messages">
+            <div class="user-message">
+                <div class="row message-head">
+                    <div class="chip username">Jane Doe</div>
+                    <div class="right timestamp"> Time AMPM</div>
+                </div>
+                <p class="row message-text"> This may be offensive...</p>
+                <div class="right timestamp"> X% Toxic</div>
+
+            </div>
+        </div>
+        
+    </main>
+    <footer class="col s12 message-footer">
+        
+    
+        <form class="col s12 container">
+            <div class="row">
+              <div class="input-field col s11">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Check your Tone</label>
+              </div>
+              <button class="btn waves-effect waves-light right slack-submit col s1" type="submit" name="action">
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+         
+          </form>
+
+    </footer>
+        
+<!-- Floating Action Button -->
+    <!-- <div class="fixed-action-btn">
+        <a class="btn-floating btn-large menu-button waves-effect waves-light">
+            <i class="large material-icons menu-button waves-effect">menu</i>
+        </a>
+        <ul>
+        <li><a class="btn-floating create-button"><i class="material-icons create-button">create</i></a></li>
+        <li><a class="btn-floating account-button"><i class="material-icons account-button">filter_list</i></a></li>
+        </ul>
+    </div> -->
+
+
+<!-- JQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Materialize JS -->
+    <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
+
+<!-- Link to JS file -->
+  <script src="asssets/javascript/perspective.js" ></script>
+ 
+</body>
+</html>

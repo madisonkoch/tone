@@ -18,9 +18,9 @@
   <header class="col s12">
     <h1 id="login-h1">TONE</h1>
   </header>
-  <!-- Main content start -->
   <main class="container">
-    <div id="spacer">
+  <div id="spacer">
+      <p><a href="slackContent.html">Slack Page (temp link)</a></p>  
       <p><a href="fbContent.html">Next Page (temp link)</a></p>
     </div>
     <!-- Facebook Btn -->
@@ -36,16 +36,38 @@
       <!--login-->
       <br>
       <a href="#modal1" class="waves-effect waves-light btn modal-trigger">Modal</a>
-      <!--d-o-b entry form-->
+      <!--entry form-->
       <div class="modal modal-fixed-footer" id="modal1">
         <div class="modal-content">
-          <h4>Please enter date of birth (mm/dd/yyyy):</h4>
-          <p>place-holder content</p>
+          <div class="row">
+           <div class="input-field">
+             <input placeholder="Username" id="userName" type="text" class="validate">
+             <label for="user_name">Username:</label>
+           </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <input placeholder="mm-dd-yyyy" id="dOB" type="text" class="validate">
+              <label for="d-o-b">Date of birth:</label>
+            </div>
+          </div>
+
+          <div>
+              <p>You must agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> 
+                to continue</p>
+          </div>
+
         </div>
+        <!--footer for entry form-->
         <div class="modal-footer">
-          <p>You must agree to the terms and conditions to continue</p>
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Disagree</a>
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span>Disagree</span>
+          </label>
+          <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span>Agree</span>
+          </label>
         </div>
       </div>
 
@@ -56,8 +78,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css"></script>
+  <!--moment.js for age verification-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/locale/af.js"></script>
   <script src="asssets/javascript/app.js"></script>
+<<<<<<< HEAD
   <script src="asssets/javascript/perspective.js"></script>
+=======
+
+>>>>>>> 52eaadb458edc80295e243325e8e09bd552ea0d4
 </body>
 
 </html>

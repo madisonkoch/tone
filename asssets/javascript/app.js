@@ -45,9 +45,9 @@ $('.test-btn').on('click', function(){
 
 }); 
 
-// modal for age verification/login
+//moment age verification/login
 
-    $(".modal").modal();
+
 
 let example = userInput;
 
@@ -70,7 +70,7 @@ let example = userInput;
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
-                "Authorization": 'Bearer xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
+                "Authorization": `Bearer ${API_SLACK_TOKEN}`,
                 "text": message,
                 "as_user": true,
                 'username':'Evryone'
