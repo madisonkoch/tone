@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+console.log('I launched');
  
 var app = express();
 var port = process.env.PORT || 1337;
