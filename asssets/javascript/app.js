@@ -45,9 +45,9 @@ $('.test-btn').on('click', function(){
 
 })
 
-//modal for age verification/login
+//moment age verification/login
 
-    $(".modal").modal();
+
 
 //let example = userInput;
 
