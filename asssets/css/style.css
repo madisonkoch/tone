@@ -158,6 +158,34 @@
 /* Content - Facebook */
 
 /* Content - Slack */
+.chip{
+    background-color:white;
+}
+#all-messages{
+    width:96%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.user-message{
+    margin-bottom:10px;
+}
+.message-head{
+    margin-bottom:0;
+}
+.timestamp{
+    font-family: 'Assistant', sans-serif;
+    height: 32px;
+    padding-top: 8px;
+    margin-left:10px;
+    margin-right:10px;
+    color:#a0a0a0;
+}
+.message-text{
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:0;
+    margin-bottom:0;
+}
 .message-footer{
     position: fixed;
     width: 100%;
