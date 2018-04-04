@@ -57,4 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-#./asssets/javascript/config.js
+./asssets/javascript/config.js
