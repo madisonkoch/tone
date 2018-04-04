@@ -18,128 +18,18 @@
         margin-left: auto;
         margin-right: auto;
     }
-    #spacer{
-        height: 400px;
-    }
-    #spacer p {
-        text-align: center;
-    }
-/* All Content Pages */
-    /* Header */
-        .content-body{
-            background-color: #e2e2e3;
-        }
-        .content-header{
-            margin-bottom:unset;
-            background-color: #25c1f9;
-            position: fixed;
-            width: 100%;
-        }
-
-    /* FABs */
-        .menu-button{
-            background-color: #ff4384;
-        }
-        .account-button{
-            background-color:#7B4DFE;
-        }
-        .create-button{
-            background-color:#25c1f9;
-        }
-    /* Main */
-        .content-main{
-            padding-top: 72px;
-        }
-        .container{
-            width:95%;
-        }
-        /* Content Head */
-            .content-h1{
-                margin: unset;
-                font-size: 3rem;
-                margin-top: 3px;
-                margin-bottom: 3px;
-                text-shadow: 1px 1px 5px #000000d1;
-                text-align: center;
-            }
-            .content-div{
-                background-color: #ffffff;
-            }
-            .content-head{
-                padding-top: 10.5px;
-                background-color: #e2e2e34a;
-                margin-bottom: 0;
-                padding-bottom: 10.5px;
-                border-bottom: 1px solid #e2e2e3;
-            }
-            h6{
-                margin: unset;
-                font-family: 'Assistant', sans-serif;
-                font-size: 16px;
-            }
-            p{
-                font-family: 'Assistant', sans-serif;
-                font-size: 14px;
-            }
-            h6.toxicity-text{
-                font-family: 'Assistant', sans-serif;
-                font-size: 14px;
-                margin:0;
-                text-align: right;
-            }
-            .circle {
-                height: 14px;
-                width: 14px;
-                background-color: #25c1f9;
-                margin-left:auto;
-                margin-top: 2px;
-            }
-            .square{
-                margin-top: 3px;
-                height: 13px;
-                width: 13px;
-                background-color: #7B4DFE;
-            }
-            .diamond {
-                width: 0;
-                height: 0;
-                border: 8px solid transparent;
-                border-bottom-color: #ff4384;
-                position: relative;
-                top: -8px;
-            }
-            .diamond:after {
-                content: '';
-                position: absolute;
-                left: -8px;
-                top: 8px;
-                width: 0;
-                height: 0;
-                border: 8px solid transparent;
-                border-top-color: #ff4384;
-            }
-        /* Content Body */
-            /* Single Image in Post */
-                .single-img{
-                    width:100%;
-                    max-height:250px;
-                }
-            /* Multiple Images - Carousel*/
-                .carousel{
-                    max-height: 220px;
-                }
-                .carousel-item{
-                    max-width: 75%;
-                    max-height: 200px;
-                }    
-                .carousel-img{
-                        max-width: 100%;
-                        max-height: 200px;
-                        margin-top:auto;
-                        margin-bottom:auto;
-                    }
-
-
 /* Content - Facebook */
-
-
+    #fb-body{
+        background-color: #ffffff;
+    }
+    header{
+        margin-bottom:unset;
+        background-color: #c7c7c7;
+    }
+    #fb-h1{
+        margin: unset;
+        font-size: 3rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 1px 1px 5px #000000d1;
+    }

@@ -31,12 +31,31 @@
       <input type="text" class="slack-message">
       <button class="slack-submit"> Send Message to Slack</button>
     </div>
+
+      <!--modal box and content-->
+      <!--login-->
+      <br>
+      <a href="#modal1" class="waves-effect waves-light btn modal-trigger">Modal</a>
+      <!--d-o-b entry form-->
+      <div class="modal modal-fixed-footer" id="modal1">
+        <div class="modal-content">
+          <h4>Please enter date of birth (mm/dd/yyyy):</h4>
+          <p>place-holder content</p>
+        </div>
+        <div class="modal-footer">
+          <p>You must agree to the terms and conditions to continue</p>
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Disagree</a>
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
+
   </main> <!-- Main Content End -->
   <button class="getSlack">Get The Slack Info</button>
   <div class="slack-data"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css"></script>
   <script src="asssets/javascript/app.js"></script>
 </body>
 
