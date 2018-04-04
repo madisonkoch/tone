@@ -101,12 +101,12 @@ $('.test-btn').on('click', function(){
         });
        })
 
-       
+       $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
         $.ajax({
             type: 'GET',
-            url: "/slack/channels.history?channel=" + 'C9Z8JTEMA' + "&token=" + 'xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
+            url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
             async: false,
             success: function(data) {
                 console.log(data);
