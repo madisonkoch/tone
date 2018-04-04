@@ -1,0 +1,24 @@
+{
+  "name": "tone",
+  "version": "1.0.0",
+  "description": "### Name of project: Tone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holgermueller/tone.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Holgermueller/tone/issues"
+  },
+  "homepage": "https://github.com/Holgermueller/tone#readme",
+  "dependencies": {
+    "express": "^4.x.x",
+    "body-parser": "^1.x.x",
+    "request": "2.56.x"
+  }
+}
