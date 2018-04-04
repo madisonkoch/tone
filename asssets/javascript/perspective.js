@@ -13,7 +13,7 @@ $.ajax({
     contentType: "application/json",
     data: JSON.stringify({
             comment: {
-                    text: "what a lovely hat"
+                    text: "How can you be so stupid?"
             },
             languages: ["en"],
             requestedAttributes: {
@@ -25,5 +25,13 @@ $.ajax({
     success: function(response) {
             console.log(response);
             console.log(response.attributeScores.TOXICITY.summaryScore.value);
+
+            let toxicity = response.attributeScores.TOXICITY.summaryScore.value
+
+            let toxicityPercentage = (toxicity*100).toFixed(2)
+
+            console.log(toxicityPercentage)
+
+            $('#percentage').text(toxicityPercentage + "% Toxic")
     }
 });

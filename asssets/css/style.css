@@ -32,17 +32,18 @@
         margin-top: 3px;
         margin-bottom: 3px;
         text-shadow: 1px 1px 5px #000000d1;
-<<<<<<< HEAD
+
     }
-=======
-<<<<<<< HEAD
-    }
+
+
     #spacer{
         height: 400px;
     }
     #spacer p {
         text-align: center;
     }
+
+
 /* All Content Pages */
     /* Header */
         .content-body{
@@ -190,13 +191,18 @@
     margin-top:0;
     margin-bottom:0;
 }
+
+
+/* footer */
+
+
 .message-footer{
     position: fixed;
     width: 100%;
     bottom: 0;
+
+    background-color: white;
 }
 
-=======
-    }
->>>>>>> 7f79dd937435dca1b731e976ab0a1829838c2a53
->>>>>>> 52eaadb458edc80295e243325e8e09bd552ea0d4
+
+

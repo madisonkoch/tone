@@ -21,8 +21,8 @@
 
 </head>
 <body class="content-body">
-    <header class="row z-depth-2 content-header">
-        <h1 class="col s12 content-h1">TONE</h1>
+    <header class="row z-depth-2 content-header col s12 ">
+        <h1 class="content-h1">TONE</h1>
     </header>
     <main class="content-main container">
       
@@ -38,27 +38,33 @@
                     <div class="right timestamp"> Time AMPM</div>
                 </div>
                 <p class="row message-text"> This may be offensive...</p>
-                <div class="right timestamp"> X% Toxic</div>
+                <div id="percentage" class="right timestamp"></div>
 
             </div>
         </div>
         
     </main>
-    <footer class="col s12 message-footer">
-        
+    <footer class="row ">
+
+
+    <div class="message-footer">    
     
-        <form class="col s12 container">
+        <form class="container">
             <div class="row">
               <div class="input-field col s11">
                 <textarea id="textarea1" class="materialize-textarea"></textarea>
                 <label for="textarea1">Check your Tone</label>
+                <button id="check-button" class="btn waves-effect waves-light right slack-submit col s1" type="submit" name="action">
+                       <i class="material-icons right">send</i>
+                      </button>
+                      
               </div>
-              <button class="btn waves-effect waves-light right slack-submit col s1" type="submit" name="action">
-                <i class="material-icons right">send</i>
-              </button>
+              
             </div>
-         
+    
           </form>
+    </div>
+
 
     </footer>
         
