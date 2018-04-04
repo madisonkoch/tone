@@ -69,7 +69,7 @@ $('.test-btn').on('click', function(){
                 }
         }),
         method: 'POST',
-        url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+        url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
         success: function(response) {
                 console.log(response);
         }
@@ -92,7 +92,7 @@ $('.test-btn').on('click', function(){
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
-                "Authorization": 'Bearer xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
+                "Authorization": `Bearer ${API_SLACK_TOKEN}`,
                 "text": message,
                 "as_user": true,
                 'username':'Evryone'
@@ -105,12 +105,12 @@ $('.test-btn').on('click', function(){
         });
        })
 
-       
+       $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
         $.ajax({
             type: 'GET',
-            url: "/slack/channels.history?channel=" + 'C9Z8JTEMA' + "&token=" + 'xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560',
+            url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
             async: false,
             success: function(data) {
                 console.log(data);
