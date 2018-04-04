@@ -18,6 +18,21 @@
         margin-left: auto;
         margin-right: auto;
     }
+/* Content - Facebook */
+    #fb-body{
+        background-color: #ffffff;
+    }
+    header{
+        margin-bottom:unset;
+        background-color: #c7c7c7;
+    }
+    #fb-h1{
+        margin: unset;
+        font-size: 3rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 1px 1px 5px #000000d1;
+    }
     #spacer{
         height: 400px;
     }
@@ -148,3 +163,4 @@
     width: 100%;
     bottom: 0;
 }
+
