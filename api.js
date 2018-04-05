@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
 console.log('I launched');
  
 var app = express();
@@ -13,6 +14,10 @@ app.get('/', function (req, res) { res.status(200).send('Hello world!'); });
  
 app.listen(port, function () {
   console.log('Listening on port ' + port);
+});
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 
