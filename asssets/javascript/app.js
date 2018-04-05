@@ -92,7 +92,7 @@ $('.test-btn').on('click', function(){
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
-                "Authorization": `Bearer ${API_SLACK_TOKEN}`,
+               
                 "text": message,
                 "as_user": true,
                 'username':'Evryone'
