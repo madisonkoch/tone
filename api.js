@@ -27,8 +27,11 @@ app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
   .get('/', (req, res) => res.render('index.html')) 
-  .get('/auth', (req, res) => res.render('index.html'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+  app.get('/users/', function (req, res) {
+    res.send(req.params)
+  })
 
 
   function logErrors (err, req, res, next) {
