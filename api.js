@@ -1,8 +1,8 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 5000
-
-express()
+const PORT = process.env.PORT || 8080
+const app = express();
+app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
   .get('/', (req, res) => res.render('index.html'))
@@ -18,7 +18,7 @@ express()
 //   .get('/', (req, res) => res.render('index.html'))
 //   .l isten(PORT, () => console.log(`Listening on ${ PORT }`))
  
-express().post('/hello', function (req, res) {
+app.post('/hello', function (req, res) {
   res.send('POST request to the homepage');
 
   // Loop otherwise..
@@ -29,6 +29,6 @@ express().post('/hello', function (req, res) {
   // }
 });
  
-app.listen(port, function () {
+app.listen(PORT, function () {
   console.log('Listening on port ' + port);
 });
