@@ -31,6 +31,9 @@ app
 
   app.get('/users/', function (req, res) {
     res.send(req.params)
+    
+    res.render('index.html')
+
   })
 
 
