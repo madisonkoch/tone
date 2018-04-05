@@ -18,6 +18,11 @@ app.post('/hello', function (req, res) {
   // }
 });
 
+
+app
+.use(express.static(path.join(__dirname)))
+.get('/auth', (req, res) => res.render('index.html'))
+
 app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
@@ -25,5 +30,4 @@ app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  app.get('/auth', (req, res) => res.render('index.html'))
  
