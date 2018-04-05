@@ -47,7 +47,7 @@ app
 
     var url_string = res.url; //window.location.href
     var url = new URL(url_string);
-    var code = url.searchParams.get("code");
-   res.send('user ' +  code );
+    ///var code = url.searchParams.get("code");
+   res.send('user ' +  url_string );
 })
 
