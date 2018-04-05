@@ -25,7 +25,5 @@ app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  app.get('/auth', function(req, res){
-    res.render('index.html');
-  })
+  app.get('/auth', (req, res) => res.render('index.html'))
  
