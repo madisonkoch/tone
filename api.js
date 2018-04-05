@@ -5,15 +5,14 @@ const app = express();
 
 app.post('/hello', function (req, res) {
   
-  var userName = 'req.body.user_name';
-
+  var userName = req.body.user_name;
   var botPayload = {
     text : 'Hello, ' + userName + '!'
   };
-  res.status(200).json(botPayload);
+
   // avoid infinite loop
   if (userName !== 'slackbot') {
-    return
+    return res.status(200).json(botPayload);
   } else {
     return res.status(200).end();
   }
