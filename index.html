@@ -32,49 +32,59 @@
       <button class="slack-submit"> Send Message to Slack</button>
     </div> -->
 
-      <!--modal box and content-->
-      <!--login-->
-      <br>
-      <a href="#modal1" class="waves-effect waves-light btn modal-trigger">Modal</a>
-      <!--entry form-->
-      <div class="modal modal-fixed-footer" id="modal1">
-        <div class="modal-content">
-          <div class="row">
-           <div class="input-field">
-             <input placeholder="Username" id="userName" type="text" class="validate">
-             <label for="user_name">Username:</label>
+  <!-- Slack Sign In or Sign Up-->
+    <!-- Sign Up -->
+      <!-- Modal Trigger -->
+        <button data-target="modal1" class="btn modal-trigger">Sign Up</button>
+      <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <div class="row">
+              <div class="input-field">
+                <input placeholder="Username" id="userName" type="text" class="validate">
+                <label for="user_name">Username:</label>
+              </div>
+             </div>
+             <div class="row">
+               <div class="input-field">
+                 <input placeholder="mm-dd-yyyy" id="dOB" type="text" class="validate">
+                 <label for="d-o-b">Date of birth:</label>
+               </div>
+             </div>
+             <div class="row">
+                 <p>You must agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> 
+                   to continue</p>
+                   <label>
+                    <input id="indeterminate-checkbox" type="checkbox" class="modal-close"/>
+                    <span>Disagree</span>
+                  </label>
+                  <label>
+                    <input id="indeterminate-checkbox" type="checkbox" />
+                    <span>Agree</span>
+                  </label>
+             </div>
            </div>
-          </div>
-          <div class="row">
-            <div class="input-field">
-              <input placeholder="mm-dd-yyyy" id="dOB" type="text" class="validate">
-              <label for="d-o-b">Date of birth:</label>
-            </div>
-          </div>
 
-          <div>
-              <p>You must agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> 
-                to continue</p>
+          <div class="modal-footer">
+              <!-- Slack link -->
+              <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
           </div>
+        </div>
+    <!-- Sign In -->
+      <!-- Modal Trigger -->
+      <button data-target="modal2" class="btn modal-trigger">Sign In</button>
+      <!-- Modal Structure -->
+        <div id="modal2" class="modal">
+          <div class="modal-footer">
+              <!-- Slack link -->
+              <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+          </div>
+        </div>
 
-        </div>
-        <!--footer for entry form-->
-        <div class="modal-footer">
-          <label>
-            <input id="indeterminate-checkbox" type="checkbox" />
-            <span>Disagree</span>
-          </label>
-          <label>
-            <input id="indeterminate-checkbox" type="checkbox" />
-            <span>Agree</span>
-          </label>
-        </div>
-      </div>
-      <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
 
   </main> <!-- Main Content End -->
-  <button class="getSlack">Get The Slack Info</button>
-  <div class="slack-data"></div>
+  <!-- <button class="getSlack">Get The Slack Info</button>
+  <div class="slack-data"></div> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
