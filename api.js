@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
-   .use(express.static(path.join(__dirname, './')))
+   .use(express.static(path.join(__dirname, '/')))
   .get('/', (req, res) => res.render('index.html'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 // const express = require('express')
@@ -17,7 +17,7 @@ express()
 //   .get('/', (req, res) => res.render('index.html'))
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
  
-app.post('/hello', function (req, res, next) {
+express.post('/hello', function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = {
     text : 'Hello ' + userName + ', welcome to the Channel'
