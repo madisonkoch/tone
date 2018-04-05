@@ -18,12 +18,9 @@ express()
 //   .get('/', (req, res) => res.render('index.html'))
 //   .l isten(PORT, () => console.log(`Listening on ${ PORT }`))
  
-express().post('/hello', function (req, res, next) {
-  var userName = req.body.user_name;
-  console.log(res);
-  var botPayload = {
-    text : 'Hello ' + userName + ', welcome to the Channel'
-  };
+express().post('/hello', function (req, res) {
+  res.send('POST request to the homepage');
+
   // Loop otherwise..
   // if (userName !== 'slackbot') {
   //   return res.status(200).json(botPayload);
