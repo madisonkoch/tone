@@ -26,15 +26,15 @@ app.post('/hello', function (req, res) {
 app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
-  .get('/', (req, res) => res.render('index.html')) 
+  .get('/auth', (req, res) => res.render('index.html')) 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-  app.get('/users/', function (req, res) {
+  // app.get('/users/', function (req, res) {
     
 
-    res.render('index.html')
+  //   res.render('index.html')
 
-  })
+  // })
 
 
   function logErrors (err, req, res, next) {
