@@ -44,5 +44,5 @@ app
 
 
   app.get('/auth/redirect', (req, res) =>{
-    res.send("code " + req.params.code);
+    res.send("code " + req.params);
 })
