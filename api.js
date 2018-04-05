@@ -21,10 +21,8 @@ app.post('/hello', function (req, res) {
 app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
-  .get('/', (req, res) => res.render('index.html'))
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  app.post('/auth' , function(req, res){
-     res.render('auth.html')
-  })
+  app.get('/auth', (req, res) => res.render('auth.html'))
