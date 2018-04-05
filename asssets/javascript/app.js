@@ -138,8 +138,11 @@ $('.test-btn').on('click', function(){
        
        }
 
-       var elem3 = document.querySelector('.modal');
+       var elem3 = document.querySelector('#modal1');
        var instance3 = M.Modal.init(elem3, {
            dismissable: false
        });
-     
+       var elem4 = document.querySelector('#modal2');
+       var instance3 = M.Modal.init(elem4, {
+           dismissable: false
+       });
