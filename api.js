@@ -43,13 +43,6 @@ app
   }
 
 
-  app.get('/auth/redirect', (req, res, body) =>{
-    var JSONresponse = JSON.parse(body)
-    if (!JSONresponse.ok){
-        console.log(JSONresponse)
-        res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
-    }else{
-        console.log(JSONresponse)
-        res.send("Success!")
-    }
+  app.get('/auth/redirect', (req, res) =>{
+   res.send('user ' + req.params.code);
 })
