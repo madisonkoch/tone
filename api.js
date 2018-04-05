@@ -7,7 +7,7 @@ app.post('/hello', function (req, res) {
   
   var userName = 'test';
   var botPayload = {
-    text : 'Hello, ' + userName + '!'
+    text : 'Hello, ' + req + '!'
   };
   res.status(200).json(botPayload);
   // avoid infinite loop
