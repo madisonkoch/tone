@@ -9,7 +9,7 @@ app.post('/hello', function (req, res) {
   var botPayload = {
     text : 'Hello, ' + req + '!'
   };
-  res.status(200).json(botPayload);
+  res.status(200).json(req);
   // avoid infinite loop
   // if (userName !== 'slackbot') {
   
