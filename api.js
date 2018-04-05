@@ -1,19 +1,19 @@
-// var express = require('express');
-// var bodyParser = require('body-parser');
-// var path = require('path');
-// console.log('I launched');
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+console.log('I launched');
  
-// var app = express();
-// var port = process.env.PORT || 8080; 
+var app = express();
+var port = process.env.PORT || 8080; 
  
-// // body parser middleware
-// app.use(bodyParser.urlencoded({ extended: true }));
+// body parser middleware
+app.use(bodyParser.urlencoded({ extended: true }));
  
 
 
-// app.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname + '/index.html'));
-// });
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 
 // app.post('/hello', function (req, res, next) {
