@@ -25,8 +25,7 @@ app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  app
-  .use(express.static(path.join(__dirname)))
-  .use("/styles", express.static(__dirname))
-  .post('/auth', (req, res) => res.render('auth.html'))
+  app.get('/auth', function(req, res){
+    res.send('Auth 101');
+  })
  
