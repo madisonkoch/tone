@@ -1,25 +1,11 @@
-var express = require("express");
-var app     = express();
-app.use(express.static(__dirname + '/'));
-//Store all HTML files in view folder.
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-
-app.get('/',function(req,res){
-  res.sendFile('index.html');
-  //It will find and locate index.html from View or Scripts
-});
-
-app.get('/about',function(req,res){
-  res.sendFile('/about.html');
-});
-
-app.get('/sitemap',function(req,res){
-  res.sendFile('/sitemap.html');
-});
-
-app.listen(3000);
-
-console.log("Running at Port 3000");
+express()
+   .use(express.static(path.join(__dirname, './')))
+  .get('/', (req, res) => res.render('index.html'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 // const express = require('express')
 // const path = require('path')
 // const PORT = process.env.PORT || 5000
