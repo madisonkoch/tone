@@ -26,6 +26,6 @@ app
 
 
   app.get('/auth', function(req, res){
-    res.send('Auth 101');
+    res.render('index.html');
   })
  
