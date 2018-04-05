@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 8080
 const app = express();
 
-app.post('/hello', function (req, res) {
+app.post('/hello', function (req, res, next) {
   
   var userName = req.body.user_name;
   var botPayload = {
