@@ -43,21 +43,7 @@ app
   }
 
 
-//   app.get('/auth/redirect', (req, res) =>{
-//    res.send('user ' + req.param() );
-// })
+  app.get('/auth/redirect', (req, res) =>{
+   res.send('user ' + req.url );
+})
 
-/* WAIT FOR NEW APP INSTALLATION REQUESTS FROM SLACK */
-app.get('/auth/redirect', function(req, res) {
-  // Tease out accessCode from the Slack request, if it exists 
-  var url = req.url;
-  // var codePos = url.indexOf("code="); //index where code= starts in url
-  // var codeStartPos = codePos + 5; //Start of accessCode (+5 because code= is 5 characters)
-  // var endingPos = url.indexOf("&"); //End of accessCode, where another parameter starts
-  // var accessCode = url.substring(codeStartPos, endingPos).toString();   //Extract code from url
-  req.send('acesses code ' + url)
-
-  // Verify user accepted Slack's auth request by looking for access_code existence
- 
-
-  });
