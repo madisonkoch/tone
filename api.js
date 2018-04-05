@@ -71,3 +71,5 @@ app.get('/auth/redirect', function(req, res) {
    } else {          //User denied auth request from Slack, so reroute back to signup page to start over
     //REROUTE USER BACK TO INSTALL PAGE, THEY DENIED AUTH REQUEST
    }
+
+  });
