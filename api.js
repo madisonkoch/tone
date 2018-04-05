@@ -55,7 +55,7 @@ app.get('/auth/redirect', function(req, res) {
   var codeStartPos = codePos + 5; //Start of accessCode (+5 because code= is 5 characters)
   var endingPos = url.indexOf("&"); //End of accessCode, where another parameter starts
   var accessCode = url.substring(codeStartPos, endingPos).toString();   //Extract code from url
-
+  req.send('acesses code ' + accessCode)
   // Verify user accepted Slack's auth request by looking for access_code existence
   if (codePos > -1) {    // User authorized oAuth request from Slack
     var completePath = path + accessCode; //Slack API call + code to receive accessToken and teamInfo
@@ -63,7 +63,7 @@ app.get('/auth/redirect', function(req, res) {
       if(!error && response.statusCode == 200 && teamInfo.ok == true){
         var teamInfo = JSON.parse(body);   //Slack sends back access_code and team info in a JSON object
         //SAVE THE ACCESS_CODE
-        req.send('acesses code ' + accessCode)
+       
       } else {
         //ERROR
       }
