@@ -4,7 +4,7 @@ var path = require('path');
 console.log('I launched');
  
 var app = express();
-var port = process.env.PORT || 1337; cufl
+var port = process.env.PORT || 1337; 
  
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +31,6 @@ app.post('/hello', function (req, res, next) {
   }
 });
 
-app.listen(port, function () {
+app.listen(8080, function () {
   console.log('Listening on port ' + port);
 });
