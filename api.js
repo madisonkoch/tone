@@ -28,7 +28,7 @@ app
 app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
-  .get('/', (req, res) => res.render('index.html'))
+  .get('/', (req, res) => res.render('index.html')) 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
