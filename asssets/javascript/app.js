@@ -84,7 +84,7 @@ $('.test-btn').on('click', function(){
         });
     //Image Carousel
     var elem2 = document.querySelector('.carousel');
-    var instance = M.Carousel.init(elem2, {
+    var instance2 = M.Carousel.init(elem2, {
         fullWidth: false
     });
 
@@ -138,4 +138,8 @@ $('.test-btn').on('click', function(){
        
        }
 
+       var elem3 = document.querySelector('.modal');
+       var instance3 = M.Modal.init(elem3, {
+           dismissable: false
+       });
      
