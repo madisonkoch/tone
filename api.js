@@ -19,16 +19,19 @@ app.post('/hello', function (req, res) {
 });
 
 
-app
-.use(express.static(path.join(__dirname)))
-.get('/auth', (req, res) => res.render('index.html'))
+
+
 
 
 app
    .use(express.static(path.join(__dirname)))
    .use("/styles", express.static(__dirname))
   .get('/', (req, res) => res.render('index.html')) 
+  .get('/auth', (req, res) => res.render('index.html'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
- 
+  function logErrors (err, req, res, next) {
+    console.error(err.stack)
+    next(err)
+  }
