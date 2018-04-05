@@ -29,4 +29,4 @@ app
   .use(express.static(path.join(__dirname)))
   .use("/styles", express.static(__dirname))
   .post('/auth', (req, res) => res.render('auth.html'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+ 
