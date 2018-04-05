@@ -30,8 +30,8 @@ app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   app.get('/users/', function (req, res) {
-    res.send(req.params)
     
+
     res.render('index.html')
 
   })
