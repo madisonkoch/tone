@@ -12,9 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // test route
 app.get('/', function (req, res) { res.status(200).send('Hello world!'); });
  
-app.listen(port, function () {
-  console.log('Listening on port ' + port);
-});
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
@@ -32,4 +29,8 @@ app.post('/hello', function (req, res, next) {
   } else {
     return res.status(200).end();
   }
+});
+
+app.listen(port, function () {
+  console.log('Listening on port ' + port);
 });
