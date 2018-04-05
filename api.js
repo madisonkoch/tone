@@ -5,6 +5,7 @@ const app = express();
 
 app.post('/hello', function (req, res) {
   res.send('POST request to the homepage');
+});
 
 app
    .use(express.static(path.join(__dirname)))
