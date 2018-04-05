@@ -45,7 +45,7 @@ app
 
   app.get('/auth/redirect',function (req, res){
 
-    var url_string = res.url; //window.location.href
+    var url_string = req.url; //window.location.href
     //var url = new URL(url_string);
     ///var code = url.searchParams.get("code");
    res.send('user ' +  url_string );
