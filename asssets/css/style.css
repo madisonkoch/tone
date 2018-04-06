@@ -205,12 +205,15 @@
     height:28px;
     padding-top:4px;
 }
-button.btn.right.col.s2.slack-submit{
+#slack-logo{
+    height:28px;
+}
+.slack-submit{
     background-color:white;
     padding: unset;
     width: fit-content;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 2px;
-
+    width:100%;
 }
