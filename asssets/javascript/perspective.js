@@ -1,19 +1,33 @@
 
 
 
+// Analize content as you type
 
-let contentToAnalize = ""
+function clear () {
+
+        let contentToAnalize = ""
+}
+
+
+
+$('#textarea1').keyup(function(){
+   contentToAnalize = $('#textarea1').val();
+//    console.log(contentToAnalize);
+}); 
+
+        
+
+$('#check-button').on('click',function(){
+    
+event.preventDefault();
 
 // This Ajax call gives us the analized content from the perpective API
 
-
-
-
-$.ajax({
+    $.ajax({
     contentType: "application/json",
     data: JSON.stringify({
             comment: {
-                    text: "How can you be so stupid?"
+                    text: contentToAnalize
             },
             languages: ["en"],
             requestedAttributes: {
@@ -28,10 +42,16 @@ $.ajax({
 
             let toxicity = response.attributeScores.TOXICITY.summaryScore.value
 
-            let toxicityPercentage = (toxicity*100).toFixed(2)
+            let toxicityPercentage = (toxicity*100).toFixed(0)
 
             console.log(toxicityPercentage)
 
             $('#percentage').text(toxicityPercentage + "% Toxic")
     }
+
+   
+});
+
+$('#textarea1').clear();
+
 });
