@@ -50,12 +50,15 @@ $('.test-btn').on('click', function(){
 //moment();
 //console.log(moment().format("MM-DD-YYYY"));
 //set date against which age will be determined
-let date = moment().format("L")
+let date = moment().unix();
 console.log(date);
 
 //set age limit
-let ageLimit = moment().subtract(13, 'years').format("L");
+let ageLimit = moment().subtract(13, 'years').unix();
 console.log(ageLimit);
+
+let userAge = date - ageLimit;
+console.log(userAge);
 
 //grab age of user
 $("#dOB").change(function(){
@@ -63,9 +66,9 @@ $("#dOB").change(function(){
     console.log(dOB);
 });
 
-//subtract dOB from date to determine user age
+/*subtract dOB from date to determine user age
 let userAge = date - dOB;
-    console.log(userAge);
+    console.log(userAge);*/
 
 //click agree to load UI
 //$(".agree").load("#");
