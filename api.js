@@ -58,7 +58,7 @@ app.get('/auth/redirect', (req, res) =>{
           +req.query.code+
           '&client_id=338977510529.340356602870'+
           '&client_secret=03cb74d67b4d3b18028962b6902157da'+
-          '&redirect_uri=',
+          '&redirect_uri=index.html',
       method: 'GET'
   }
   request(options, (error, response, body) => {
