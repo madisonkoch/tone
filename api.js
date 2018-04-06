@@ -57,8 +57,8 @@ app.get('/auth/redirect', (req, res) =>{
       uri: 'https://slack.com/api/oauth.access?code='
           +req.query.code+
           '&client_id=338977510529.340356602870'+
-          '&client_secret=03cb74d67b4d3b18028962b6902157da',
-          
+          '&client_secret=03cb74d67b4d3b18028962b6902157da'+
+          '&redirect_uri=',
       method: 'GET'
   }
   request(options, (error, response, body) => {
@@ -68,7 +68,7 @@ app.get('/auth/redirect', (req, res) =>{
           res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
       }else{
           console.log(JSONresponse)
-          res.send(JSONresponse)
+          res.send(JSONresponse);
       }
   })
 })

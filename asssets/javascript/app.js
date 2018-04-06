@@ -138,13 +138,3 @@
        
        }
 
-     
-$('.slack-btn').on("click", function(){
-    alert('test');
-    $.ajax({
-        url:'https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870',
-        method:'GET',
-        success:function(data){console.log(data)},
-        error:function(data){console.log(data)}
-    })
-})
