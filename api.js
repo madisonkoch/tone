@@ -22,7 +22,7 @@ app.post('/hello', function (req, res) {
 
 app.get('/config.js', function(req, res){
 
-  res.write("var SLACK_SECRET_URL='"+process.env.SLACK_SECRET_URL+"'" + '\n');
+  res.write("var SLACK_SECRET_URL='"+process.env.SLACK_SECRET_URL+"'");
  
   res.end();
 
