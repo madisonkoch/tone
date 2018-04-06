@@ -60,7 +60,7 @@ app.get('/auth/redirect', (req, res) =>{
           '&client_secret=03cb74d67b4d3b18028962b6902157da'+
           '&redirect_uri=https%3A%2F%2Ftone-check-your-self%3Acom',
       method: 'GET'
-      https://tone-check-your-self.herokuapp.com
+
   }
   request(options, (error, response, body) => {
       var JSONresponse = JSON.parse(body)
