@@ -68,7 +68,6 @@
         $.ajax({
             type: 'GET',
             url: SLACK_SECRET_URL,
-            async: false,
             success: function(data) {
                 console.log(data);
             },
