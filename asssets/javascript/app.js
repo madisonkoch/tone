@@ -64,10 +64,10 @@
        $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
-           console.log(SLACK_SECRET_URL);
+           console.log(SLACK_URL + SLACK_TOKEN);
         $.ajax({
             type: 'GET',
-            url: SLACK_SECRET_URL,
+            url: SLACK_URL + SLACK_TOKEN,
             success: function(data) {
                 console.log(data);
             },
