@@ -23,8 +23,8 @@ app.post('/hello', function (req, res) {
 app.get('/config.js', function(req, res){
   res.write("var SLACK_URL='"+process.env.SLACK_URL+"'"  + '\n');
   res.write("var SLACK_TOKEN='"+process.env.SLACK_TOKEN+"'"  + '\n');
+  res.write("var SLACK_TOKEN='"+process.env.SLACK_CHANNEL+"'"  + '\n');
   res.end();
-
 });
 
 
