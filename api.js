@@ -20,6 +20,14 @@ app.post('/hello', function (req, res) {
 });
 
 
+app.get('/config.js', function(req, res){
+
+  res.write("var SOME_URL='"+process.env.SLACK_SECRET_URL+"'" + '\n');
+ 
+  res.end();
+
+});
+
 
 
 
