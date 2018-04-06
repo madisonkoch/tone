@@ -67,6 +67,7 @@
            console.log(SLACK_URL + SLACK_TOKEN +  SLACK_CHANNEL );
         $.ajax({
             type: 'GET',
+            dataType: 'jsonp',
             url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
             success: function(data) {
                 console.log(data);
