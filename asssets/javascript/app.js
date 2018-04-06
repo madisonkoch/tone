@@ -52,6 +52,23 @@ $('.test-btn').on('click', function(){
 let example = userInput;
 
 
+//     $.ajax({
+//         contentType: "application/json",
+//         data: JSON.stringify({
+//                 comment: {
+//                         text: "what a lovely hat"
+//                 },
+//                 languages: ["en"],
+//                 requestedAttributes: {
+//                         TOXICITY: {}
+//                 }
+//         }),
+//         method: 'POST',
+//         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
+//         success: function(response) {
+//                 console.log(response);
+//         }
+// });
 
 //Content Pages
     // Floating Action Button(s)
@@ -62,7 +79,7 @@ let example = userInput;
         });
     //Image Carousel
     var elem2 = document.querySelector('.carousel');
-    var instance = M.Carousel.init(elem2, {
+    var instance2 = M.Carousel.init(elem2, {
         fullWidth: false
     });
 
@@ -86,16 +103,41 @@ let example = userInput;
        $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
+        //     async: false,
+        //     success: function(data) {
+        //         console.log(data);
+        //     },
+        //     error: function(data){
+        //         console.log(data);
+        //     }
+        //   })
+
         $.ajax({
-            type: 'GET',
-            url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
-            async: false,
-            success: function(data) {
+            type:'GET',
+            url: 'https://slack.com/api/oauth.access',
+            data: {
+             client_id: '',
+             client_secret: '',
+             code: ''
+            },
+            success: function(data){
                 console.log(data);
             },
             error: function(data){
                 console.log(data);
             }
-          })
+        })
        
        }
+
+       var elem3 = document.querySelector('#modal1');
+       var instance3 = M.Modal.init(elem3, {
+           dismissable: false
+       });
+       var elem4 = document.querySelector('#modal2');
+       var instance3 = M.Modal.init(elem4, {
+           dismissable: false
+       });
