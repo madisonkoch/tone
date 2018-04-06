@@ -64,6 +64,7 @@
        $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
+           console.log(SLACK_SECRET_URL);
         $.ajax({
             type: 'GET',
             url: SLACK_SECRET_URL,
