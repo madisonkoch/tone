@@ -1,49 +1,5 @@
 'use strict'
-// //Facebook Connection
-//     $('.fb-login-button').on('click',function(){
-//         FB.login(function(response){
-//             if(response === 'connected'){
-//             alert("login worked");
-//             }else if(response === 'not_authorized'){
-//             alert('You are allready logged in');
-//             }else{
-//                 alert('Totaly not logged in')
-//             }
-//         });
-//     });
-        
-//     $('.test-btn').on('click', function(){
-//         $('body').append('test');
-//         FB.api('/me', {fields: 'last_name'}, function(response) {
-//             $('body').append(response);
-//             console.log(response);
-//         });
-//         // for this next step to work need to ste up auth token
-//         var body = 'Testing';
-//         FB.api('/me/feed', 'post', { message: body }, function(response) {
-//             if (!response || response.error) {
-//             alert('Error occured');
-//             } else {
-//             alert('Post ID: ' + response.id);
-//             }
-//         });
 
-//     });
-      
-// $('.test-btn').on('click', function(){
-//     $('body').append('test');
-  
-//     FB.api(
-//         '/me',
-//         'GET',
-//         {},
-//         function(response) {
-//            console.log(response)
-//         }
-//       );
-      
-
-// })
 
 //moment age verification/login
 
@@ -110,7 +66,7 @@
        function getMessageFromSlack(){
         $.ajax({
             type: 'GET',
-            url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
+            url: SLACK_SECRET_URL,
             async: false,
             success: function(data) {
                 console.log(data);
