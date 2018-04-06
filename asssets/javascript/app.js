@@ -99,7 +99,7 @@ $('.event').on('click', function(){
     $.ajax({
         url:'https://api.eventful.com/rest/events/search?app_key=hBd8FWcZ33KgBkBC&where=32.746682,-117.162741&within=25',
         method:'GET',
-        dataType: "xml",
+        dataType: "jsonp",
         success: function(xml) {
             $(xml).find('name').each(function(){
                         var name = $(this).text();
