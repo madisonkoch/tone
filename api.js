@@ -52,7 +52,7 @@ app
 //     res.send(CODE)
 // })
 
-app.get('/', (req, res) =>{
+app.get('/auth/redirect', (req, res) =>{
   var options = {
       uri: 'https://slack.com/api/oauth.access?code='
           +req.query.code+
