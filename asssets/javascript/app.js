@@ -97,10 +97,15 @@
 $('.event').on('click', function(){
     alert('test')
     $.ajax({
-        dataType: 'JSONP text xml ',
         url:'https://api.eventful.com/rest/events/search?app_key=hBd8FWcZ33KgBkBC&where=32.746682,-117.162741&within=25',
         method:'GET',
-        success:function(data){console.log(data)},
+        dataType: "xml",
+        success: function(xml) {
+            $(xml).find('name').each(function(){
+                        var name = $(this).text();
+                        alert(name);
+            });
+        }
         error:function(data){console.log(data)}
     })
 })
