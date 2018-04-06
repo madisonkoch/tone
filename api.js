@@ -43,11 +43,31 @@ app
   }
 
 
-  app.get('/auth/redirect',function (req, res){
-    const CODE = req.query.code; //window.location.href
-    const _SLACK_USERID = '';
-    const _SLACK_SECRET = '';
+//   app.get('/auth/redirect',function (req, res){
+//     const CODE = req.query.code; //window.location.href
+//     const _SLACK_USERID = '338977510529.340356602870';
+//     const _SLACK_SECRET = '03cb74d67b4d3b18028962b6902157da';
 
-    res.send(CODE)
+//     res.send(CODE)
+// })
+
+app.get('/auth/redirect', (req, res) =>{
+  var options = {
+      uri: 'https://slack.com/api/oauth.access?code='
+          +req.query.code+
+          '&client_id=338977510529.340356602870'+
+          '&client_secret=03cb74d67b4d3b18028962b6902157da'+
+          '&redirect_uri=https://tone-check-your-self.herokuapp.com/',
+      method: 'GET'
+  }
+  request(options, (error, response, body) => {
+      var JSONresponse = JSON.parse(body)
+      if (!JSONresponse.ok){
+          console.log(JSONresponse)
+          res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
+      }else{
+          console.log(JSONresponse)
+          res.send("Success!")
+      }
+  })
 })
-
