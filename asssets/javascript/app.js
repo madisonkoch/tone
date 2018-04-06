@@ -105,7 +105,7 @@ $('.event').on('click', function(){
                         var name = $(this).text();
                         alert(name);
             });
-        }
+        },
         error:function(data){console.log(data)}
     })
 })
