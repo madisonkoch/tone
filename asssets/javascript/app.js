@@ -1,18 +1,6 @@
 'use strict'
-
-
 //moment age verification/login
-
-
-
-//let example = userInput;
-
-/*$ curl -H "Content-Type: application/json" --data \
-    '{comment: {text: "what kind of idiot name is foo?"},
-      languages: ["en"],
-      requestedAttributes: {TOXICITY:{}} }' \
-    https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyCY4GjmWVO7suPMSdD-V-Pm8tlExBkIFJE*/
-
+let example = userInput;
 //     $.ajax({
 //         contentType: "application/json",
 //         data: JSON.stringify({
@@ -40,7 +28,7 @@
         });
     //Image Carousel
     var elem2 = document.querySelector('.carousel');
-    var instance = M.Carousel.init(elem2, {
+    var instance2 = M.Carousel.init(elem2, {
         fullWidth: false
     });
 
@@ -94,19 +82,12 @@
        
        }
 
-$('.event').on('click', function(){
-    alert('test')
-    $.ajax({
-        url:'https://api.eventful.com/rest/events/search?app_key=hBd8FWcZ33KgBkBC&where=32.746682,-117.162741&within=25',
-        method:'GET',
-        contentType: "text/xml",
-        dataType: "text",
-        success: function(xml) {
-            $(xml).find('name').each(function(){
-                        var name = $(this).text();
-                        alert(name);
-            });
-        },
-        error:function(data){console.log(data)}
-    })
-})
+       var elem3 = document.querySelector('#modal1');
+       var instance3 = M.Modal.init(elem3, {
+           dismissable: false
+       });
+       var elem4 = document.querySelector('#modal2');
+       var instance3 = M.Modal.init(elem4, {
+           dismissable: false
+       });
+
