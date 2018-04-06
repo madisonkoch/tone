@@ -44,9 +44,10 @@ app
 
 
   app.get('/auth/redirect',function (req, res){
-    res.render('index.html')
-    var url_string = req.url; //window.location.href
-  
-   res.send('user ' +  req.query.code );
+    const CODE = req.query.code; //window.location.href
+    const _SLACK_USERID = '';
+    const _SLACK_SECRET = '';
+
+    res.send(CODE)
 })
 
