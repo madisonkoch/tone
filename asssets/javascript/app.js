@@ -1,4 +1,18 @@
 'use strict'
+
+//firebase
+var config = {
+    apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
+    authDomain: "tone-app-199717.firebaseapp.com",
+    databaseURL: "https://tone-app-199717.firebaseio.com",
+    projectId: "tone-app-199717",
+    storageBucket: "tone-app-199717.appspot.com",
+    messagingSenderId: "618773555838"
+  };
+  firebase.initializeApp(config);
+
+  const database = firebase.database();
+
 //Index / Login Page
     //Sign Up Modal
         var elem3 = document.querySelector('#modal1');
@@ -6,11 +20,17 @@
             dismissable: false
         });
         // If agree is checked
-            $('#checkbox-agree').on('click',function(){
-                var checkBox = document.getElementById("checkbox-agree").value;
-                console.log(checkBox);
-                $('#sign-up-slack').css("visibility","visible")
+        
+            $(':checkbox').on('click',function(){
+                let checkBox = document.getElementById("checkbox-agree");
+                //console.log(checkBox);
+                if ($(':checkbox').is(':checked')) {
+                $('#sign-up-slack').css("visibility","visible")}
+                else if ($(':checkbox').is(':empty')) {
+                $('#sign-up-slack').css("visibility","hidden")}
             });
+        //else agree is unchecked
+           
     //Sign In Modal
         var elem4 = document.querySelector('#modal2');
         var instance3 = M.Modal.init(elem4, {
@@ -105,34 +125,43 @@
     //                 console.log(response);
     //         }
     // });
-//moment age verification/login
 
-//let example = userInput;
+//add user info
 
-//moment age verification/login determine-d-o-b-branch
+$("#").on("click", function(e){});
+    e.preventDefault()
 
-//moment();
-//console.log(moment().format("MM-DD-YYYY"));
-//set date against which age will be determined
-let date = moment().unix();
-console.log(date);
+    //moment age verification/login
+    //grab and store user name
+    let userName = $("#userName").val().trim();
 
-//set age limit
-let ageLimit = moment().subtract(13, 'years').unix();
-console.log(ageLimit);
+    //grab password
+    let password = $("#password").val().trim();
 
-//grab age of user
-$("#dOB").change(function(){
-    let dOB = this.value;
-    console.log(dOB);
-    //convert dOB to unix
-    let unixDOB = Date.parse(dOB)/1000;
-    console.log(unixDOB);
-    //subtract unixDOB from date to determine user age
-    let userAge = date - unixDOB;
-    console.log(userAge);
-    //if userAge is >= ageLimit, user can continue
-});
+    //moment age verification/login determine-d-o-b-branch
+    //moment();
+    //console.log(moment().format("MM-DD-YYYY"));
+    //set date against which age will be determined
+    let date = moment().unix();
+    console.log(date);
+
+    //set age limit
+    let ageLimit = moment().subtract(13, 'years').unix();
+    console.log(ageLimit);
+
+    //grab age of user
+    $("#dOB").change(function(){
+        let dOB = this.value;
+        console.log(dOB);
+        //convert dOB to unix
+        let unixDOB = Date.parse(dOB)/1000;
+        console.log(unixDOB);
+        //subtract unixDOB from date to determine user age
+        let userAge = date - unixDOB;
+        console.log(userAge);
+        //if userAge is >= ageLimit, user can continue
+    });
+
 
 //click agree to load UI
 //$(".agree").load("#");
