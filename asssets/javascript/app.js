@@ -170,6 +170,7 @@ $("#dOB").change(function(){
 
 // Slack 
     $('.slack-submit').on('click', function(){
+        alert('test');
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
