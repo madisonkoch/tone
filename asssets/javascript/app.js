@@ -46,76 +46,25 @@ var config = {
    
 
 
-//Facebook Connection
-    // $('.fb-login-button').on('click',function(){
-    //     FB.login(function(response){
-    //         if(response === 'connected'){
-    //         alert("login worked");
-    //         }else if(response === 'not_authorized'){
-    //         alert('You are allready logged in');
-    //         }else{
-    //             alert('Totaly not logged in')
-    //         }
-    //     });
-    // });
-        
-    // $('.test-btn').on('click', function(){
-    //     $('body').append('test');
-    //     FB.api('/me', {fields: 'last_name'}, function(response) {
-    //         $('body').append(response);
-    //         console.log(response);
-    //     });
-    //     // for this next step to work need to ste up auth token
-    //     var body = 'Testing';
-    //     FB.api('/me/feed', 'post', { message: body }, function(response) {
-    //         if (!response || response.error) {
-    //         alert('Error occured');
-    //         } else {
-    //         alert('Post ID: ' + response.id);
-    //         }
-    //     });
+let date = moment().unix();
+console.log(date);
 
-    // });
-      
-    // $('.test-btn').on('click', function(){
-    //     $('body').append('test');
-    
-    //     FB.api(
-    //         '/me',
-    //         'GET',
-    //         {},
-    //         function(response) {
-    //         console.log(response)
-    //         }
-    //     );
-        
+//set age limit
+let ageLimit = moment().subtract(13, 'years').unix();
+console.log(ageLimit);
 
-    // }); 
-
-    // //moment age verification/login
-
-
-
-    // let example = userInput;
-
-
-    //     $.ajax({
-    //         contentType: "application/json",
-    //         data: JSON.stringify({
-    //                 comment: {
-    //                         text: "what a lovely hat"
-    //                 },
-    //                 languages: ["en"],
-    //                 requestedAttributes: {
-    //                         TOXICITY: {}
-    //                 }
-    //         }),
-    //         method: 'POST',
-    //         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-    //         success: function(response) {
-    //                 console.log(response);
-    //         }
-    // });
+//grab age of user
+$("#dOB").change(function(){
+    let dOB = this.value;
+    console.log(dOB);
+    //convert dOB to unix
+    let unixDOB = Date.parse(dOB)/1000;
+    console.log(unixDOB);
+    //subtract unixDOB from date to determine user age
+    let userAge = date - unixDOB;
+    console.log(userAge);
+    //if userAge is >= ageLimit, user can continue
+});
 
 //add user info
 
@@ -183,41 +132,11 @@ $("#submit").on("click", function(e){
         $('#sign-up-slack').css("visibility","hidden")}
     });
  
-//let example = userInput;
-//     $.ajax({
-//         contentType: "application/json",
-//         data: JSON.stringify({
-//                 comment: {
-//                         text: "what a lovely hat"
-//                 },
-//                 languages: ["en"],
-//                 requestedAttributes: {
-//                         TOXICITY: {}
-//                 }
-//         }),
-//         method: 'POST',
-//         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-//         success: function(response) {
-//                 console.log(response);
-//         }
-// });
 
-//Facebook Content
-    // Floating Action Button(s)
-        //Setup Menu FAB
-        var elem = document.querySelector('.fixed-action-btn');
-        var instance = M.FloatingActionButton.init(elem, {
-            hoverEnabled: false
-        });
-    //Image Carousel
-        var elem2 = document.querySelector('.carousel');
-        var instance2 = M.Carousel.init(elem2, {
-            fullWidth: false
-        });
 
 // Slack 
     $('.slack-submit').on('click', function(){
-        const message = $('#textarea1').val();
+        const message = $('#texarea1').val();
         $.ajax({
             dataType: 'json',
             processData: false,
@@ -241,3 +160,19 @@ $("#submit").on("click", function(e){
             }
           })
        }
+
+
+const UID = 'UA0ATEGTG';
+       function getRealUserName(UID){
+        $.ajax({
+          method:'GET',
+          url: `https://slack.com/api/users.profile.get?${SLACK_TOKEN}&user=${UID}&pretty=1`,
+          sucess: function(data){
+              console.log(data)
+        }
+        })
+      }
+      
+
+
+getRealUserName(UID);

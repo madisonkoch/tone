@@ -58,7 +58,7 @@ app
 
 //     res.send(CODE)
 // })
-
+let savedThing
 app.get('/auth/redirect', (req, res) =>{
   var options = {
       uri: 'https://slack.com/api/oauth.access?code='
@@ -75,7 +75,18 @@ app.get('/auth/redirect', (req, res) =>{
           res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
       }else{
           console.log(JSONresponse)
-          res.send(JSONresponse);
+          res.sendFile(__dirname + '/index.html');
+          savedThing = JSONresponse;
+          res.url= 'TOTALY WORKING';
       }
   })
 })
+
+
+function getRealUserName(UID){
+  $.ajax({
+    method:'GET',
+    url: `https://slack.com/api/users.profile.get?${SLACK_TOKEN}&user=${UID}&pretty=1`,
+    sucess: function(data){return data}
+  })
+}
