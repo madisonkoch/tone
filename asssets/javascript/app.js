@@ -1,76 +1,87 @@
 'use strict'
+//Index / Login Page
+    //Sign Up Modal
+        var elem3 = document.querySelector('#modal1');
+        var instance3 = M.Modal.init(elem3, {
+            dismissable: false
+        });
+    //Sign In Modal
+        var elem4 = document.querySelector('#modal2');
+        var instance3 = M.Modal.init(elem4, {
+            dismissable: false
+        });
 //Facebook Connection
-    $('.fb-login-button').on('click',function(){
-        FB.login(function(response){
-            if(response === 'connected'){
-            alert("login worked");
-            }else if(response === 'not_authorized'){
-            alert('You are allready logged in');
-            }else{
-                alert('Totaly not logged in')
-            }
-        });
-    });
+    // $('.fb-login-button').on('click',function(){
+    //     FB.login(function(response){
+    //         if(response === 'connected'){
+    //         alert("login worked");
+    //         }else if(response === 'not_authorized'){
+    //         alert('You are allready logged in');
+    //         }else{
+    //             alert('Totaly not logged in')
+    //         }
+    //     });
+    // });
         
-    $('.test-btn').on('click', function(){
-        $('body').append('test');
-        FB.api('/me', {fields: 'last_name'}, function(response) {
-            $('body').append(response);
-            console.log(response);
-        });
-        // for this next step to work need to ste up auth token
-        var body = 'Testing';
-        FB.api('/me/feed', 'post', { message: body }, function(response) {
-            if (!response || response.error) {
-            alert('Error occured');
-            } else {
-            alert('Post ID: ' + response.id);
-            }
-        });
+    // $('.test-btn').on('click', function(){
+    //     $('body').append('test');
+    //     FB.api('/me', {fields: 'last_name'}, function(response) {
+    //         $('body').append(response);
+    //         console.log(response);
+    //     });
+    //     // for this next step to work need to ste up auth token
+    //     var body = 'Testing';
+    //     FB.api('/me/feed', 'post', { message: body }, function(response) {
+    //         if (!response || response.error) {
+    //         alert('Error occured');
+    //         } else {
+    //         alert('Post ID: ' + response.id);
+    //         }
+    //     });
 
-    });
+    // });
       
-$('.test-btn').on('click', function(){
-    $('body').append('test');
-  
-    FB.api(
-        '/me',
-        'GET',
-        {},
-        function(response) {
-           console.log(response)
-        }
-      );
-      
+    // $('.test-btn').on('click', function(){
+    //     $('body').append('test');
+    
+    //     FB.api(
+    //         '/me',
+    //         'GET',
+    //         {},
+    //         function(response) {
+    //         console.log(response)
+    //         }
+    //     );
+        
 
-}); 
+    // }); 
 
-//moment age verification/login
-
-
-
-let example = userInput;
+    // //moment age verification/login
 
 
-//     $.ajax({
-//         contentType: "application/json",
-//         data: JSON.stringify({
-//                 comment: {
-//                         text: "what a lovely hat"
-//                 },
-//                 languages: ["en"],
-//                 requestedAttributes: {
-//                         TOXICITY: {}
-//                 }
-//         }),
-//         method: 'POST',
-//         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-//         success: function(response) {
-//                 console.log(response);
-//         }
-// });
 
-//Content Pages
+    // let example = userInput;
+
+
+    //     $.ajax({
+    //         contentType: "application/json",
+    //         data: JSON.stringify({
+    //                 comment: {
+    //                         text: "what a lovely hat"
+    //                 },
+    //                 languages: ["en"],
+    //                 requestedAttributes: {
+    //                         TOXICITY: {}
+    //                 }
+    //         }),
+    //         method: 'POST',
+    //         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
+    //         success: function(response) {
+    //                 console.log(response);
+    //         }
+    // });
+
+//Facebook Content
     // Floating Action Button(s)
         //Setup Menu FAB
         var elem = document.querySelector('.fixed-action-btn');
@@ -78,11 +89,12 @@ let example = userInput;
             hoverEnabled: false
         });
     //Image Carousel
-    var elem2 = document.querySelector('.carousel');
-    var instance2 = M.Carousel.init(elem2, {
-        fullWidth: false
-    });
+        var elem2 = document.querySelector('.carousel');
+        var instance2 = M.Carousel.init(elem2, {
+            fullWidth: false
+        });
 
+// Slack 
     $('.slack-submit').on('click', function(){
         const message = $('.slack-message').val();
         $.ajax({
@@ -133,11 +145,4 @@ let example = userInput;
        
        }
 
-       var elem3 = document.querySelector('#modal1');
-       var instance3 = M.Modal.init(elem3, {
-           dismissable: false
-       });
-       var elem4 = document.querySelector('#modal2');
-       var instance3 = M.Modal.init(elem4, {
-           dismissable: false
-       });
+
