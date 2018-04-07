@@ -13,44 +13,31 @@
         font-size: 7rem;
         text-shadow: 1px 1px 12px #000000d1;
     }
-    .modal-trigger{
-        background-color:white;
-        color: #919292;
-        width:100%;
-    }
-    .modal-trigger:hover{
-        background-color:#25c1f9;
-        color: white;
-    }
-    #fb-btn{
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
-/* Content - Facebook */
-    #fb-body{
-        background-color: #ffffff;
-    }
-    header{
-        margin-bottom:unset;
-        background-color: #c7c7c7;
-    }
-    #fb-h1{
-        margin: unset;
-        font-size: 3rem;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        text-shadow: 1px 1px 5px #000000d1;
-    }
-
-
-    #spacer{
-        height: 400px;
-    }
-    #spacer p {
-        text-align: center;
-    }
-
+    /* Sign-Up & Sign In buttons */
+        .modal-trigger{
+            background-color:white;
+            color: #919292;
+            width:100%;
+        }
+        .modal-trigger:hover{
+            background-color:#25c1f9;
+            color: white;
+        }
+    /* Sign-Up Modal */
+        #sign-up-slack{
+            visibility: hidden;
+        }
+    /* Sign In Modal */
+        #welcome{
+            text-align: center;
+        }
+    /* Future Development */
+        /* Facebook */
+            /* #fb-btn{
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            } */
 
 /* All Content Pages */
     /* Header */
@@ -169,54 +156,99 @@
 
 
 
-/* Content - Slack */
-.chip{
-    background-color:white;
+/* Content - Slack Page */
+    .chip{
+        background-color:white;
+    }
+    #all-messages{
+        width:96%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .user-message{
+        margin-bottom:10px;
+    }
+    .message-head{
+        margin-bottom:0;
+    }
+    .timestamp{
+        font-family: 'Assistant', sans-serif;
+        height: 32px;
+        padding-top: 8px;
+        margin-left:10px;
+        margin-right:10px;
+        color:#a0a0a0;
+    }
+    .message-text{
+        padding-left:15px;
+        padding-right:15px;
+        margin-top:0;
+        margin-bottom:0;
 }
-#all-messages{
-    width:96%;
-    margin-left:auto;
-    margin-right:auto;
-}
-.user-message{
-    margin-bottom:10px;
-}
-.message-head{
-    margin-bottom:0;
-}
-.timestamp{
-    font-family: 'Assistant', sans-serif;
-    height: 32px;
-    padding-top: 8px;
-    margin-left:10px;
-    margin-right:10px;
-    color:#a0a0a0;
-}
-.message-text{
-    padding-left:15px;
-    padding-right:15px;
-    margin-top:0;
-    margin-bottom:0;
-}
+    /* footer */
+        .message-footer{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: white;
+            box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.14), 0 -1px 10px 0 rgba(0, 0, 0, 0.12), 0 -2px 4px -1px rgba(0, 0, 0, 0.13);
+        }
+        /* #slack-logo{
+            height:28px;
+        }
+        .slack-submit{
+            background-color:white;
+            padding: unset;
+            width: fit-content;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 2px;
+            width:100%;
+        } */
+        #message-space{
+            margin-bottom:unset;
+        }
+        #type-toxicity{
+            padding-left:10px;
+            padding-right:10px;
+        }
+        #check-button{
+            padding: unset;
+            width: fit-content;
+            background-color: #F5F5F6;
+            position: fixed;
+            bottom: 30px;
+            right: 15px;
+        }
+        #send-icon{
+            margin: unset;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #ff4384;
+        }
+        /* #perspective{
+            padding-top:2px;
+            height:28px;
+        } */
 
-
-/* footer */
-
-
-.message-footer{
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-
-    background-color: white;
-}
-button.btn.right.col.s2.slack-submit{
-    background-color:white;
-    padding: unset;
-    width: fit-content;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-}
-
-
+/* Content - Facebook Page */
+    /* #fb-body{
+        background-color: #ffffff;
+    }
+    header{
+        margin-bottom:unset;
+        background-color: #c7c7c7;
+    }
+    #fb-h1{
+        margin: unset;
+        font-size: 3rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 1px 1px 5px #000000d1;
+    }
+    #spacer{
+        height: 400px;
+    }
+    #spacer p {
+        text-align: center;
+    } */

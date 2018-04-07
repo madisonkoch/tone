@@ -1,4 +1,93 @@
 'use strict'
+//Index / Login Page
+    //Sign Up Modal
+        var elem3 = document.querySelector('#modal1');
+        var instance3 = M.Modal.init(elem3, {
+            dismissable: false
+        });
+        // If agree is checked
+            $('#checkbox-agree').on('click',function(){
+                var checkBox = document.getElementById("checkbox-agree").value;
+                console.log(checkBox);
+                $('#sign-up-slack').css("visibility","visible")
+            });
+    //Sign In Modal
+        var elem4 = document.querySelector('#modal2');
+        var instance3 = M.Modal.init(elem4, {
+            dismissable: false
+        });
+//Facebook Connection
+    // $('.fb-login-button').on('click',function(){
+    //     FB.login(function(response){
+    //         if(response === 'connected'){
+    //         alert("login worked");
+    //         }else if(response === 'not_authorized'){
+    //         alert('You are allready logged in');
+    //         }else{
+    //             alert('Totaly not logged in')
+    //         }
+    //     });
+    // });
+        
+    // $('.test-btn').on('click', function(){
+    //     $('body').append('test');
+    //     FB.api('/me', {fields: 'last_name'}, function(response) {
+    //         $('body').append(response);
+    //         console.log(response);
+    //     });
+    //     // for this next step to work need to ste up auth token
+    //     var body = 'Testing';
+    //     FB.api('/me/feed', 'post', { message: body }, function(response) {
+    //         if (!response || response.error) {
+    //         alert('Error occured');
+    //         } else {
+    //         alert('Post ID: ' + response.id);
+    //         }
+    //     });
+
+    // });
+      
+    // $('.test-btn').on('click', function(){
+    //     $('body').append('test');
+    
+    //     FB.api(
+    //         '/me',
+    //         'GET',
+    //         {},
+    //         function(response) {
+    //         console.log(response)
+    //         }
+    //     );
+        
+
+    // }); 
+
+    // //moment age verification/login
+
+
+
+    // let example = userInput;
+
+
+    //     $.ajax({
+    //         contentType: "application/json",
+    //         data: JSON.stringify({
+    //                 comment: {
+    //                         text: "what a lovely hat"
+    //                 },
+    //                 languages: ["en"],
+    //                 requestedAttributes: {
+    //                         TOXICITY: {}
+    //                 }
+    //         }),
+    //         method: 'POST',
+    //         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
+    //         success: function(response) {
+    //                 console.log(response);
+    //         }
+    // });
+//moment age verification/login
+let example = userInput;
 //moment age verification/login determine-d-o-b-branch
 
 //moment();
@@ -47,7 +136,7 @@ $("#dOB").change(function(){
 //         }
 // });
 
-//Content Pages
+//Facebook Content
     // Floating Action Button(s)
         //Setup Menu FAB
         var elem = document.querySelector('.fixed-action-btn');
@@ -55,11 +144,12 @@ $("#dOB").change(function(){
             hoverEnabled: false
         });
     //Image Carousel
-    var elem2 = document.querySelector('.carousel');
-    var instance2 = M.Carousel.init(elem2, {
-        fullWidth: false
-    });
+        var elem2 = document.querySelector('.carousel');
+        var instance2 = M.Carousel.init(elem2, {
+            fullWidth: false
+        });
 
+// Slack 
     $('.slack-submit').on('click', function(){
         const message = $('.slack-message').val();
         $.ajax({
@@ -92,13 +182,3 @@ $("#dOB").change(function(){
             }
           })
        }
-
-       var elem3 = document.querySelector('#modal1');
-       var instance3 = M.Modal.init(elem3, {
-           dismissable: false
-       });
-       var elem4 = document.querySelector('#modal2');
-       var instance3 = M.Modal.init(elem4, {
-           dismissable: false
-       });
-
