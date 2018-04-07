@@ -46,12 +46,7 @@ var config = {
    
 
 
-let date = moment().unix();
-console.log(date);
 
-//set age limit
-let ageLimit = moment().subtract(13, 'years').unix();
-console.log(ageLimit);
 
 //grab age of user
 $("#dOB").change(function(){
