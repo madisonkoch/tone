@@ -1,6 +1,6 @@
 'use strict'
 //moment age verification/login
-let example = userInput;
+//let example = userInput;
 //     $.ajax({
 //         contentType: "application/json",
 //         data: JSON.stringify({
@@ -63,23 +63,6 @@ let example = userInput;
                 console.log(data);
             }
           })
-
-        // $.ajax({
-        //     type:'GET',
-        //     url: 'https://slack.com/api/oauth.access',
-        //     data: {
-        //      client_id: '',
-        //      client_secret: '',
-        //      code: ''
-        //     },
-        //     success: function(data){
-        //         console.log(data);
-        //     },
-        //     error: function(data){
-        //         console.log(data);
-        //     }
-        // })
-       
        }
 
        var elem3 = document.querySelector('#modal1');
