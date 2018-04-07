@@ -48,7 +48,7 @@
                 <div class="input-field col s12 left" id="message-space">
                     <textarea id="textarea1" class="materialize-textarea col s10"></textarea>
                     <!-- label when class ="active" then change label to [shape] [percent toxicity] & add id="percentage" -->
-                    <label id="" for="textarea1">Check Yourself</label> 
+                    <label id="percentage" for="textarea1">Check Yourself</label> 
                     <!-- <div id="percentage"></div>   -->
 
                     <!-- <div class="col s6 slack-btn-div">
@@ -76,68 +76,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 <!-- Link to JS file -->
-  <!-- <script src="asssets/javascript/perspective.js" ></script> -->
-  <!-- <script src="asssets/javascript/app.js"></script> -->
-
-
-  <script>
-  
-  
-
-// Analize content as you type
+  <script src="asssets/javascript/perspective.js" ></script>
+  <script src="asssets/javascript/app.js"></script>
 
 
 
-let contentToAnalize = ""
-
-
-
-$('#textarea1').keyup(function(){
-contentToAnalize = $('#textarea1').val();
-//    console.log(contentToAnalize);
-}); 
-
-
-
-$('#check-button').on('click',function(){
-
-event.preventDefault();
-
-// This Ajax call gives us the analized content from the perpective API
-
-$.ajax({
-contentType: "application/json",
-data: JSON.stringify({
-    comment: {
-            text: contentToAnalize
-    },
-    languages: ["en"],
-    requestedAttributes: {
-            TOXICITY: {}
-    }
-}),
-method: 'POST',
-url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
-success: function(response) {
-    console.log(response);
-    console.log(response.attributeScores.TOXICITY.summaryScore.value);
-
-    let toxicity = response.attributeScores.TOXICITY.summaryScore.value
-
-    let toxicityPercentage = (toxicity*100).toFixed(0)
-
-    console.log(toxicityPercentage)
-
-    $('#percentage').text(toxicityPercentage + "% Toxic")
-}
-
-
-});
-
-$('#textarea1').clear();
-
-});
-  </script>
 
 </body>
 </html>
