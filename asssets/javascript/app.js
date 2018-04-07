@@ -1,57 +1,34 @@
 'use strict'
-//Facebook Connection
-    $('.fb-login-button').on('click',function(){
-        FB.login(function(response){
-            if(response === 'connected'){
-            alert("login worked");
-            }else if(response === 'not_authorized'){
-            alert('You are allready logged in');
-            }else{
-                alert('Totaly not logged in')
-            }
-        });
-    });
-        
-    $('.test-btn').on('click', function(){
-        $('body').append('test');
-        FB.api('/me', {fields: 'last_name'}, function(response) {
-            $('body').append(response);
-            console.log(response);
-        });
-        // for this next step to work need to ste up auth token
-        var body = 'Testing';
-        FB.api('/me/feed', 'post', { message: body }, function(response) {
-            if (!response || response.error) {
-            alert('Error occured');
-            } else {
-            alert('Post ID: ' + response.id);
-            }
-        });
+//moment age verification/login determine-d-o-b-branch
 
-    });
-      
-$('.test-btn').on('click', function(){
-    $('body').append('test');
-  
-    FB.api(
-        '/me',
-        'GET',
-        {},
-        function(response) {
-           console.log(response)
-        }
-      );
-      
+//moment();
+//console.log(moment().format("MM-DD-YYYY"));
+//set date against which age will be determined
+let date = moment().unix();
+console.log(date);
 
-}); 
+//set age limit
+let ageLimit = moment().subtract(13, 'years').unix();
+console.log(ageLimit);
 
-//moment age verification/login
+//grab age of user
+$("#dOB").change(function(){
+    let dOB = this.value;
+    console.log(dOB);
+    //convert dOB to unix
+    let unixDOB = Date.parse(dOB)/1000;
+    console.log(unixDOB);
+    //subtract unixDOB from date to determine user age
+    let userAge = date - unixDOB;
+    console.log(userAge);
+    //if userAge is >= ageLimit, user can continue
+});
 
+//click agree to load UI
+//$(".agree").load("#");
 
-
-let example = userInput;
-
-
+ master
+//let example = userInput;
 //     $.ajax({
 //         contentType: "application/json",
 //         data: JSON.stringify({
@@ -87,7 +64,7 @@ let example = userInput;
         const message = $('.slack-message').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
-                "Authorization": `Bearer ${API_SLACK_TOKEN}`,
+               
                 "text": message,
                 "as_user": true,
                 'username':'Evryone'
@@ -103,34 +80,17 @@ let example = userInput;
        $('.getSlack').on('click', getMessageFromSlack);
 
        function getMessageFromSlack(){
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'https://slack.com/api/channels.history?token=xoxp-338977510529-338825398368-338834002208-4a73e128174bb575ed0bcafb9baf6560&channel=C9Z8JTEMA',
-        //     async: false,
-        //     success: function(data) {
-        //         console.log(data);
-        //     },
-        //     error: function(data){
-        //         console.log(data);
-        //     }
-        //   })
-
+           console.log(SLACK_URL + SLACK_TOKEN +  SLACK_CHANNEL );
         $.ajax({
-            type:'GET',
-            url: 'https://slack.com/api/oauth.access',
-            data: {
-             client_id: '',
-             client_secret: '',
-             code: ''
-            },
-            success: function(data){
+            type: 'GET',
+            url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
+            success: function(data) {
                 console.log(data);
             },
             error: function(data){
                 console.log(data);
             }
-        })
-       
+          })
        }
 
        var elem3 = document.querySelector('#modal1');
@@ -141,3 +101,4 @@ let example = userInput;
        var instance3 = M.Modal.init(elem4, {
            dismissable: false
        });
+
