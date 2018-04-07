@@ -9,9 +9,9 @@ var config = {
     storageBucket: "tone-app-199717.appspot.com",
     messagingSenderId: "618773555838"
   };
-  firebase.initializeApp(config);
+//   firebase.initializeApp(config);
 
-  const database = firebase.database();
+//   const database = firebase.database();
 
 //Index / Login Page
     //Sign Up Modal
@@ -130,39 +130,39 @@ var config = {
 
 //add user info
 
-$("#").on("click", function(e){});
-    e.preventDefault()
+// $("#").on("click", function(e){});
+//     e.preventDefault()
 
-    //moment age verification/login
-    //grab and store user name
-    let userName = $("#userName").val().trim();
+//     //moment age verification/login
+//     //grab and store user name
+//     let userName = $("#userName").val().trim();
 
-    //grab password
-    let password = $("#password").val().trim();
+//     //grab password
+//     let password = $("#password").val().trim();
 
-    //moment age verification/login determine-d-o-b-branch
-    //moment();
-    //console.log(moment().format("MM-DD-YYYY"));
-    //set date against which age will be determined
-    let date = moment().unix();
-    console.log(date);
+//     //moment age verification/login determine-d-o-b-branch
+//     //moment();
+//     //console.log(moment().format("MM-DD-YYYY"));
+//     //set date against which age will be determined
+//     let date = moment().unix();
+//     console.log(date);
 
-    //set age limit
-    let ageLimit = moment().subtract(13, 'years').unix();
-    console.log(ageLimit);
+//     //set age limit
+//     let ageLimit = moment().subtract(13, 'years').unix();
+//     console.log(ageLimit);
 
-    //grab age of user
-    $("#dOB").change(function(){
-        let dOB = this.value;
-        console.log(dOB);
-        //convert dOB to unix
-        let unixDOB = Date.parse(dOB)/1000;
-        console.log(unixDOB);
-        //subtract unixDOB from date to determine user age
-        let userAge = date - unixDOB;
-        console.log(userAge);
-        //if userAge is >= ageLimit, user can continue
-    });
+//     //grab age of user
+//     $("#dOB").change(function(){
+//         let dOB = this.value;
+//         console.log(dOB);
+//         //convert dOB to unix
+//         let unixDOB = Date.parse(dOB)/1000;
+//         console.log(unixDOB);
+//         //subtract unixDOB from date to determine user age
+//         let userAge = date - unixDOB;
+//         console.log(userAge);
+//         //if userAge is >= ageLimit, user can continue
+    // });
 
 
 //click agree to load UI
