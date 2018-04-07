@@ -55,22 +55,16 @@
                  </div>
                </div>
                <div class="row">
-                   <p>You must agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> 
-                     to continue</p>
-                     <label>
-                      <input id="indeterminate-checkbox" type="checkbox" class="modal-close"/>
-                      <span>Disagree</span>
-                    </label>
-                    <label>
-                      <input id="indeterminate-checkbox" type="checkbox" />
-                      <span>Agree</span>
-                    </label>
+                  <label>
+                    <input class="indeterminate-checkbox" type="checkbox" id="checkbox-agree" value = "agree" />
+                    <span> By checking this box you agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> of Tone.</span>
+                  </label>
                </div>
              </div>
   
-            <div class="modal-footer">
+            <div class="modal-footer" id="sign-up-slack">
                 <!-- Slack link -->
-                <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+                <a class="center" href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
             </div>
           </div>
         </div>

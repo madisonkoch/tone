@@ -5,6 +5,12 @@
         var instance3 = M.Modal.init(elem3, {
             dismissable: false
         });
+        // If agree is checked
+            $('#checkbox-agree').on('click',function(){
+                var checkBox = document.getElementById("checkbox-agree").value;
+                console.log(checkBox);
+                $('#sign-up-slack').css("visibility","visible")
+            });
     //Sign In Modal
         var elem4 = document.querySelector('#modal2');
         var instance3 = M.Modal.init(elem4, {
@@ -163,13 +169,3 @@ let example = userInput;
         // })
        
        }
-
-       var elem3 = document.querySelector('#modal1');
-       var instance3 = M.Modal.init(elem3, {
-           dismissable: false
-       });
-       var elem4 = document.querySelector('#modal2');
-       var instance3 = M.Modal.init(elem4, {
-           dismissable: false
-       });
-
