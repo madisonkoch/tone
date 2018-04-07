@@ -22,12 +22,12 @@
   <main class="container">
   <div id="spacer">
       <p><a href="slackContent.html">Slack Page (temp link)</a></p>  
-      <p><a href="fbContent.html">Next Page (temp link)</a></p>
+      <!-- <p><a href="fbContent.html">Next Page (temp link)</a></p> -->
     </div>
     <!-- Facebook Btn -->
-    <div id="fb-btn">
-      <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
-    <div>
+    <!-- <div id="fb-btn">
+           <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
+         <div> -->
       <!-- send to slack button -->
       <!-- <input type="text" class="slack-message">
       <button class="slack-submit"> Send Message to Slack</button>
@@ -36,35 +36,38 @@
   <!-- Slack Sign In or Sign Up-->
   <div class="row">
     <!-- Sign Up -->
-      <!-- Modal Trigger -->
-        <button data-target="modal1" class="btn modal-trigger">Sign Up</button>
-      <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <div class="row">
-              <div class="input-field">
-                <input placeholder="Username" id="userName" type="text" class="validate">
-                <label for="user_name">Username:</label>
-              </div>
-             </div>
-             <div class="row">
-               <div class="input-field">
-                 <input placeholder="mm/dd/yyyy" id="dOB" type="date" class="validate">
-                 <label for="d-o-b">Date of birth:</label>
+    <div class=" col s6 modal-div">
+        <!-- Modal Trigger -->
+          <button data-target="modal1" class="btn modal-trigger hoverable">Sign Up</button>
+        <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="Username" id="userName" type="text" class="validate">
+                  <!-- <label for="user_name">Username:</label> -->
+                </div>
+               </div>
+               <div class="row">
+                  <div class="input-field">
+                    <input placeholder="Password" id="password" type="text" class="validate">
+                    <!-- <label for="password">Password:</label> -->
+                  </div>
+                </div>
+               <div class="row">
+                 <div class="input-field">
+                   <input placeholder="mm-dd-yyyy" id="dOB" type="date" class="validate">
+                   <!-- <label for="d-o-b">Date of birth:</label> -->
+                 </div>
+               </div>
+               <div class="row">
+                  <label>
+                    <input class="indeterminate-checkbox" type="checkbox" id="checkbox-agree" value = "agree" />
+                    <span> By checking this box you agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> of Tone.</span>
+                  </label>
                </div>
              </div>
-             <div class="row">
-                 <p>You must agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> 
-                   to continue</p>
-                   <label>
-                    <input id="indeterminate-checkbox" type="checkbox" class="modal-close"/>
-                    <span>Disagree</span>
-                  </label>
-                  <label>
-                    <input id="indeterminate-checkbox" type="checkbox" class="agree"/>
-                    <span>Agree</span>
-                  </label>
-             </div>
+<<<<<<< HEAD
            </div>
 
           <div class="modal-footer">
@@ -83,6 +86,45 @@
           <div class="modal-footer">
               <!-- Slack link -->
               <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+=======
+  
+            <div class="modal-footer" id="sign-up-slack">
+               <div class="col s8 offset-s2">
+                <!-- Slack link/button -->
+                  <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+               </div>
+            </div>
+          </div>
+        </div>
+  
+      <!-- Sign In -->
+      <div class=" col s6 modal-div">
+        <!-- Modal Trigger -->
+        <button data-target="modal2" class="btn modal-trigger hoverable">Sign In</button>
+        <!-- Modal Structure -->
+          <div id="modal2" class="modal">
+              <div class="modal-content">
+                <h5 id="welcome">Welcome back!</h5>
+                <div class="row">
+                    <div class="input-field">
+                      <input placeholder="Username" id="userName" type="text" class="validate">
+                      <!-- <label for="user_name">Username:</label> -->
+                    </div>
+                   </div>
+                   <div class="row">
+                      <div class="input-field">
+                        <input placeholder="Password" id="password" type="text" class="validate">
+                        <!-- <label for="password">Password:</label> -->
+                      </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <div class="col s8 offset-s2">
+                  <!-- Slack link -->
+                  <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+                </div>
+            </div>
+>>>>>>> b1f70d96130f9fc7be01049f5d2fd1c844a2d7dc
           </div>
       </div>  
   </div>
