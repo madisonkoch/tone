@@ -106,11 +106,7 @@
     //         }
     // });
 //moment age verification/login
-<<<<<<< HEAD
 //let example = userInput;
-=======
-// let example = userInput;
->>>>>>> 0aa1f1dedee4171b3d9df03ada21471a5fc46b67
 //moment age verification/login determine-d-o-b-branch
 
 //moment();
@@ -174,13 +170,13 @@ $("#dOB").change(function(){
 
 // Slack 
     $('.slack-submit').on('click', function(){
-        const message = $('.slack-message').val();
+        const message = $('#textarea1').val();
         $.ajax({
             data: 'payload=' + JSON.stringify({
                
                 "text": message,
                 "as_user": true,
-                'username':'Evryone'
+                'username':'Everyone'
             }),
             dataType: 'json',
             processData: false,
