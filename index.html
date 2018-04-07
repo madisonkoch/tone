@@ -56,7 +56,7 @@
                 </div>
                <div class="row">
                  <div class="input-field">
-                   <input placeholder="mm-dd-yyyy" id="dOB" type="text" class="validate">
+                   <input placeholder="mm-dd-yyyy" id="dOB" type="date" class="validate">
                    <!-- <label for="d-o-b">Date of birth:</label> -->
                  </div>
                </div>
@@ -71,7 +71,7 @@
             <div class="modal-footer" id="sign-up-slack">
                <div class="col s8 offset-s2">
                 <!-- Slack link/button -->
-                  <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+                <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
                </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
             <div class="modal-footer">
                 <div class="col s8 offset-s2">
                   <!-- Slack link -->
-                  <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
+                  <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
                 </div>
             </div>
           </div>
@@ -114,7 +114,7 @@
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css"></script>
   <!--moment.js for age verification-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/locale/af.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script src="asssets/javascript/app.js"></script>
 
 </body>
