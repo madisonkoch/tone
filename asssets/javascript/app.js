@@ -19,18 +19,7 @@ var config = {
         var instance3 = M.Modal.init(elem3, {
             dismissable: false
         });
-        // If agree is checked
-        
-            $(':checkbox').on('click',function(){
-                let checkBox = document.getElementById("checkbox-agree");
-                //console.log(checkBox);
-                if ($(':checkbox').is(':checked')) {
-                $('#sign-up-slack').css("visibility","visible")}
-                else if ($(':checkbox').is(':empty')) {
-                $('#sign-up-slack').css("visibility","hidden")}
-            });
-        //else agree is unchecked
-           
+                   
     //Sign In Modal
         var elem4 = document.querySelector('#modal2');
         var instance3 = M.Modal.init(elem4, {
@@ -57,117 +46,69 @@ var config = {
    
 
 
-//Facebook Connection
-    // $('.fb-login-button').on('click',function(){
-    //     FB.login(function(response){
-    //         if(response === 'connected'){
-    //         alert("login worked");
-    //         }else if(response === 'not_authorized'){
-    //         alert('You are allready logged in');
-    //         }else{
-    //             alert('Totaly not logged in')
-    //         }
-    //     });
-    // });
-        
-    // $('.test-btn').on('click', function(){
-    //     $('body').append('test');
-    //     FB.api('/me', {fields: 'last_name'}, function(response) {
-    //         $('body').append(response);
-    //         console.log(response);
-    //     });
-    //     // for this next step to work need to ste up auth token
-    //     var body = 'Testing';
-    //     FB.api('/me/feed', 'post', { message: body }, function(response) {
-    //         if (!response || response.error) {
-    //         alert('Error occured');
-    //         } else {
-    //         alert('Post ID: ' + response.id);
-    //         }
-    //     });
+$("#submit").on("click", function(e){
+    e.preventDefault()
 
-    // });
-      
-    // $('.test-btn').on('click', function(){
-    //     $('body').append('test');
+    //moment age verification/login
+    //grab and store user name
+    let userName = $("#userName").val().trim();
+
+    //grab password
+    let password = $("#password").val().trim();
+
+    let dOB = $("#dOB").val();
+
+        //push to firebase
+        database.ref().push({
+            username: userName,
+            password: password
+
+        });
+    });
+
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
+        //store snapshot value
+        let sv = snapshot.val();
     
-    //     FB.api(
-    //         '/me',
-    //         'GET',
-    //         {},
-    //         function(response) {
-    //         console.log(response)
-    //         }
-    //     );
-        
+        let userNAme = snapshot.val().username;
+        let passWord = snapshot.val().password;
+        console.log(userNAme);
+    });
+    //moment age verification/login determine-d-o-b-branch
+    //moment();
+    //console.log(moment().format("MM-DD-YYYY"));
+    //set date against which age will be determined
+    let date = moment().unix();
+    console.log(date);
 
-    // }); 
+    //set age limit
+    let ageLimit = moment().subtract(13, 'years').unix();
+    console.log(ageLimit);
 
-    // //moment age verification/login
+    //grab age of user
+    $("#dOB").change(function(){
+        let dOB = this.value;
+        console.log(dOB);
+        //convert dOB to unix
+        let unixDOB = Date.parse(dOB)/1000;
+        console.log(unixDOB);
+        //subtract unixDOB from date to determine user age
+        let userAge = date - unixDOB;
+        console.log(userAge);
+    });
 
+        //if userAge is >= ageLimit, user can continue
 
-
-    // let example = userInput;
-
-
-    //     $.ajax({
-    //         contentType: "application/json",
-    //         data: JSON.stringify({
-    //                 comment: {
-    //                         text: "what a lovely hat"
-    //                 },
-    //                 languages: ["en"],
-    //                 requestedAttributes: {
-    //                         TOXICITY: {}
-    //                 }
-    //         }),
-    //         method: 'POST',
-    //         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-    //         success: function(response) {
-    //                 console.log(response);
-    //         }
-    // });
-
-//add user info
-
-// $("#").on("click", function(e){});
-//     e.preventDefault()
-
-//     //moment age verification/login
-//     //grab and store user name
-//     let userName = $("#userName").val().trim();
-
-//     //grab password
-//     let password = $("#password").val().trim();
-
-//     //moment age verification/login determine-d-o-b-branch
-//     //moment();
-//     //console.log(moment().format("MM-DD-YYYY"));
-//     //set date against which age will be determined
-//     let date = moment().unix();
-//     console.log(date);
-
-//     //set age limit
-//     let ageLimit = moment().subtract(13, 'years').unix();
-//     console.log(ageLimit);
-
-//     //grab age of user
-//     $("#dOB").change(function(){
-//         let dOB = this.value;
-//         console.log(dOB);
-//         //convert dOB to unix
-//         let unixDOB = Date.parse(dOB)/1000;
-//         console.log(unixDOB);
-//         //subtract unixDOB from date to determine user age
-//         let userAge = date - unixDOB;
-//         console.log(userAge);
-//         //if userAge is >= ageLimit, user can continue
-    // });
-
-
-//click agree to load UI
-//$(".agree").load("#");
-
+    $(':checkbox').on('click',function(){
+        let checkBox = document.getElementById("checkbox-agree");
+        //console.log(checkBox);
+        // If agree is checked
+        if ($(':checkbox').is(':checked')) {
+        $('#sign-up-slack').css("visibility","visible")}
+        //else agree is unchecked
+        else if ($(':checkbox').is(':empty')) {
+        $('#sign-up-slack').css("visibility","hidden")}
+    });
  
 //let example = userInput;
 //     $.ajax({
