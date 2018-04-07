@@ -10,6 +10,7 @@
   <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css" media="screen,projection" />
   <link rel="stylesheet" href="./asssets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
+  <script src="/config.js"></script>
 </head>
 <body id="index-body">
   <!-- Needs to go on top of body per FB docs -->
@@ -33,6 +34,7 @@
     </div> -->
 
   <!-- Slack Sign In or Sign Up-->
+  <div class="row">
     <!-- Sign Up -->
       <!-- Modal Trigger -->
         <button data-target="modal1" class="btn modal-trigger">Sign Up</button>
@@ -82,13 +84,11 @@
               <!-- Slack link -->
               <a href="https://slack.com/oauth/authorize?scope=identity.basic,identity.email,identity.avatar&client_id=338977510529.340356602870"><img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>
           </div>
-        </div>
-
-
+      </div>  
+  </div>
   </main> <!-- Main Content End -->
   <!-- <button class="getSlack">Get The Slack Info</button>
   <div class="slack-data"></div> -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css"></script>
