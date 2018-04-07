@@ -106,11 +106,7 @@
     //         }
     // });
 //moment age verification/login
-<<<<<<< HEAD
-//let example = userInput;
-=======
 // let example = userInput;
->>>>>>> 0aa1f1dedee4171b3d9df03ada21471a5fc46b67
 //moment age verification/login determine-d-o-b-branch
 
 //moment();
