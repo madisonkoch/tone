@@ -13,6 +13,12 @@
         font-size: 7rem;
         text-shadow: 1px 1px 12px #000000d1;
     }
+    #spacer{
+        height: 400px;
+    }
+    #spacer p {
+        text-align: center;
+    }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
             background-color:white;
@@ -245,10 +251,4 @@
         margin-top: 3px;
         margin-bottom: 3px;
         text-shadow: 1px 1px 5px #000000d1;
-    }
-    #spacer{
-        height: 400px;
-    }
-    #spacer p {
-        text-align: center;
     } */
