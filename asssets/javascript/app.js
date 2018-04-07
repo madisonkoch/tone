@@ -43,19 +43,14 @@ $('.test-btn').on('click', function(){
       );
       
 
-})
+}); 
 
 //moment age verification/login
 
 
 
-//let example = userInput;
+let example = userInput;
 
-/*$ curl -H "Content-Type: application/json" --data \
-    '{comment: {text: "what kind of idiot name is foo?"},
-      languages: ["en"],
-      requestedAttributes: {TOXICITY:{}} }' \
-    https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyCY4GjmWVO7suPMSdD-V-Pm8tlExBkIFJE*/
 
 //     $.ajax({
 //         contentType: "application/json",
