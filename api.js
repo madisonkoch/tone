@@ -75,7 +75,7 @@ app.get('/auth/redirect', (req, res) =>{
           res.send("Error encountered: \n"+JSON.stringify(JSONresponse)).status(200).end()
       }else{
           console.log(JSONresponse)
-          res.render('index.html');
+          res.sendFile(__dirname + '/index.html');
           savedThing = JSONresponse;
       }
   })
