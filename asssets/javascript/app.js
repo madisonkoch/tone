@@ -132,37 +132,7 @@ $("#submit").on("click", function(e){
         $('#sign-up-slack').css("visibility","hidden")}
     });
  
-//let example = userInput;
-//     $.ajax({
-//         contentType: "application/json",
-//         data: JSON.stringify({
-//                 comment: {
-//                         text: "what a lovely hat"
-//                 },
-//                 languages: ["en"],
-//                 requestedAttributes: {
-//                         TOXICITY: {}
-//                 }
-//         }),
-//         method: 'POST',
-//         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-//         success: function(response) {
-//                 console.log(response);
-//         }
-// });
 
-//Facebook Content
-    // Floating Action Button(s)
-        //Setup Menu FAB
-        var elem = document.querySelector('.fixed-action-btn');
-        var instance = M.FloatingActionButton.init(elem, {
-            hoverEnabled: false
-        });
-    //Image Carousel
-        var elem2 = document.querySelector('.carousel');
-        var instance2 = M.Carousel.init(elem2, {
-            fullWidth: false
-        });
 
 // Slack 
     $('.slack-submit').on('click', function(){
