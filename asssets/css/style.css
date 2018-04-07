@@ -207,13 +207,15 @@
             padding-left:10px;
             padding-right:10px;
         }
-        .slack-submit{
+        button.btn.col.s2.right.waves-effect.waves-light.slack-submit{
             padding: unset;
             width: fit-content;
             background-color: #F5F5F6;
             position: fixed;
             bottom: 30px;
-            right: 15px;
+            right: 10px;
+            padding-left: 6px;
+            padding-right: 3px;
         }
         #send-icon{
             margin: unset;
