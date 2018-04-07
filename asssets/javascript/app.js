@@ -57,18 +57,18 @@ console.log(date);
 let ageLimit = moment().subtract(13, 'years').unix();
 console.log(ageLimit);
 
-let userAge = date - ageLimit;
-console.log(userAge);
-
 //grab age of user
 $("#dOB").change(function(){
     let dOB = this.value;
     console.log(dOB);
+    //convert dOB to unix
+    let unixDOB = Date.parse(dOB)/1000;
+    console.log(unixDOB);
+    //subtract unixDOB from date to determine user age
+    let userAge = date - unixDOB;
+    console.log(userAge);
+    //if userAge is >= ageLimit, user can continue
 });
-
-/*subtract dOB from date to determine user age
-let userAge = date - dOB;
-    console.log(userAge);*/
 
 //click agree to load UI
 //$(".agree").load("#");
