@@ -136,6 +136,7 @@ $("#submit").on("click", function(e){
 
         });
     });
+
     database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
         //store snapshot value
         let sv = snapshot.val();
@@ -167,10 +168,7 @@ $("#submit").on("click", function(e){
         console.log(userAge);
     });
 
-
-
         //if userAge is >= ageLimit, user can continue
-
 
     $(':checkbox').on('click',function(){
         let checkBox = document.getElementById("checkbox-agree");
