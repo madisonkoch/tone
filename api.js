@@ -77,6 +77,7 @@ app.get('/auth/redirect', (req, res) =>{
           console.log(JSONresponse)
           res.sendFile(__dirname + '/index.html');
           savedThing = JSONresponse;
+          res.url= 'TOTALY WORKING';
       }
   })
 })
