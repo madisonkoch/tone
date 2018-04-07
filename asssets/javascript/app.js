@@ -32,7 +32,7 @@
     {text: "test", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898305.000118"},
     {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886843.000203"},
     {type: "message", user: "U9YQ9BQAU", text: "test hello", ts: "1522886841.000201"},
-    {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886834.000047"}]
+    {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886834.000047"}]}
    
 
 //Facebook Connection
@@ -106,7 +106,7 @@
     //         }
     // });
 //moment age verification/login
-let example = userInput;
+// let example = userInput;
 //moment age verification/login determine-d-o-b-branch
 
 //moment();
