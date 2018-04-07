@@ -18,7 +18,7 @@
 
     <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
-        <script src="/config.js"></script>
+        <!-- <script src="/config.js"></script> -->
 </head>
 <body class="content-body">
     <header class="row z-depth-2 content-header col s12 ">
@@ -34,10 +34,10 @@
             <div class="user-message">
                 <div class="row message-head">
                     <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">Jane Doe</div>
-                    <div class="right timestamp"> Time AMPM</div>
+                    <div class="right toxicity"> % toxic</div>
                 </div>
                 <p class="row message-text"> This may be offensive...</p>
-                <div  class="right timestamp">something</div>
+                <div  class="right timestamp">Time AMPM</div>
             </div>
         </div> 
     </main>  
@@ -48,7 +48,7 @@
                 <div class="input-field col s12 left" id="message-space">
                     <textarea id="textarea1" class="materialize-textarea col s10"></textarea>
                     <!-- label when class ="active" then change label to [shape] [percent toxicity] & add id="percentage" -->
-                    <label for="textarea1">Check Yourself</label> 
+                    <label id="percentage" for="textarea1">Check Yourself</label> 
                     <!-- <div id="percentage"></div>   -->
 
                     <!-- <div class="col s6 slack-btn-div">
@@ -61,7 +61,7 @@
                             <img src="./asssets/images/slack.png" alt="slack" class="center" id="slack-logo">
                         </button>
                     </div> -->
-                    <button id="check-button" class="btn col s2 right waves-effect waves-light slack-submit" name="action">
+                    <button class="btn col s2 right waves-effect waves-light slack-submit" name="action">
                         <i class="material-icons right" id="send-icon">send</i>
                     </button>
                 </div>
@@ -76,8 +76,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 <!-- Link to JS file -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script src="asssets/javascript/perspective.js" ></script>
   <script src="asssets/javascript/app.js"></script>
+
+
+
 
 </body>
 </html>
