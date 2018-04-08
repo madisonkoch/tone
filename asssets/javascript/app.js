@@ -89,29 +89,29 @@ $("#submit").on("click", function(e){
     
         let userNAme = snapshot.val().username;
         let passWord = snapshot.val().password;
-        console.log(userNAme);
+        //console.log(userNAme);
     });
     //moment age verification/login determine-d-o-b-branch
     //moment();
     //console.log(moment().format("MM-DD-YYYY"));
     //set date against which age will be determined
     let date = moment().unix();
-    console.log(date);
+    //console.log(date);
 
     //set age limit
     let ageLimit = moment().subtract(13, 'years').unix();
-    console.log(ageLimit);
+    //console.log(ageLimit);
 
     //grab age of user
     $("#dOB").change(function(){
-        let dOB = this.value;
+        let dOB = this.value;qz
         console.log(dOB);
         //convert dOB to unix
         let unixDOB = Date.parse(dOB)/1000;
-        console.log(unixDOB);
+        //console.log(unixDOB);
         //subtract unixDOB from date to determine user age
         let userAge = date - unixDOB;
-        console.log(userAge);
+        //console.log(userAge);
     });
 
         //if userAge is >= ageLimit, user can continue
@@ -158,6 +158,7 @@ $("#submit").on("click", function(e){
 
 
 const UID = 'UA0ATEGTG';
+const SLACK_TOKEN = '?token=xoxp-338977510529-338825398368-340586914980-6fc1d20f10bc25db2a0d975edcbd3e79'
        function getRealUserName(UID){
         $.ajax({
           method:'GET',
