@@ -164,6 +164,7 @@ const UID = 'UA0ATEGTG';
 
 
        function getRealUserName(UID){
+           alert('fire');
         $.ajax({
           method:'GET',
           url: `https://slack.com/api/users.profile.get?${SLACK_TOKEN}&user=${UID}&pretty=1`,
