@@ -1,6 +1,4 @@
 'use strict'
-
-
 //firebase
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
@@ -131,52 +129,66 @@ $("#submit").on("click", function(e){
 const username = 'test'
 const UID = 'UA0ATEGTG';
 
-// Slack 
-    $('.slack-submit').on('click', function(){
-        event.preventDefault();
-        const message = $('#textarea1').val();
-        console.log(message);
-        console.log(`https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`)
+// Slack event Listners
+$('.getSlack').on('click', getMessageFromSlack);
+
+$('.slack-submit').on('click', function(){
+    event.preventDefault();
+    const message = $('#textarea1').val();
+    postMessageToSlack(message);
+    })
+
+/**
+ *  This will pull the last 100 messages from slack
+ * 
+ *  @method getMessageFromSlack
+ * 
+ */
+function getMessageFromSlack() {
+$.ajax({
+    type: 'GET',
+    url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
+    success: function(data) {console.log(data);},
+    error: function(data){console.log(data);}
+    })
+}
+
+/**
+ * This will gather all the infomation on the user from slack
+ * 
+ * @param {*} UID user id from slack
+ * @return jsoon Object
+ * Main list of the key values that will be most used
+ *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
+ *  real_name,real_name_normalized}
+ */
+function gatherUserInfomation(UID) {
+    alert('fire');
+$.ajax({
+    method:'GET',
+    url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
+    success: function(data){
+        console.log(data)
+        // Will need to call the function to add to the Page in here  
+        return data.profile;
+    },
+    error:function(error){
+        console.log('error Unable to gather infomation with the given user ID: ' ,error)}
+    });
+}
+
+/**
+ * This will take the given message and post it to slack
+ * 
+ * @param {*} message string message you want posted to slack
+ * @param username given user name you want to post as
+ */
+function postMessageToSlack(message, username = 'Tone') {
         $.ajax({
             dataType: 'json',
             processData: false,
             type: 'POST',
-            url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`
+            url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`,
+            error:function(error){console.log('unable to post message to slack: ' , error)}
         });
-       })
-
-       $('.getSlack').on('click', getMessageFromSlack);
-
-       function getMessageFromSlack(){
-           console.log(SLACK_URL + SLACK_TOKEN +  SLACK_CHANNEL );
-        $.ajax({
-            type: 'GET',
-            url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(data){
-                console.log(data);
-            }
-          })
-       }
-
-
-
-       function getRealUserName(UID){
-           alert('fire');
-        $.ajax({
-          method:'GET',
-          url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
-          success: function(data){
-              console.log(data)
-
-              return data.profile;
-        },
-        error:function(data){
-            console.log(data)}
-        });
-      }
-
-
-console.log(getRealUserName(UID));
+}
