@@ -167,7 +167,7 @@ const UID = 'UA0ATEGTG';
            alert('fire');
         $.ajax({
           method:'GET',
-          url: `https://slack.com/api/users.profile.get?${SLACK_TOKEN}&user=${UID}&pretty=1`,
+          url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
           success: function(data){
               console.log(data)
         },
