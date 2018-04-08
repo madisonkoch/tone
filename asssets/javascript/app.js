@@ -170,10 +170,11 @@ const UID = 'UA0ATEGTG';
           url: `https://slack.com/api/users.profile.get?${SLACK_TOKEN}&user=${UID}&pretty=1`,
           sucess: function(data){
               console.log(data)
-        }
-        })
+        },
+        error:function(data){
+            console.log(data)}
+        });
       }
-      
 
 
 getRealUserName(UID);
