@@ -1,5 +1,6 @@
 'use strict'
 
+
 //firebase
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
@@ -127,11 +128,15 @@ $("#submit").on("click", function(e){
         $('#sign-up-slack').css("visibility","hidden")}
     });
  
-
+const username = 'test'
+const UID = 'UA0ATEGTG';
 
 // Slack 
     $('.slack-submit').on('click', function(){
-        const message = $('#texarea1').val();
+        event.preventDefault();
+        const message = $('#textarea1').val();
+        console.log(message);
+        console.log(`https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`)
         $.ajax({
             dataType: 'json',
             processData: false,
@@ -157,8 +162,7 @@ $("#submit").on("click", function(e){
        }
 
 
-const UID = 'UA0ATEGTG';
-const SLACK_TOKEN = '?token=xoxp-338977510529-338825398368-340586914980-6fc1d20f10bc25db2a0d975edcbd3e79'
+
        function getRealUserName(UID){
         $.ajax({
           method:'GET',

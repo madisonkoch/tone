@@ -3,6 +3,7 @@ const request = require('request')
 const path = require('path')
 const PORT = process.env.PORT || 8080
 const app = express();
+require('dotenv').config()
 
 app.post('/hello', function (req, res) {
   
@@ -24,10 +25,11 @@ app.get('/config.js', function(req, res){
   res.write("var SLACK_URL='"+process.env.SLACK_URL+"'"  + '\n');
   res.write("var SLACK_TOKEN='"+process.env.SLACK_TOKEN+"'"  + '\n');
   res.write("var SLACK_CHANNEL='"+process.env.SLACK_CHANNEL+"'"  + '\n');
+  res.write("var SLACK_TEST='"+process.env.SLACK_TEST+"'"  + '\n');
   res.end();
 });
 
-
+app.get('/slackContent', function (req, res){ res.send(process.env.SLACK_TOKEN)})
 
 
 
