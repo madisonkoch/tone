@@ -12,9 +12,9 @@ var config = {
     storageBucket: "tone-app-199717.appspot.com",
     messagingSenderId: "618773555838"
   };
-  firebase.initializeApp(config);
+   firebase.initializeApp(config);
 
-  const database = firebase.database();
+   const database = firebase.database();
 
 //Index / Login Page
     //Sign Up Modal
@@ -48,27 +48,9 @@ var config = {
     };
    
 
-
-
-
-//grab age of user
-$("#dOB").change(function(){
-    let dOB = this.value;
-    console.log(dOB);
-    //convert dOB to unix
-    let unixDOB = Date.parse(dOB)/1000;
-    console.log(unixDOB);
-    //subtract unixDOB from date to determine user age
-    let userAge = date - unixDOB;
-    console.log(userAge);
-    //if userAge is >= ageLimit, user can continue
-});
-
 //add user info
 
-$("#submit").on("click", function(e){
-    e.preventDefault()
-
+$("#sign-up").on("click", function(e){
     //moment age verification/login
     //grab and store user name
     let userName = $("#userName").val().trim();
@@ -94,40 +76,37 @@ $("#submit").on("click", function(e){
         let passWord = snapshot.val().password;
         //console.log(userNAme);
     });
-    //moment age verification/login determine-d-o-b-branch
-    //moment();
-    //console.log(moment().format("MM-DD-YYYY"));
-    //set date against which age will be determined
-    let date = moment().unix();
-    //console.log(date);
 
-    //set age limit
-    let ageLimit = moment().subtract(13, 'years').unix();
-    //console.log(ageLimit);
+    //Age of User
+        let userAge;
 
-    //grab age of user
-    $("#dOB").change(function(){
-        let dOB = this.value;qz
-        console.log(dOB);
-        //convert dOB to unix
-        let unixDOB = Date.parse(dOB)/1000;
-        //console.log(unixDOB);
-        //subtract unixDOB from date to determine user age
-        let userAge = date - unixDOB;
-        //console.log(userAge);
-    });
-
-        //if userAge is >= ageLimit, user can continue
+        $('#dOB').change(function(){
+            let DOB = this.value;
+            userAge = moment().diff(moment(DOB, "YYYY-MM-DD"), 'years');
+                //console.log(userAge);
+            return(userAge);
+        });
 
     $(':checkbox').on('click',function(){
         let checkBox = document.getElementById("checkbox-agree");
         //console.log(checkBox);
         // If agree is checked
-        if ($(':checkbox').is(':checked')) {
-        $('#sign-up-slack').css("visibility","visible")}
+        if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
+            $('#sign-up-slack').css("visibility","visible");
+        }
         //else agree is unchecked
-        else if ($(':checkbox').is(':empty')) {
-        $('#sign-up-slack').css("visibility","hidden")}
+        else {
+            $('#sign-up-slack').css("visibility","hidden");
+            if (userAge < 13){
+                console.log("too young");
+            }
+            else if (!$('#userName').val()){
+                console.log("no username");
+            }
+            else if (!$('#pasword').val()){
+                console.log("no password");
+            }
+        }
     });
  
 const username = 'test'
