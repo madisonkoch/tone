@@ -251,6 +251,7 @@ function displayAllMessages() {
  * @return {*} text || html element
  */
 function checkIfTextMessageIsImgUrl(text) {
+<<<<<<< HEAD
     if(! text.charAt(0) === '<'){
 
         return text;
@@ -266,5 +267,14 @@ function checkIfTextMessageIsImgUrl(text) {
     return text;
  }
 
+=======
+    if((text.charAt(0) === '<')){
+        text = text.replace('<', '');
+        text = text.replace('>', '');
+       return `<img src='${text}' >`
+    }
+    return text;
+}
+>>>>>>> 97f795ec1f7031cd087b478143ab2d2f53061cac
 
 $('.displaymessage').on('click', displayAllMessages);
