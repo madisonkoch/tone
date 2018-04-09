@@ -4,39 +4,55 @@ h1{
 }
 
 /* INDEX */
-#index-body{
-    background-color: #c7c7c7;
-}
-#login-h1{
-    text-align: center; 
-    margin: 3rem 0 1.68rem 0;
-    font-size: 7rem;
-    text-shadow: 1px 1px 12px #000000d1;
-}
-#spacer{
-    height: 400px;
-}
-#spacer p {
-    text-align: center;
-}
-/* Sign-Up & Sign In buttons */
-.modal-trigger{
-    background-color:white;
-    color: #919292;
-    width:100%;
-}
-.modal-trigger:hover{
-    background-color:#25c1f9;
-    color: white;
-}
-/* Sign-Up Modal */
-#sign-up-slack{
-    visibility: hidden;
-}
-/* Sign In Modal */
-#welcome{
-    text-align: center;
-}
+    #index-body{
+        background-color: #c7c7c7;
+    }
+    #login-h1{
+        text-align: center; 
+        margin: 3rem 0 1.68rem 0;
+        font-size: 7rem;
+        text-shadow: 1px 1px 12px #000000d1;
+    }
+    #spacer p {
+        text-align: center;
+    }
+/* Footer */
+    #index-footer{
+        position: fixed;
+        bottom: 60px;
+        width: 100%;
+    }
+    #index-modals{
+        width:66%;
+        margin-right:auto;
+        margin-left:auto;
+    }
+    /* Sign-Up & Sign In buttons */
+        .modal-trigger{
+            background-color:white;
+            color: #919292;
+            width:100%;
+        }
+        .modal-trigger:hover{
+            background-color:#25c1f9;
+            color: white;
+            }
+        .modal.open{
+            position:fixed;
+        }
+        .modal .modal-footer{
+            background-color: transparent;
+        }
+    /* Sign-Up Modal */
+        #sign-up-slack{
+            visibility: hidden;
+        }
+    /* Sign In Modal */
+        #welcome{
+            text-align: center;
+        }
+
+
 /* Future Development */
 /* Facebook */
     /* #fb-btn{
