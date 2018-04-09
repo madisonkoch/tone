@@ -2,8 +2,7 @@
 
 let slackInfomation = null;
 
-
-//firebase
+//FIREBASE CONNECTION
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
     authDomain: "tone-app-199717.firebaseapp.com",
@@ -16,235 +15,260 @@ var config = {
 
    const database = firebase.database();
 
-//Index / Login Page
-    //Sign Up Modal
+//INDEX / LOGIN PAGE
+    //MODAL TRIGGERS
         var elem3 = document.querySelector('#modal1');
         var instance3 = M.Modal.init(elem3, {
             dismissable: false
         });
-                   
-    //Sign In Modal
+
         var elem4 = document.querySelector('#modal2');
         var instance3 = M.Modal.init(elem4, {
             dismissable: false
         });
-
-// Slack Page
-    var slackStuff = {
-        has_more : false,
-        messages:[
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2CTDWTT|Tone>", bot_id: "BA2CTDWTT", bot_link: "<https://tone-check-your-self.slack.com/services/BA2CTDWTT|Tone>", type: "message", subtype: "bot_add"},
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA28BTCDN|Tone>", bot_id: "BA28BTCDN", bot_link: "<https://tone-check-your-self.slack.com/services/BA28BTCDN|Tone>", type: "message", subtype: "bot_add"},
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2UVRGDQ|Tone>", bot_id: "BA2UVRGDQ", bot_link: "<https://tone-check-your-self.slack.com/services/BA2UVRGDQ|Tone>", type: "message", subtype: "bot_add"},
-        {text: "All Your Base", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1523054094.000342"},
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA3H8DQG7|Tone>", bot_id: "BA3H8DQG7", bot_link: "<https://tone-check-your-self.slack.com/services/BA3H8DQG7|Tone>", type: "message", subtype: "bot_add"},
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA188M5UH|Tone>", bot_id: "BA188M5UH", bot_link: "<https://tone-check-your-self.slack.com/services/BA188M5UH|Tone>", type: "message", subtype: "bot_add"},
-        {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA1U68H7X|Tone>", bot_id: "BA1U68H7X", bot_link: "<https://tone-check-your-self.slack.com/services/BA1U68H7X|Tone>", type: "message", subtype: "bot_add"},
-        {text: "ttt", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898467.000043"},
-        {text: "test", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898305.000118"},
-        {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886843.000203"},
-        {type: "message", user: "U9YQ9BQAU", text: "test hello", ts: "1522886841.000201"},
-        {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886834.000047"}]
-    };
-   
-
-//add user info
-
-$("#sign-up").on("click", function(e){
-    //moment age verification/login
-    //grab and store user name
-    let userName = $("#userName").val().trim();
-
-    //grab password
-    let password = $("#password").val().trim();
-
-    let dOB = $("#dOB").val();
-
-        //push to firebase
-        database.ref().push({
-            username: userName,
-            password: password
-
+    //SIGN UP MODAL
+        $("#sign-up").on("click", function(e){
+            let userName = $("#userName").val().trim();
+            let password = $("#password").val().trim();
+            //push to firebase
+            database.ref().push({
+                username: userName,
+                password: password
+            });
         });
-    });
+        // ???
+        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
+            //store snapshot value
+            let sv = snapshot.val();
 
-    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
-        //store snapshot value
-        let sv = snapshot.val();
-    
-        let userNAme = snapshot.val().username;
-        let passWord = snapshot.val().password;
-        //console.log(userNAme);
-    });
+            let userNAme = snapshot.val().username;
+            let passWord = snapshot.val().password;
+            //console.log(userNAme);
+        });
 
-    //Age of User
+        //Age of User
         let userAge;
-
         $('#dOB').change(function(){
             let DOB = this.value;
             userAge = moment().diff(moment(DOB, "YYYY-MM-DD"), 'years');
                 //console.log(userAge);
             return(userAge);
         });
-    //Sign Up requirements met?
-    $(':checkbox').on('click',function(){
-        let checkBox = document.getElementById("checkbox-agree");
-            //console.log(checkBox);
-        // Requirements met
-        if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
-            $('#sign-up-slack').css("visibility","visible");
-        }
-        //At least 1 requirement is not met
-        else {
-            $('#sign-up-slack').css("visibility","hidden");
-            if (userAge < 13){
-                console.log("too young");
+
+        //Sign Up requirements met?
+        $(':checkbox').on('click',function(){
+            let checkBox = document.getElementById("checkbox-agree");
+                //console.log(checkBox);
+            // Requirements met
+            if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
+                $('#sign-up-slack').css("visibility","visible");
             }
-            else if (!$('#userName').val()){
-                console.log("no username");
+            //At least 1 requirement not met
+            else {
+                $('#sign-up-slack').css("visibility","hidden");
+                if (userAge < 13){
+                    console.log("too young");
+                }
+                else if (!$('#userName').val()){
+                    console.log("no username");
+                }
+                else if (!$('#pasword').val()){
+                    console.log("no password");
+                }
             }
-            else if (!$('#pasword').val()){
-                console.log("no password");
-            }
-        }
-    });
- 
-const username = 'test'
-const UID = 'UA0ATEGTG';
-
-// Slack event Listners
-$('.getSlack').on('click', getMessageFromSlack);
-
-$('.slack-submit').on('click', function(){
-    event.preventDefault();
-    const message = $('#textarea1').val();
-    postMessageToSlack(message);
-    })
-
-/**
- *  This will pull the last 100 messages from slack
- * 
- *  @method getMessageFromSlack
- * 
- */
-function getMessageFromSlack() {
-$.ajax({
-    type: 'GET',
-    url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-    success: function(data) {console.log(data); slackInfomation = data.messages },
-    error: function(data){console.log(data);}
-    })
-}
-
-/**
- * This will gather all the infomation on the user from slack
- * 
- * @param {*} UID user id from slack
- * @return jsoon Object
- * Main list of the key values that will be most used
- *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
- *  real_name,real_name_normalized}
- */
-function gatherUserInfomation(UID) {
-$.ajax({
-    method:'GET',
-    url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
-    success: function(data){
-        console.log(data)
-        // Will need to call the function to add to the Page in here  
-        return data.profile;
-    },
-    error:function(error){
-        console.log('error Unable to gather infomation with the given user ID: ' ,error)}
-    });
-}
-
-/**
- * This will take the given message and post it to slack
- * 
- * @param {*} message string message you want posted to slack
- * @param username given user name you want to post as
- */
-function postMessageToSlack(message, username = 'Tone') {
-        $.ajax({
-            dataType: 'json',
-            processData: false,
-            type: 'POST',
-            url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`,
-            error:function(error){console.log('unable to post message to slack: ' , error)}
         });
-}
+        //SIGN IN MODAL
+            //check username & password -- allow login?
 
-/**
- * Will append a single message to the view
- * 
- * @param {*} user 
- * @param {*} message 
- */
-function displayMessageToApp(user ,message) {
-    console.log(message)
-    const template = `<div class="user-message">
-        <div class="row message-head">
-            <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
-            <span>${user}: </span> ${message}
-            </div>
-            <div class="right toxicity"> % toxic</div>
-        </div>
-        <p class="row message-text"> This may be offensive...</p>
-        <div  class="right timestamp">Time AMPM</div>
-    </div>`;
-    $('#all-messages').append(template);
-}
-
-/**
- * Display Last message
- * 
- */
-function displayLastMessage() {
-    let text = slackInfomation[0].text;
-    //aditonal User varification to see if we need more user data can be done here
-    const user = slackInfomation[0].username || slackInfoation[0].user
-    text = checkIfTextMessageIsImgUrl(text)
-    displayMessageToApp(user, text);
-}
-
-/**
- * This will diaply all the message received on the screen (currenlty the last 100)
- * 
- * 
- */
-function displayAllMessages() {
-    for(let i = slackInfomation.length -1; i => 0; i--){
-        let text = slackInfomation[i].text;
-        //aditonal User varification to see if we need more user data can be done here
-        const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
-        text = checkIfTextMessageIsImgUrl(text);
-        displayMessageToApp(user, text);
-    }
-}
-
-/**
- * This will check if the image is a ULR img from slack if it is then it will convert the text to an html string
- * 
- * @method checkIfTextMessageIsImgUrl
- * @param {*} text 
- * @return {*} text || html element
- */
-function checkIfTextMessageIsImgUrl(text) {
-    if(! text.charAt(0) === '<'){
-
-        return text;
-     }
-     text = text.replace('<', '');
-     text = text.replace('>', '');
-     if(text.includes('.gif')){
-        const imageElement = `<img src='${text}' >`;
-
-        return imageElement;
-     }
-
-    return text;
- }
+// SLACK PAGE
+    //SLACK API
+        // Sample of API response data
+        var slackStuff = {
+            has_more : false,
+            messages:[
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2CTDWTT|Tone>", bot_id: "BA2CTDWTT", bot_link: "<https://tone-check-your-self.slack.com/services/BA2CTDWTT|Tone>", type: "message", subtype: "bot_add"},
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA28BTCDN|Tone>", bot_id: "BA28BTCDN", bot_link: "<https://tone-check-your-self.slack.com/services/BA28BTCDN|Tone>", type: "message", subtype: "bot_add"},
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2UVRGDQ|Tone>", bot_id: "BA2UVRGDQ", bot_link: "<https://tone-check-your-self.slack.com/services/BA2UVRGDQ|Tone>", type: "message", subtype: "bot_add"},
+            {text: "All Your Base", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1523054094.000342"},
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA3H8DQG7|Tone>", bot_id: "BA3H8DQG7", bot_link: "<https://tone-check-your-self.slack.com/services/BA3H8DQG7|Tone>", type: "message", subtype: "bot_add"},
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA188M5UH|Tone>", bot_id: "BA188M5UH", bot_link: "<https://tone-check-your-self.slack.com/services/BA188M5UH|Tone>", type: "message", subtype: "bot_add"},
+            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA1U68H7X|Tone>", bot_id: "BA1U68H7X", bot_link: "<https://tone-check-your-self.slack.com/services/BA1U68H7X|Tone>", type: "message", subtype: "bot_add"},
+            {text: "ttt", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898467.000043"},
+            {text: "test", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898305.000118"},
+            {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886843.000203"},
+            {type: "message", user: "U9YQ9BQAU", text: "test hello", ts: "1522886841.000201"},
+            {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886834.000047"}]
+        };
 
 
-$('.displaymessage').on('click', displayAllMessages);
+        const username = 'test'
+        const UID = 'UA0ATEGTG';
+
+        // Slack event Listners
+        $('.getSlack').on('click', getMessageFromSlack);
+
+        $('.slack-submit').on('click', function(){
+            event.preventDefault();
+            const message = $('#textarea1').val();
+            postMessageToSlack(message);
+            })
+
+        /**
+         *  This will pull the last 100 messages from slack
+         * 
+         *  @method getMessageFromSlack
+         * 
+         */
+        function getMessageFromSlack() {
+        $.ajax({
+            type: 'GET',
+            url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
+            success: function(data) {console.log(data); slackInfomation = data.messages },
+            error: function(data){console.log(data);}
+            })
+        }
+
+        /**
+         * This will gather all the infomation on the user from slack
+         * 
+         * @param {*} UID user id from slack
+         * @return jsoon Object
+         * Main list of the key values that will be most used
+         *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
+         *  real_name,real_name_normalized}
+         */
+        function gatherUserInfomation(UID) {
+        $.ajax({
+            method:'GET',
+            url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
+            success: function(data){
+                console.log(data)
+                // Will need to call the function to add to the Page in here  
+                return data.profile;
+            },
+            error:function(error){
+                console.log('error Unable to gather infomation with the given user ID: ' ,error)}
+            });
+        }
+
+        /**
+         * This will take the given message and post it to slack
+         * 
+         * @param {*} message string message you want posted to slack
+         * @param username given user name you want to post as
+         */
+        function postMessageToSlack(message, username = 'Tone') {
+                $.ajax({
+                    dataType: 'json',
+                    processData: false,
+                    type: 'POST',
+                    url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`,
+                    error:function(error){console.log('unable to post message to slack: ' , error)}
+                });
+        }
+
+        /**
+         * Will append a single message to the view
+         * 
+         * @param {*} user 
+         * @param {*} message 
+         */
+        function displayMessageToApp(user ,message) {
+            console.log(message)
+            const template = `<div class="user-message">
+                <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
+                    <span>${user}: </span> ${message}
+                    </div>
+                    <div class="right toxicity"> % toxic</div>
+                </div>
+                <p class="row message-text"> This may be offensive...</p>
+                <div  class="right timestamp">Time AMPM</div>
+            </div>`;
+            $('#all-messages').append(template);
+        }
+
+        /**
+         * Display Last message
+         * 
+         */
+        function displayLastMessage() {
+            let text = slackInfomation[0].text;
+            //aditonal User varification to see if we need more user data can be done here
+            const user = slackInfomation[0].username || slackInfoation[0].user
+            text = checkIfTextMessageIsImgUrl(text)
+            displayMessageToApp(user, text);
+        }
+
+        /**
+         * This will diaply all the message received on the screen (currenlty the last 100)
+         * 
+         * 
+         */
+        function displayAllMessages() {
+            for(let i = slackInfomation.length -1; i => 0; i--){
+                let text = slackInfomation[i].text;
+                //aditonal User varification to see if we need more user data can be done here
+                const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
+                text = checkIfTextMessageIsImgUrl(text);
+                displayMessageToApp(user, text);
+            }
+        }
+
+        /**
+         * This will check if the image is a ULR img from slack if it is then it will convert the text to an html string
+         * 
+         * @method checkIfTextMessageIsImgUrl
+         * @param {*} text 
+         * @return {*} text || html element
+         */
+        function checkIfTextMessageIsImgUrl(text) {
+            if(! text.charAt(0) === '<'){
+
+                return text;
+            }
+            text = text.replace('<', '');
+            text = text.replace('>', '');
+            if(text.includes('.gif')){
+                const imageElement = `<img src='${text}' >`;
+                return imageElement;
+            }
+
+            return text;
+        }
+
+
+        $('.displaymessage').on('click', displayAllMessages);
+    
+    //PERSPECTIVE API
+        let contentToAnalize = ""
+
+        $('#textarea1').keyup( function(){
+            contentToAnalize = $('#textarea1').val();
+            // timeout so we don't jam the perspective API
+            setTimeout( 
+            // This Ajax call gives us the analized content from the perpective API
+                function(){ $.ajax({
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        comment: {
+                            text: contentToAnalize
+                        },
+                        languages: ["en"],
+                        requestedAttributes: {
+                            TOXICITY: {}
+                        }
+                    }),
+                    method: 'POST',
+                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                    success: function(response) {
+                        //console.log(response);
+                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                        let toxicity = response.attributeScores.TOXICITY.summaryScore.value
+                        let toxicityPercentage = (toxicity*100).toFixed(0)
+                        //console.log(toxicityPercentage)
+                        $('#percentage').text(toxicityPercentage + "% Toxic")
+                    } 
+                }); }
+            , 3000);
+        });
