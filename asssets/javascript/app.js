@@ -81,6 +81,20 @@ var config = {
             //check username & password -- allow login?
 
 // SLACK PAGE
+    //RESPONSIVE DESIGN
+        // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
+            $(document).ready(function() {
+                function setHeight() {
+                  let windowHeight = $(window).innerHeight();
+                  $('.content-main').css('height', windowHeight);
+                };
+                setHeight();
+                
+                $(window).resize(function() {
+                  setHeight();
+                });
+              });
+
     //SLACK API
         // Sample of API response data
         var slackStuff = {
