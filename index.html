@@ -10,6 +10,7 @@
   <link type="text/css" rel="stylesheet" href="./asssets/css/materialize.css" media="screen,projection" />
   <link rel="stylesheet" href="./asssets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Assistant:300|Poiret+One" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css">
   <script src="/config.js"></script>
 </head>
 <body id="index-body">
@@ -23,23 +24,19 @@
   <div id="spacer">
       <p><a href="slackContent.html">Slack Page (temp link)</a></p>  
       <!-- <p><a href="fbContent.html">Next Page (temp link)</a></p> -->
-    </div>
-    <!-- Facebook Btn -->
-    <!-- <div id="fb-btn">
-           <div class="fb-login-button hoverable" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div></div>
-         <div> -->
-      <!-- send to slack button -->
-      <!-- <input type="text" class="slack-message">
-      <button class="slack-submit"> Send Message to Slack</button>
-    </div> -->
-
+  </div>
+      <!-- Send to slack button -->
+        <!-- <input type="text" class="slack-message">
+        <button class="slack-submit"> Send Message to Slack</button> -->
+  </main> 
+  <footer id="index-footer">
   <!-- Slack Sign In or Sign Up-->
-  <div class="row">
-    <!-- Sign Up -->
-    <div class=" col s6 modal-div">
-        <!-- Modal Trigger -->
+  <div id="index-modals">
+      <!-- Sign Up -->
+      <div class=" col s10 modal-div offset-s1">
+          <!-- Modal Trigger -->
           <button data-target="modal1" class="btn modal-trigger hoverable">Sign Up</button>
-        <!-- Modal Structure -->
+          <!-- Modal Structure -->
           <div id="modal1" class="modal">
             <div class="modal-content">
               <div class="row">
@@ -47,80 +44,74 @@
                   <input placeholder="Username" id="userName" type="text" class="validate">
                   <!-- <label for="user_name">Username:</label> -->
                 </div>
-               </div>
-               <div class="row">
-                  <div class="input-field">
-                    <input placeholder="Password" id="password" type="text" class="validate">
-                    <!-- <label for="password">Password:</label> -->
-                  </div>
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="Password" id="password" type="text" class="validate">
+                  <!-- <label for="password">Password:</label> -->
                 </div>
-               <div class="row">
-                 <div class="input-field">
-                   <input placeholder="mm-dd-yyyy" id="dOB" type="date" class="validate">
-                   <!-- <label for="d-o-b">Date of birth:</label> -->
-                 </div>
-               </div>
-               <div class="row">
-                  <label>
-                    <input class="indeterminate-checkbox" type="checkbox" id="checkbox-agree" value = "agree" />
-                    <span> By checking this box you agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> of Tone.</span>
-                  </label>
-               </div>
-             </div>
-  
+              </div>
+              <div class="row">
+                <div class="input-field">
+                  <input placeholder="mm-dd-yyyy" id="dOB" type="date" class="validate">
+                  <!-- <label for="d-o-b">Date of birth:</label> -->
+                </div>
+              </div>
+              <div class="row">
+                <label>
+                  <input class="indeterminate-checkbox" type="checkbox" id="checkbox-agree" value = "agree" />
+                  <span> By checking this box you agree to the <a href="https://github.com/Holgermueller/tone/blob/master/LICENSE">terms and conditions </a> of Tone.</span>
+                </label>
+              </div>
+            </div>
             <div class="modal-footer" id="sign-up-slack">
-               <div class="col s8 offset-s2">
-                 <!--submit button-->
+              <div class="col s8 offset-s2">
+                <!--submit button-->
                 <a href="#" class="waves-effect waves-light btn" id="submit">submit</a>
                 <!-- Slack link/button -->
                 <!--<a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>-->
-               </div>
+              </div>
             </div>
           </div>
         </div>
-  
-      <!-- Sign In -->
-      <div class=" col s6 modal-div">
-        <!-- Modal Trigger -->
-        <button data-target="modal2" class="btn modal-trigger hoverable">Sign In</button>
-        <!-- Modal Structure -->
-          <div id="modal2" class="modal">
-              <div class="modal-content">
-                <h5 id="welcome">Welcome back!</h5>
-                <div class="row">
-                    <div class="input-field">
-                      <input placeholder="Username" id="userName" type="text" class="validate">
-                      <!-- <label for="user_name">Username:</label> -->
-                    </div>
-                   </div>
-                   <div class="row">
+        <br>
+        <!-- Sign In -->
+        <div class=" col s10 modal-div offset-s1">
+          <!-- Modal Trigger -->
+          <button data-target="modal2" class="btn modal-trigger hoverable">Sign In</button>
+          <!-- Modal Structure -->
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                  <h5 id="welcome">Welcome back!</h5>
+                  <div class="row">
                       <div class="input-field">
-                        <input placeholder="Password" id="password" type="text" class="validate">
-                        <!-- <label for="password">Password:</label> -->
+                        <input placeholder="Username" id="userName" type="text" class="validate">
+                        <!-- <label for="user_name">Username:</label> -->
                       </div>
-                    </div>
-                </div>
-            <div class="modal-footer">
-                <div class="col s8 offset-s2">
-                  <!-- Slack link -->
-                  <!--<a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>-->
-                </div>
+                     </div>
+                     <div class="row">
+                        <div class="input-field">
+                          <input placeholder="Password" id="password" type="text" class="validate">
+                          <!-- <label for="password">Password:</label> -->
+                        </div>
+                      </div>
+                  </div>
+              <div class="modal-footer">
+                  <div class="col s8 offset-s2">
+                    <!-- Slack link -->
+                    <!--<a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=338977510529.340356602870"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>-->
+                  </div>
+              </div>
             </div>
-          </div>
-      </div>  
-  </div>
-  </main> <!-- Main Content End -->
-  <!--firebase-->
+        </div>  
+    </div>  
+  </footer>
+  <!--Scripts-->
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-  <!-- <button class="getSlack">Get The Slack Info</button>
-  <div class="slack-data"></div> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./asssets/javascript/materialize.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.css"></script>
-  <!--moment.js for age verification-->
+  <script type="text/javascript" src="./asssets/javascript/lib/materialize.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script src="asssets/javascript/app.js"></script>
-
 </body>
 
 </html>

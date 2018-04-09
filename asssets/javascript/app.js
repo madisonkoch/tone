@@ -1,5 +1,8 @@
 'use strict'
 
+let slackInfomation = null;
+
+
 //firebase
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
@@ -46,6 +49,23 @@ var config = {
    
 
 
+
+
+//grab age of user
+$("#dOB").change(function(){
+    let dOB = this.value;
+    console.log(dOB);
+    //convert dOB to unix
+    let unixDOB = Date.parse(dOB)/1000;
+    console.log(unixDOB);
+    //subtract unixDOB from date to determine user age
+    let userAge = date - unixDOB;
+    console.log(userAge);
+    //if userAge is >= ageLimit, user can continue
+});
+
+//add user info
+
 $("#submit").on("click", function(e){
     e.preventDefault()
 
@@ -72,29 +92,29 @@ $("#submit").on("click", function(e){
     
         let userNAme = snapshot.val().username;
         let passWord = snapshot.val().password;
-        console.log(userNAme);
+        //console.log(userNAme);
     });
     //moment age verification/login determine-d-o-b-branch
     //moment();
     //console.log(moment().format("MM-DD-YYYY"));
     //set date against which age will be determined
     let date = moment().unix();
-    console.log(date);
+    //console.log(date);
 
     //set age limit
     let ageLimit = moment().subtract(13, 'years').unix();
-    console.log(ageLimit);
+    //console.log(ageLimit);
 
     //grab age of user
     $("#dOB").change(function(){
-        let dOB = this.value;
+        let dOB = this.value;qz
         console.log(dOB);
         //convert dOB to unix
         let unixDOB = Date.parse(dOB)/1000;
-        console.log(unixDOB);
+        //console.log(unixDOB);
         //subtract unixDOB from date to determine user age
         let userAge = date - unixDOB;
-        console.log(userAge);
+        //console.log(userAge);
     });
 
         //if userAge is >= ageLimit, user can continue
@@ -110,61 +130,142 @@ $("#submit").on("click", function(e){
         $('#sign-up-slack').css("visibility","hidden")}
     });
  
-//let example = userInput;
-//     $.ajax({
-//         contentType: "application/json",
-//         data: JSON.stringify({
-//                 comment: {
-//                         text: "what a lovely hat"
-//                 },
-//                 languages: ["en"],
-//                 requestedAttributes: {
-//                         TOXICITY: {}
-//                 }
-//         }),
-//         method: 'POST',
-//         url: `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_PERSPECTIVE_KEY}`,
-//         success: function(response) {
-//                 console.log(response);
-//         }
-// });
+const username = 'test'
+const UID = 'UA0ATEGTG';
 
-//Facebook Content
-    // Floating Action Button(s)
-        //Setup Menu FAB
-        var elem = document.querySelector('.fixed-action-btn');
-        var instance = M.FloatingActionButton.init(elem, {
-            hoverEnabled: false
-        });
-    //Image Carousel
-        var elem2 = document.querySelector('.carousel');
-        var instance2 = M.Carousel.init(elem2, {
-            fullWidth: false
-        });
+// Slack event Listners
+$('.getSlack').on('click', getMessageFromSlack);
 
-// Slack 
-    $('.slack-submit').on('click', function(){
-        const message = $('#textarea1').val();
+$('.slack-submit').on('click', function(){
+    event.preventDefault();
+    const message = $('#textarea1').val();
+    postMessageToSlack(message);
+    })
+
+/**
+ *  This will pull the last 100 messages from slack
+ * 
+ *  @method getMessageFromSlack
+ * 
+ */
+function getMessageFromSlack() {
+$.ajax({
+    type: 'GET',
+    url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
+    success: function(data) {console.log(data); slackInfomation = data.messages },
+    error: function(data){console.log(data);}
+    })
+}
+
+/**
+ * This will gather all the infomation on the user from slack
+ * 
+ * @param {*} UID user id from slack
+ * @return jsoon Object
+ * Main list of the key values that will be most used
+ *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
+ *  real_name,real_name_normalized}
+ */
+function gatherUserInfomation(UID) {
+$.ajax({
+    method:'GET',
+    url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
+    success: function(data){
+        console.log(data)
+        // Will need to call the function to add to the Page in here  
+        return data.profile;
+    },
+    error:function(error){
+        console.log('error Unable to gather infomation with the given user ID: ' ,error)}
+    });
+}
+
+/**
+ * This will take the given message and post it to slack
+ * 
+ * @param {*} message string message you want posted to slack
+ * @param username given user name you want to post as
+ */
+function postMessageToSlack(message, username = 'Tone') {
         $.ajax({
             dataType: 'json',
             processData: false,
             type: 'POST',
-            url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`
+            url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`,
+            error:function(error){console.log('unable to post message to slack: ' , error)}
         });
-       })
+}
 
-       $('.getSlack').on('click', getMessageFromSlack);
+/**
+ * Will append a single message to the view
+ * 
+ * @param {*} user 
+ * @param {*} message 
+ */
+function displayMessageToApp(user ,message) {
+    console.log(message)
+    const template = `<div class="user-message">
+        <div class="row message-head">
+            <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
+            <span>${user}: </span> ${message}
+            </div>
+            <div class="right toxicity"> % toxic</div>
+        </div>
+        <p class="row message-text"> This may be offensive...</p>
+        <div  class="right timestamp">Time AMPM</div>
+    </div>`;
+    $('#all-messages').append(template);
+}
 
-       function getMessageFromSlack(){
-           console.log(SLACK_URL + SLACK_TOKEN +  SLACK_CHANNEL );
-        $.ajax({
-            type: 'GET',
-            url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(data){
-                console.log(data);
-            }
-          })
-       }
+/**
+ * Display Last message
+ * 
+ */
+function displayLastMessage() {
+    let text = slackInfomation[0].text;
+    //aditonal User varification to see if we need more user data can be done here
+    const user = slackInfomation[0].username || slackInfoation[0].user
+    text = checkIfTextMessageIsImgUrl(text)
+    displayMessageToApp(user, text);
+}
+
+/**
+ * This will diaply all the message received on the screen (currenlty the last 100)
+ * 
+ * 
+ */
+function displayAllMessages() {
+    for(let i = slackInfomation.length -1; i => 0; i--){
+        let text = slackInfomation[i].text;
+        //aditonal User varification to see if we need more user data can be done here
+        const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
+        text = checkIfTextMessageIsImgUrl(text);
+        displayMessageToApp(user, text);
+    }
+}
+
+/**
+ * This will check if the image is a ULR img from slack if it is then it will convert the text to an html string
+ * 
+ * @method checkIfTextMessageIsImgUrl
+ * @param {*} text 
+ * @return {*} text || html element
+ */
+function checkIfTextMessageIsImgUrl(text) {
+    if(! text.charAt(0) === '<'){
+
+        return text;
+     }
+     text = text.replace('<', '');
+     text = text.replace('>', '');
+     if(text.includes('.gif')){
+        const imageElement = `<img src='${text}' >`;
+
+        return imageElement;
+     }
+
+    return text;
+ }
+
+
+$('.displaymessage').on('click', displayAllMessages);

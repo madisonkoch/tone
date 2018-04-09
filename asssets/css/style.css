@@ -1,7 +1,7 @@
-    h1{
-        color: #ffffff;
-        font-family: 'Poiret One', cursive;  
-    }
+h1{
+    color: #ffffff;
+    font-family: 'Poiret One', cursive;  
+}
 
 /* INDEX */
     #index-body{
@@ -13,11 +13,19 @@
         font-size: 7rem;
         text-shadow: 1px 1px 12px #000000d1;
     }
-    #spacer{
-        height: 400px;
-    }
     #spacer p {
         text-align: center;
+    }
+/* Footer */
+    #index-footer{
+        position: fixed;
+        bottom: 60px;
+        width: 100%;
+    }
+    #index-modals{
+        width:66%;
+        margin-right:auto;
+        margin-left:auto;
     }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
@@ -28,6 +36,12 @@
         .modal-trigger:hover{
             background-color:#25c1f9;
             color: white;
+            }
+        .modal.open{
+            position:fixed;
+        }
+        .modal .modal-footer{
+            background-color: transparent;
         }
     /* Sign-Up Modal */
         #sign-up-slack{
@@ -37,207 +51,209 @@
         #welcome{
             text-align: center;
         }
-    /* Future Development */
-        /* Facebook */
-            /* #fb-btn{
-                width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-            } */
+
+
+/* Future Development */
+/* Facebook */
+    /* #fb-btn{
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    } */
 
 /* All Content Pages */
-    /* Header */
-        .content-body{
-            background-color: #e2e2e3;
-        }
-        .content-header{
-            margin-bottom:unset;
-            background-color: #25c1f9;
-            position: fixed;
-            width: 100%;
-        }
+/* Header */
+    .content-body{
+        background-color: #e2e2e3;
+    }
+    .content-header{
+        margin-bottom:unset;
+        background-color: #25c1f9;
+        position: fixed;
+        width: 100%;
+    }
 
-    /* FABs */
-        .menu-button{
-            background-color: #ff4384;
-        }
-        .account-button{
-            background-color:#7B4DFE;
-        }
-        .create-button{
-            background-color:#25c1f9;
-        }
-    /* Main */
-        .content-main{
-            padding-top: 72px;
-        }
-        .container{
-            width:95%;
-        }
-        /* Content Head */
-            .content-h1{
-                margin: unset;
-                font-size: 3rem;
-                margin-top: 3px;
-                margin-bottom: 3px;
-                text-shadow: 1px 1px 5px #000000d1;
-                text-align: center;
-            }
-            .content-div{
-                background-color: #ffffff;
-            }
-            .content-head{
-                padding-top: 10.5px;
-                background-color: #e2e2e34a;
-                margin-bottom: 0;
-                padding-bottom: 10.5px;
-                border-bottom: 1px solid #e2e2e3;
-            }
-            h6{
-                margin: unset;
-                font-family: 'Assistant', sans-serif;
-                font-size: 16px;
-            }
-            p{
-                font-family: 'Assistant', sans-serif;
-                font-size: 14px;
-            }
-            h6.toxicity-text{
-                font-family: 'Assistant', sans-serif;
-                font-size: 14px;
-                margin:0;
-                text-align: right;
-            }
-            .circle {
-                height: 14px;
-                width: 14px;
-                background-color: #25c1f9;
-                margin-left:auto;
-                margin-top: 2px;
-            }
-            .square{
-                margin-top: 3px;
-                height: 13px;
-                width: 13px;
-                background-color: #7B4DFE;
-            }
-            .diamond {
-                width: 0;
-                height: 0;
-                border: 8px solid transparent;
-                border-bottom-color: #ff4384;
-                position: relative;
-                top: -8px;
-            }
-            .diamond:after {
-                content: '';
-                position: absolute;
-                left: -8px;
-                top: 8px;
-                width: 0;
-                height: 0;
-                border: 8px solid transparent;
-                border-top-color: #ff4384;
-            }
-        /* Content Body */
-            /* Single Image in Post */
-                .single-img{
-                    width:100%;
-                    max-height:250px;
-                }
-            /* Multiple Images - Carousel*/
-                .carousel{
-                    max-height: 220px;
-                }
-                .carousel-item{
-                    max-width: 75%;
-                    max-height: 200px;
-                }    
-                .carousel-img{
-                        max-width: 100%;
-                        max-height: 200px;
-                        margin-top:auto;
-                        margin-bottom:auto;
-                    }
+/* FABs */
+    .menu-button{
+        background-color: #ff4384;
+    }
+    .account-button{
+        background-color:#7B4DFE;
+    }
+    .create-button{
+        background-color:#25c1f9;
+    }
+/* Main */
+    .content-main{
+        padding-top: 72px;
+    }
+    .container{
+        width:95%;
+    }
+/* Content Head */
+.content-h1{
+    margin: unset;
+    font-size: 3rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-shadow: 1px 1px 5px #000000d1;
+    text-align: center;
+}
+.content-div{
+    background-color: #ffffff;
+}
+.content-head{
+    padding-top: 10.5px;
+    background-color: #e2e2e34a;
+    margin-bottom: 0;
+    padding-bottom: 10.5px;
+    border-bottom: 1px solid #e2e2e3;
+}
+h6{
+    margin: unset;
+    font-family: 'Assistant', sans-serif;
+    font-size: 16px;
+}
+p{
+    font-family: 'Assistant', sans-serif;
+    font-size: 14px;
+}
+h6.toxicity-text{
+    font-family: 'Assistant', sans-serif;
+    font-size: 14px;
+    margin:0;
+    text-align: right;
+}
+.circle {
+    height: 14px;
+    width: 14px;
+    background-color: #25c1f9;
+    margin-left:auto;
+    margin-top: 2px;
+}
+.square{
+    margin-top: 3px;
+    height: 13px;
+    width: 13px;
+    background-color: #7B4DFE;
+}
+.diamond {
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom-color: #ff4384;
+    position: relative;
+    top: -8px;
+}
+.diamond:after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: #ff4384;
+}
+/* Content Body */
+/* Single Image in Post */
+.single-img{
+    width:100%;
+    max-height:250px;
+}
+/* Multiple Images - Carousel*/
+.carousel{
+    max-height: 220px;
+}
+.carousel-item{
+    max-width: 75%;
+    max-height: 200px;
+}    
+.carousel-img{
+        max-width: 100%;
+        max-height: 200px;
+        margin-top:auto;
+        margin-bottom:auto;
+    }
 
 
 
 /* Content - Slack Page */
-    .chip{
-        background-color:white;
-    }
-    #all-messages{
-        width:96%;
-        margin-left:auto;
-        margin-right:auto;
-    }
-    .user-message{
-        margin-bottom:10px;
-    }
-    .message-head{
-        margin-bottom:0;
-    }
-    .timestamp,
-    .toxicity{
-        font-family: 'Assistant', sans-serif;
-        height: 32px;
-        padding-top: 8px;
-        margin-left:10px;
-        margin-right:10px;
-        color:#a0a0a0;
-    }
-    .message-text{
-        padding-left:15px;
-        padding-right:15px;
-        margin-top:0;
-        margin-bottom:0;
+.chip{
+    background-color:white;
 }
-    /* footer */
-        .message-footer{
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            background-color: white;
-            box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.14), 0 -1px 10px 0 rgba(0, 0, 0, 0.12), 0 -2px 4px -1px rgba(0, 0, 0, 0.13);
-        }
-        #message-space{
-            margin-bottom:unset;
-        }
-        #type-toxicity{
-            padding-left:10px;
-            padding-right:10px;
-        }
-        .slack-submit{
-            padding: unset;
-            width: fit-content;
-            background-color: #F5F5F6;
-            position: fixed;
-            bottom: 30px;
-            right: 15px;
-        }
-        #send-icon{
-            margin: unset;
-            margin-left: 10px;
-            margin-right: 10px;
-            color: #ff4384;
-        }
-        /* #perspective{
-            padding-top:2px;
-            height:28px;
-        } */
+#all-messages{
+    width:96%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.user-message{
+    margin-bottom:10px;
+}
+.message-head{
+    margin-bottom:0;
+}
+.timestamp,
+.toxicity{
+    font-family: 'Assistant', sans-serif;
+    height: 32px;
+    padding-top: 8px;
+    margin-left:10px;
+    margin-right:10px;
+    color:#a0a0a0;
+}
+.message-text{
+    padding-left:15px;
+    padding-right:15px;
+    margin-top:0;
+    margin-bottom:0;
+}
+/* footer */
+.message-footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: white;
+    box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.14), 0 -1px 10px 0 rgba(0, 0, 0, 0.12), 0 -2px 4px -1px rgba(0, 0, 0, 0.13);
+}
+#message-space{
+    margin-bottom:unset;
+}
+#type-toxicity{
+    padding-left:10px;
+    padding-right:10px;
+}
+.slack-submit{
+    padding: unset;
+    width: fit-content;
+    background-color: #F5F5F6;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+}
+#send-icon{
+    margin: unset;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #ff4384;
+}
+/* #perspective{
+    padding-top:2px;
+    height:28px;
+} */
 
 /* Content - Facebook Page */
-    /* #fb-body{
-        background-color: #ffffff;
-    }
-    header{
-        margin-bottom:unset;
-        background-color: #c7c7c7;
-    }
-    #fb-h1{
-        margin: unset;
-        font-size: 3rem;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        text-shadow: 1px 1px 5px #000000d1;
-    } */
+/* #fb-body{
+    background-color: #ffffff;
+}
+header{
+    margin-bottom:unset;
+    background-color: #c7c7c7;
+}
+#fb-h1{
+    margin: unset;
+    font-size: 3rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-shadow: 1px 1px 5px #000000d1;
+} */

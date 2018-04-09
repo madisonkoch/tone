@@ -59,4 +59,14 @@ window.fbAsyncInit = function() {
 //       );
       
 
-// })
+// // })
+
+// var elem = document.querySelector('.fixed-action-btn');
+// var instance = M.FloatingActionButton.init(elem, {
+//     hoverEnabled: false
+// });
+// //Image Carousel
+// var elem2 = document.querySelector('.carousel');
+// var instance2 = M.Carousel.init(elem2, {
+//     fullWidth: false
+// });
