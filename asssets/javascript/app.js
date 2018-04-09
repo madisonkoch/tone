@@ -237,7 +237,7 @@ function displayAllMessages() {
     for(let i = slackInfomation.length -1; i => 0; i--){
         let text = slackInfomation[i].text;
         //aditonal User varification to see if we need more user data can be done here
-        const user = slackInfomation[i].username || slackInfomation[i].user
+        const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
         text = checkIfTextMessageIsImgUrl(text);
         displayMessageToApp(user, text);
     }
@@ -251,7 +251,6 @@ function displayAllMessages() {
  * @return {*} text || html element
  */
 function checkIfTextMessageIsImgUrl(text) {
-<<<<<<< HEAD
     if(! text.charAt(0) === '<'){
 
         return text;
@@ -267,14 +266,5 @@ function checkIfTextMessageIsImgUrl(text) {
     return text;
  }
 
-=======
-    if((text.charAt(0) === '<')){
-        text = text.replace('<', '');
-        text = text.replace('>', '');
-       return `<img src='${text}' >`
-    }
-    return text;
-}
->>>>>>> 97f795ec1f7031cd087b478143ab2d2f53061cac
 
 $('.displaymessage').on('click', displayAllMessages);
