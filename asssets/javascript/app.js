@@ -76,31 +76,6 @@ $("#sign-up").on("click", function(e){
         let passWord = snapshot.val().password;
         //console.log(userNAme);
     });
-    //moment age verification/login determine-d-o-b-branch
-    //moment();
-    //console.log(moment().format("MM-DD-YYYY"));
-    //set date against which age will be determined
-    let date = moment().unix();
-    //console.log(date);
-
-    //set age limit
-    let ageLimit = moment().subtract(13, 'years').unix();
-    //console.log(ageLimit);
-
-    
-    //grab age of user
-   // $("#dOB").change(function(){
-      //  let dOB = this.value;
-       // console.log(dOB);
-        //convert dOB to unix
-       // let unixDOB = Date.parse(dOB)/1000;
-        //console.log(unixDOB);
-        //subtract unixDOB from date to determine user age
-       // let userAge = date - unixDOB;
-        //console.log(userAge);
-    //});
-
-        //if userAge is >= ageLimit, user can continue
 
     //Age of User
         let userAge;
