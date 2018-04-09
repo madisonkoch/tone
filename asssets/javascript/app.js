@@ -86,15 +86,15 @@ $("#sign-up").on("click", function(e){
                 //console.log(userAge);
             return(userAge);
         });
-
+    //Sign Up requirements met?
     $(':checkbox').on('click',function(){
         let checkBox = document.getElementById("checkbox-agree");
-        //console.log(checkBox);
-        // If agree is checked
+            //console.log(checkBox);
+        // Requirements met
         if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
             $('#sign-up-slack').css("visibility","visible");
         }
-        //else agree is unchecked
+        //At least 1 requirement is not met
         else {
             $('#sign-up-slack').css("visibility","hidden");
             if (userAge < 13){
