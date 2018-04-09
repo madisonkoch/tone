@@ -42,11 +42,11 @@
         </div> 
     </main>  
 <!-- MESSAGE INPUT SECTION -->
-    <footer class="message-footer container">
+    <footer class="message-footer">
         <form>
             <div class="row">
                 <div class="input-field col s12 left container" id="message-space">
-                    <textarea id="textarea1" class="materialize-textarea col s10"></textarea>
+                    <textarea id="textarea1" class="materialize-textarea col s10 col m11"></textarea>
                     <!-- label when class ="active" then change label to [shape] [percent toxicity] & add id="percentage" -->
                     <label id="percentage" for="textarea1">Check Yourself</label> 
                     <!-- <div id="percentage"></div>   -->
@@ -61,7 +61,7 @@
                             <img src="./asssets/images/slack.png" alt="slack" class="center" id="slack-logo">
                         </button>
                     </div> -->
-                    <button class="btn col s2 right waves-effect waves-light slack-submit" name="action">
+                    <button id="submit" class="btn col s2 right waves-effect waves-light slack-submit" name="action">
                         <i class="material-icons right" id="send-icon">send</i>
                     </button>
                 </div>

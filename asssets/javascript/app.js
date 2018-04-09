@@ -9,6 +9,7 @@ var config = {
     storageBucket: "tone-app-199717.appspot.com",
     messagingSenderId: "618773555838"
   };
+  
   firebase.initializeApp(config);
 
   const database = firebase.database();

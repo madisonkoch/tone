@@ -1,5 +1,5 @@
     h1{
-        color: #ffffff;
+        color: #404040;
         font-family: 'Poiret One', cursive;  
     }
 
@@ -167,7 +167,7 @@
         background-color:white;
     }
     #all-messages{
-        width:96%;
+        width:90%;
         margin-left:auto;
         margin-right:auto;
     }
@@ -220,6 +220,10 @@
             margin-left: 10px;
             margin-right: 10px;
             color: #ff4384;
+        }
+
+        #submit{
+            width: fit-content;
         }
         /* #perspective{
             padding-top:2px;
