@@ -228,12 +228,17 @@ function displayLastMessage() {
     displayMessageToApp(user, text);
 }
 
+/**
+ * This will diaply all the message received on the screen (currenlty the last 100)
+ * 
+ * 
+ */
 function displayAllMessages() {
     for(let i = slackInfomation.length -1; i => 0; i--){
         let text = slackInfomation[i].text;
         //aditonal User varification to see if we need more user data can be done here
         const user = slackInfomation[i].username || slackInfomation[i].user
-        text = checkIfTextMessageIsImgUrl(text)
+        text = checkIfTextMessageIsImgUrl(text);
         displayMessageToApp(user, text);
     }
 }
