@@ -87,29 +87,51 @@ $("#sign-up").on("click", function(e){
     let ageLimit = moment().subtract(13, 'years').unix();
     //console.log(ageLimit);
 
+    
     //grab age of user
-    $("#dOB").change(function(){
-        let dOB = this.value;
-        console.log(dOB);
+   // $("#dOB").change(function(){
+      //  let dOB = this.value;
+       // console.log(dOB);
         //convert dOB to unix
-        let unixDOB = Date.parse(dOB)/1000;
+       // let unixDOB = Date.parse(dOB)/1000;
         //console.log(unixDOB);
         //subtract unixDOB from date to determine user age
-        let userAge = date - unixDOB;
+       // let userAge = date - unixDOB;
         //console.log(userAge);
-    });
+    //});
 
         //if userAge is >= ageLimit, user can continue
+
+    //Age of User
+        let userAge;
+
+        $('#dOB').change(function(){
+            let DOB = this.value;
+            userAge = moment().diff(moment(DOB, "YYYY-MM-DD"), 'years');
+                //console.log(userAge);
+            return(userAge);
+        });
 
     $(':checkbox').on('click',function(){
         let checkBox = document.getElementById("checkbox-agree");
         //console.log(checkBox);
         // If agree is checked
-        if ($(':checkbox').is(':checked')) {
-        $('#sign-up-slack').css("visibility","visible")}
+        if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
+            $('#sign-up-slack').css("visibility","visible");
+        }
         //else agree is unchecked
-        else if ($(':checkbox').is(':empty')) {
-        $('#sign-up-slack').css("visibility","hidden")}
+        else {
+            $('#sign-up-slack').css("visibility","hidden");
+            if (userAge < 13){
+                console.log("too young");
+            }
+            else if (!$('#userName').val()){
+                console.log("no username");
+            }
+            else if (!$('#pasword').val()){
+                console.log("no password");
+            }
+        }
     });
  
 const username = 'test'
