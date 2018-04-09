@@ -2,6 +2,7 @@
 
 let slackInfomation = null;
 
+
 //firebase
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
