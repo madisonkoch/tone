@@ -1,5 +1,6 @@
 'use strict'
 
+let slackInfomation = null;
 
 //firebase
 var config = {
@@ -150,7 +151,7 @@ function getMessageFromSlack() {
 $.ajax({
     type: 'GET',
     url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-    success: function(data) {console.log(data);},
+    success: function(data) {console.log(data); slackInfomation = data.messages },
     error: function(data){console.log(data);}
     })
 }
@@ -194,6 +195,12 @@ function postMessageToSlack(message, username = 'Tone') {
         });
 }
 
+/**
+ * Will append a single message to the view
+ * 
+ * @param {*} user 
+ * @param {*} message 
+ */
 function displayMessageToApp(user ,message) {
     console.log(message)
     const template = `<div class="user-message">
@@ -209,4 +216,31 @@ function displayMessageToApp(user ,message) {
     $('#all-messages').append(template);
 }
 
-displayMessageToApp('The One' ,'All the things I want to say');
+
+function displayLastMessage() {
+    let text = slackInfomation[0].text;
+    const user = slackInfomation[0].username || slackInfoation[0].user
+    text = checkIfTextMessageIsImgUrl(text)
+    displayMessageToApp(user, text);
+}
+
+/**
+ * This will check if the image is a ULR img from slack if it is then it will convert the text to an html string
+ * 
+ * @method checkIfTextMessageIsImgUrl
+ * @param {*} text 
+ * @return {*} text || html element
+ */
+function checkIfTextMessageIsImgUrl(text) {
+    if(! text.charAt(0) === '<'){
+       return text;
+
+    }
+    text = text.replace('<', '');
+    text = text.replace('>', '');
+    imageElement = `<img src='${text}' >`;
+
+    return imageElement;
+}
+
+$('.displaymessage').on('click', displayLastMessage);
