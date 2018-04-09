@@ -216,12 +216,31 @@ function displayMessageToApp(user ,message) {
     $('#all-messages').append(template);
 }
 
-
+/**
+ * Display Last message
+ * 
+ */
 function displayLastMessage() {
     let text = slackInfomation[0].text;
+    //aditonal User varification to see if we need more user data can be done here
     const user = slackInfomation[0].username || slackInfoation[0].user
     text = checkIfTextMessageIsImgUrl(text)
     displayMessageToApp(user, text);
+}
+
+/**
+ * This will diaply all the message received on the screen (currenlty the last 100)
+ * 
+ * 
+ */
+function displayAllMessages() {
+    for(let i = slackInfomation.length -1; i => 0; i--){
+        let text = slackInfomation[i].text;
+        //aditonal User varification to see if we need more user data can be done here
+        const user = slackInfomation[i].username || slackInfomation[i].user
+        text = checkIfTextMessageIsImgUrl(text);
+        displayMessageToApp(user, text);
+    }
 }
 
 /**
@@ -233,14 +252,19 @@ function displayLastMessage() {
  */
 function checkIfTextMessageIsImgUrl(text) {
     if(! text.charAt(0) === '<'){
-       return text;
 
-    }
-    text = text.replace('<', '');
-    text = text.replace('>', '');
-    imageElement = `<img src='${text}' >`;
+        return text;
+     }
+     text = text.replace('<', '');
+     text = text.replace('>', '');
+     if(text.includes('.gif')){
+        const imageElement = `<img src='${text}' >`;
 
-    return imageElement;
-}
+        return imageElement;
+     }
 
-$('.displaymessage').on('click', displayLastMessage);
+    return text;
+ }
+
+
+$('.displaymessage').on('click', displayAllMessages);
