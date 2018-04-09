@@ -1,4 +1,6 @@
 'use strict'
+
+
 //firebase
 var config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
@@ -163,7 +165,6 @@ $.ajax({
  *  real_name,real_name_normalized}
  */
 function gatherUserInfomation(UID) {
-    alert('fire');
 $.ajax({
     method:'GET',
     url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
@@ -192,3 +193,20 @@ function postMessageToSlack(message, username = 'Tone') {
             error:function(error){console.log('unable to post message to slack: ' , error)}
         });
 }
+
+function displayMessageToApp(user ,message) {
+    console.log(message)
+    const template = `<div class="user-message">
+        <div class="row message-head">
+            <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
+            <span>${user}: </span> ${message}
+            </div>
+            <div class="right toxicity"> % toxic</div>
+        </div>
+        <p class="row message-text"> This may be offensive...</p>
+        <div  class="right timestamp">Time AMPM</div>
+    </div>`;
+    $('#all-messages').append(template);
+}
+
+displayMessageToApp('The One' ,'All the things I want to say');
