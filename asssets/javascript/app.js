@@ -12,9 +12,9 @@ var config = {
     storageBucket: "tone-app-199717.appspot.com",
     messagingSenderId: "618773555838"
   };
-//   firebase.initializeApp(config);
+   firebase.initializeApp(config);
 
-//   const database = firebase.database();
+   const database = firebase.database();
 
 //Index / Login Page
     //Sign Up Modal
@@ -48,27 +48,9 @@ var config = {
     };
    
 
-
-
-
-//grab age of user
-$("#dOB").change(function(){
-    let dOB = this.value;
-    console.log(dOB);
-    //convert dOB to unix
-    let unixDOB = Date.parse(dOB)/1000;
-    console.log(unixDOB);
-    //subtract unixDOB from date to determine user age
-    let userAge = date - unixDOB;
-    console.log(userAge);
-    //if userAge is >= ageLimit, user can continue
-});
-
 //add user info
 
-$("#submit").on("click", function(e){
-    e.preventDefault()
-
+$("#sign-up").on("click", function(e){
     //moment age verification/login
     //grab and store user name
     let userName = $("#userName").val().trim();
@@ -107,7 +89,7 @@ $("#submit").on("click", function(e){
 
     //grab age of user
     $("#dOB").change(function(){
-        let dOB = this.value;qz
+        let dOB = this.value;
         console.log(dOB);
         //convert dOB to unix
         let unixDOB = Date.parse(dOB)/1000;
