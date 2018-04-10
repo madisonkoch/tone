@@ -1,5 +1,5 @@
     h1{
-        color: #404040;
+        color: #ffffffc4;
         font-family: 'Poiret One', cursive;  
     }
 
@@ -29,12 +29,12 @@
     }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
-            background-color:white;
+            background-color:#ffffffc4;
             color: #919292;
             width:100%;
         }
         .modal-trigger:hover{
-            background-color:#25c1f9;
+            background-color:#25c1f9c2;
             color: white;
             }
         .modal.open{
@@ -182,6 +182,9 @@ h6.toxicity-text{
 .chip{
     background-color:white;
 }
+.chip-img{
+    border: 3px solid transparent;
+}
 #allMessages{
     width:96%;
     margin-left:auto;
@@ -190,9 +193,8 @@ h6.toxicity-text{
 }
 .user-message{
     margin-bottom:10px;
-    padding-bottom:10px;
     background-color: white;
-    border-radius: 15px 15px 15px 5px;
+    border-radius: 20px 20px 20px 1px;
 }
 .message-head{
     margin-bottom:0;
@@ -206,8 +208,11 @@ h6.toxicity-text{
     margin-right:10px;
     color:#a0a0a0;
 }
+.timestamp{
+    margin-right:-5px;
+}
 .message-text{
-    padding-left:15px;
+    padding-left:40px;
     padding-right:15px;
     margin-top:0;
     margin-bottom:0;
@@ -216,6 +221,7 @@ h6.toxicity-text{
 }
 .message-img{
     width:100%;
+    border-radius:3px;
 }
 /* footer */
 .message-footer{

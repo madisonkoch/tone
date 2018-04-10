@@ -58,21 +58,13 @@ const config = {
         });
 
 // hide sign up button
-
-
-
-     
-
         //Sign Up requirements met?
         $('#checkbox-agree').on('click',function(){
-
-           
             // let checkBox = document.getElementById("checkbox-agree");
                 //console.log(checkBox);
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
                 $('#sign-up-slack');
-
                 $('#sign-up').show()
             }
             //At least 1 requirement not met
@@ -170,7 +162,7 @@ const config = {
         
     //SLACK API
         // Slack event Listners
-        $('.getSlack').on('click', getMessageFromSlack);
+        // $('.getSlack').on('click', getMessageFromSlack);
 
         $('.slack-submit').on('click', function(){
             event.preventDefault();
@@ -178,6 +170,15 @@ const config = {
             postMessageToSlack(message);
             gatherBotInfomation('BA3229MDG', message);
             })
+
+        $(document).ready(function(){
+            getMessageFromSlack();
+            setTimeout(
+                function(){
+                    displayAllMessages();                    
+                },300
+            );
+        })
 
         /**
          *  This will pull the last 100 messages from slack
@@ -189,7 +190,9 @@ const config = {
         $.ajax({
             type: 'GET',
             url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-            success: function(data) {console.log(data); slackInfomation = data.messages },
+            success: function(data) {
+                console.log(data);
+                slackInfomation = data.messages },
             error: function(data){console.log(data);}
             })
         }
@@ -290,15 +293,21 @@ const config = {
          * @param {*} message 
          */
         function displayCustomMessageToApp(user ,message, icon, I) {
+            let time;
+            if (moment(slackInfomation[I].ts,"X").isSame(moment().startOf('day'), 'd')){
+                time = moment(slackInfomation[I].ts,"X").format("h:mm a");    
+            }
+            else {
+                time = moment(slackInfomation[I].ts,"X").format(" MM/DD/YY h:mm a");
+            }
             const template = `<div class="user-message">
-            <div class="row message-head">
-                <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
-                <span>${user}</span>
+              <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                        <span>${user}</span>
+                    </div>
+                    <div class="right toxicity" id="toxicity${I}"></div>
                 </div>
-                <div class="right toxicity" id="toxicity${I}"></div>
-            </div>
-            <p class="row message-text">${message}</p>
-            <div  class="right timestamp">Time AMPM</div>
+                <p class="row message-text">${message}<h8 class="right timestamp">${time}</h8></p>
             </div>`;
             $('#allMessages').append(template);
             $.ajax({
@@ -371,7 +380,7 @@ const config = {
             }
             text = text.replace('<', '');
             text = text.replace('>', '');
-            if(text.includes('.gif')){
+            if(text.includes('.gif')||text.includes('.jpeg')||text.includes('.bmp')||text.includes('.png')||text.includes('.tiff')||text.includes('.jpg')){
                 const imageElement = `<img class="message-img" src='${text}' >`;
                 return imageElement;
             }
@@ -380,7 +389,7 @@ const config = {
         }
 
 
-        $('.displaymessage').on('click', displayAllMessages);
+        // $('.displaymessage').on('click', displayAllMessages);
     
    
         gatherUserInfomation('U9ZHFFZ43')
