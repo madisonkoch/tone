@@ -380,7 +380,7 @@ const config = {
             }
             text = text.replace('<', '');
             text = text.replace('>', '');
-            if(text.includes('.gif')){
+            if(text.includes('.gif')||text.includes('.jpeg')||text.includes('.bmp')||text.includes('.png')||text.includes('.tiff')||text.includes('.jpg')){
                 const imageElement = `<img class="message-img" src='${text}' >`;
                 return imageElement;
             }
