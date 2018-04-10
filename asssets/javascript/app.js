@@ -85,17 +85,22 @@ const config = {
 // SLACK PAGE
     //RESPONSIVE DESIGN
         // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
-            $(document).ready(function() {
-                function setHeight() {
-                  let windowHeight = $(window).innerHeight();
-                  $('.content-main').css('height', windowHeight);
-                };
+        $(document).ready(function() {
+            function setHeight() {
+                let windowHeight = $(window).innerHeight();
+                $('.content-main').css('height', windowHeight);
+            };
+            setHeight();
+            function setWidth() {
+                let windowWidth = $(window).innerWidth();
+                $('html').css('width', windowWidth);
+            };
+            setWidth();
+            $(window).resize(function() {
                 setHeight();
-                
-                $(window).resize(function() {
-                  setHeight();
-                });
-              });
+                setWidth();
+            });
+        });
 
       //PERSPECTIVE API
 
