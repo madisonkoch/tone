@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 let slackInfomation = null;
 
 //FIREBASE CONNECTION
-var config = {
+const config = {
     apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
     authDomain: "tone-app-199717.firebaseapp.com",
     databaseURL: "https://tone-app-199717.firebaseio.com",
@@ -137,14 +137,14 @@ var config = {
          *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
          *  real_name,real_name_normalized}
          */
-        function gatherUserInfomation(UID) {
+        function gatherUserInfomation(UID, message) {
         $.ajax({
             method:'GET',
             url: `https://slack.com/api/users.profile.get${SLACK_TOKEN}&user=${UID}&pretty=1`,
             success: function(data){
-                console.log(data)
-                // Will need to call the function to add to the Page in here  
-                return data.profile;
+                const user = data.profile.display_name || data.profile.real_name;
+                const icon = data.profile.image_48;
+                displayCustomMessageToApp(user , message, icon)
             },
             error:function(error){
                 console.log('error Unable to gather infomation with the given user ID: ' ,error)}
@@ -188,6 +188,27 @@ var config = {
             $('#all-messages').append(template);
         }
 
+         /**
+         * Will append a single customized message to the view
+         * 
+         * @param {*} user 
+         * @param {*} message 
+         */
+        function displayCustomMessageToApp(user ,message, icon) {
+            console.log(message)
+            const template = `<div class="user-message">
+                <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                    <span>${user}: </span> ${message}
+                    </div>
+                    <div class="right toxicity"> % toxic</div>
+                </div>
+                <p class="row message-text"> This may be offensive...</p>
+                <div  class="right timestamp">Time AMPM</div>
+            </div>`;
+            $('#all-messages').append(template);
+        }
+
         /**
          * Display Last message
          * 
@@ -208,10 +229,16 @@ var config = {
         function displayAllMessages() {
             for(let i = slackInfomation.length -1; i => 0; i--){
                 let text = slackInfomation[i].text;
-                //aditonal User varification to see if we need more user data can be done here
-                const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
                 text = checkIfTextMessageIsImgUrl(text);
-                displayMessageToApp(user, text);
+                //aditonal User varification to see if we need more user data can be done here
+                if(slackInfomation[i].user){
+                    gatherUserInfomation(slackInfomation[i].user, text);
+                }else{
+                    const user = slackInfomation[i].username || slackInfomation[i].bot_id
+                
+                    displayMessageToApp(user, text);
+                }
+                
             }
         }
 
@@ -272,3 +299,29 @@ var config = {
                 }); }
             , 3000);
         });
+
+        gatherUserInfomation('U9ZHFFZ43')
+
+
+        /*
+
+avatar_hash:"ge9b6f0ba6"
+display_name:"Madsn"
+display_name_normalized:"Madsn"
+email:kchm@vikings.nfl.net"
+fields:nllimage_24:"htp://secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=24&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0007-24.png"
+image_32:"htp://secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=32&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0007-32.png"
+image_48:"htp://secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0007-48.png"
+image_72:"htp://secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0007-72.png"
+image_192:"htts//secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=192&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0007-192.png"
+image_512:"htts//secure.gravatar.com/avatar/e9b63ff0ba63b91f17a9b31a6cfedfbe.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0007-512.png"
+phone:""
+real_name:"Madsn Koch"
+real_name_normalized:"Madison oh"
+skype:""
+status_emoji:""
+status_expiration:0
+status_text:""
+title:""
+
+*/
