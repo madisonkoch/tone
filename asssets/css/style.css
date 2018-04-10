@@ -200,6 +200,9 @@ h6.toxicity-text{
 .chip-img{
     border: 3px solid transparent;
 }
+.chip img{
+    border-radius: 50% 2% 50% 2%;
+}
 #allMessages{
     width:96%;
     margin-left:auto;
@@ -225,6 +228,7 @@ h6.toxicity-text{
 }
 .timestamp{
     margin-right:-5px;
+    font-size: 12px;
 }
 .message-text{
     padding-left:40px;
@@ -236,7 +240,7 @@ h6.toxicity-text{
 }
 .message-img{
     width:100%;
-    border-radius:3px;
+    border-radius: 20px 20px 20px 2px;
 }
 /* footer */
 .message-footer{
