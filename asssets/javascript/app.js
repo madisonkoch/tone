@@ -248,10 +248,16 @@ let  username = null;
                 url: `https://slack.com/api/bots.info${SLACK_TOKEN}&bot=${bot_Id}&pretty=1`,
                 success: function(data){
                     console.log(data)
+                    console.log('bot username is :', username)
                     const user = username || data.bot.name;
                     const icon = data.bot.icons.image_36;
                     I = $('.user-message').length;
-                    displayCustomMessageToApp(user , message, icon, I)
+                    if(bot_Id === 'BA3229MDG'){
+                        displayCustomMessageToAppFromTone(user , message, icon, I)
+                    }else{
+                        displayCustomMessageToApp(user , message, icon, I)
+                    }
+                  
                 },
                 error:function(error){
                     console.log('error Unable to gather infomation with the given user ID: ' ,error)}
@@ -303,6 +309,7 @@ let  username = null;
          * @param {*} message 
          */
         function displayCustomMessageToApp(user ,message, icon, I) {
+            
             let time;
             if (moment(slackInfomation[I].ts,"X").isSame(moment().startOf('day'), 'd')){
                 time = moment(slackInfomation[I].ts,"X").format("h:mm a");    
@@ -400,6 +407,58 @@ let  username = null;
 
 
         // $('.displaymessage').on('click', displayAllMessages);
+
+          /**
+         * Will append a single customized message to the view
+         * 
+         * @param {*} user 
+         * @param {*} message 
+         */
+        function displayCustomMessageToAppFromTone(user ,message, icon, I) {
+
+            const now = Date.now()
+            ;
+            let time;
+            if (moment(now,"X").isSame(moment().startOf('day'), 'd')){
+                time = moment(now,"X").format("h:mm a");    
+            }
+            else {
+                time = moment(now,"X").format(" MM/DD h:mm a");
+            }
+            const template = `<div class="user-message">
+              <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                        <span>${user}</span>
+                    </div>
+                    <div class="right toxicity" id="toxicity${I}"></div>
+                </div>
+                <p class="row message-text">${message}<h8 class="right timestamp">${time}</h8></p>
+            </div>`;
+            $('#allMessages').append(template);
+            $.ajax({
+                contentType: "application/json",
+                data: JSON.stringify({
+                comment: {
+                text: message
+                },
+                languages: ["en"],
+                requestedAttributes: {
+                TOXICITY: {}
+                }
+                }),
+                method: 'POST',
+                url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                success: function(response) {
+                //console.log(response);
+                //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                let tox = response.attributeScores.TOXICITY.summaryScore.value
+                let toxPercentage = (tox*100).toFixed(0)
+                //console.log(toxPercentage,"% Toxic")
+                $(`#toxicity${I}`).append(toxPercentage+"% Toxicity")
+                } 
+                });
+                scrollToBottom();
+        }
     
    
         gatherUserInfomation('U9ZHFFZ43')
