@@ -139,6 +139,7 @@ const config = {
             event.preventDefault();
             const message = $('#textarea1').val();
             postMessageToSlack(message);
+            gatherBotInfomation('BA3229MDG', message);
             })
 
         /**
@@ -178,6 +179,30 @@ const config = {
                 console.log('error Unable to gather infomation with the given user ID: ' ,error)}
             });
         }
+
+        /**
+         * This will gather all the infomation on the user from slack
+         * 
+         * @param {*} UID user id from slack
+         * @return jsoon Object
+         * Main list of the key values that will be most used
+         *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
+         *  real_name,real_name_normalized}
+         */
+        function gatherBotInfomation(bot_Id, message) {
+            $.ajax({
+                method:'GET',
+                url: `https://slack.com/api/bots.info${SLACK_TOKEN}&bot=${bot_Id}&pretty=1`,
+                success: function(data){
+                    console.log(data)
+                    const user = data.bot.name;
+                    const icon = data.bot.icons.image_36;
+                    displayCustomMessageToApp(user , message, icon)
+                },
+                error:function(error){
+                    console.log('error Unable to gather infomation with the given user ID: ' ,error)}
+                });
+            }
 
         /**
          * This will take the given message and post it to slack
@@ -223,7 +248,6 @@ const config = {
          * @param {*} message 
          */
         function displayCustomMessageToApp(user ,message, icon) {
-            console.log(message)
             const template = `<div class="user-message">
             <div class="row message-head">
                 <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
@@ -262,11 +286,9 @@ const config = {
                 if(slackInfomation[i].user){
                     gatherUserInfomation(slackInfomation[i].user, text);
                 }else{
-                    const user = slackInfomation[i].username || slackInfomation[i].bot_id
-                
-                    displayMessageToApp(user, text);
+                    console.log('bot Id', slackInfomation[i].bot_id )
+                    gatherBotInfomation(slackInfomation[i].bot_id, text);
                 }
-                
             }
         }
 
