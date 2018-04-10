@@ -44,8 +44,12 @@
             background-color: transparent;
         }
     /* Sign-Up Modal */
-        #sign-up-slack{
-            visibility: hidden;
+        #sign-up{
+            display: none;
+        }
+
+        .requirement{
+            color: red;
         }
     /* Sign In Modal */
         #welcome{

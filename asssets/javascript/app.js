@@ -55,25 +55,45 @@ const config = {
             return(userAge);
         });
 
+// hide sign up button
+
+
+
+     
+
         //Sign Up requirements met?
-        $(':checkbox').on('click',function(){
-            let checkBox = document.getElementById("checkbox-agree");
+        $('#checkbox-agree').on('click',function(){
+
+           
+            // let checkBox = document.getElementById("checkbox-agree");
                 //console.log(checkBox);
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
-                $('#sign-up-slack').css("visibility","visible");
+                $('#sign-up-slack');
+
+                $('#sign-up').show()
             }
             //At least 1 requirement not met
             else {
-                $('#sign-up-slack').css("visibility","hidden");
+               
                 if (userAge < 13){
-                    console.log("too young");
+
+                    $('#requirement3').text('Must be over 13 years old')
+                    // console.log("Must be over 13 years old");
+
+                $('#sign-up').hide()
                 }
                 else if (!$('#userName').val()){
-                    console.log("no username");
+
+                    $('#requirement1').text('Username is required')
+                    // console.log("Username is required");
+                    $('#sign-up').hide()
                 }
-                else if (!$('#pasword').val()){
-                    console.log("no password");
+                else if (!$('#password').val()){
+
+                    $('#requirement2').text('Password is required')
+                    $('#sign-up').hide()
+                    // console.log("Password is required");
                 }
             }
         });
