@@ -1,5 +1,5 @@
     h1{
-        color: #404040;
+        color: #ffffffc4;
         font-family: 'Poiret One', cursive;  
     }
 
@@ -27,14 +27,17 @@
         margin-right:auto;
         margin-left:auto;
     }
+    label .active{
+        border-bottom: 1px solid #25c1f9;
+    }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
-            background-color:white;
+            background-color:#ffffffc4;
             color: #919292;
             width:100%;
         }
         .modal-trigger:hover{
-            background-color:#25c1f9;
+            background-color:#25c1f9c2;
             color: white;
             }
         .modal.open{
@@ -45,15 +48,27 @@
         }
     /* Sign-Up Modal */
         #sign-up{
-            display: none;
+            visibility:hidden;
+            width: 100%;
+            background-color: #25c1f9c2
         }
-
+        #logIn{
+            width: 100%;
+            background-color: #25c1f9c2
+        }
+        #sign-up:hover{
+            background-color:#1d9ccac2;
+        }
         .requirement{
-            color: red;
+            color: #ff4384;
         }
     /* Sign In Modal */
         #welcome{
             text-align: center;
+        }
+        #invalid{
+            margin: unset;
+            visibility: hidden;
         }
 
 /* All Content Pages */
@@ -64,8 +79,11 @@
     .content-header{
         margin-bottom:unset;
         background-color: #25c1f9;
+        background-color: #25c1f9c2;
         position: fixed;
         width: 100%;
+        padding-top:5px;
+        padding-bottom:5px;
     }
 
 /* FABs */
@@ -81,7 +99,6 @@
     }
 /* Main */
     .content-main{
-        padding-top: 72px;
         padding-bottom: 85px;
     }
     .container{
@@ -95,6 +112,7 @@
     margin-bottom: 3px;
     text-shadow: 1px 1px 5px #000000d1;
     text-align: center;
+    color: #ffffffc4;
 }
 .content-div{
     background-color: #ffffff;
@@ -183,16 +201,22 @@ max-width: 250px;
 .chip{
     background-color:white;
 }
-#all-messages{
+.chip-img{
+    border: 3px solid transparent;
+}
+.chip img{
+    border-radius: 50% 2% 50% 2%;
+}
+#allMessages{
     width:96%;
     margin-left:auto;
     margin-right:auto;
+    overflow: scroll;
 }
 .user-message{
     margin-bottom:10px;
-    padding-bottom:10px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 1px;
 }
 .message-head{
     margin-bottom:0;
@@ -206,11 +230,21 @@ max-width: 250px;
     margin-right:10px;
     color:#a0a0a0;
 }
+.timestamp{
+    margin-right:-5px;
+    font-size: 12px;
+}
 .message-text{
-    padding-left:15px;
+    padding-left:40px;
     padding-right:15px;
     margin-top:0;
     margin-bottom:0;
+    width:100%;
+    overflow-wrap:break-word;
+}
+.message-img{
+    width:100%;
+    border-radius: 20px 20px 20px 2px;
 }
 /* footer */
 .message-footer{

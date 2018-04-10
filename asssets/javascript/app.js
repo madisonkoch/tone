@@ -4,17 +4,17 @@ let slackInfomation = null;
 let  username = null;
 
 //FIREBASE CONNECTION
-const config = {
-    apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
-    authDomain: "tone-app-199717.firebaseapp.com",
-    databaseURL: "https://tone-app-199717.firebaseio.com",
-    projectId: "tone-app-199717",
-    storageBucket: "tone-app-199717.appspot.com",
-    messagingSenderId: "618773555838"
-  };
-   firebase.initializeApp(config);
+    const config = {
+        apiKey: "AIzaSyA53y0mbDf5GvAuV0hgH0fREI2z0qVxwmA",
+        authDomain: "firstproject-914b7.firebaseapp.com",
+        databaseURL: "https://firstproject-914b7.firebaseio.com",
+        projectId: "firstproject-914b7",
+        storageBucket: "firstproject-914b7.appspot.com",
+        messagingSenderId: "458050612081"
+    };
+    firebase.initializeApp(config);
 
-   const database = firebase.database();
+    const database = firebase.database();
 
 //INDEX / LOGIN PAGE
     //MODAL TRIGGERS
@@ -28,24 +28,17 @@ const config = {
             dismissable: false
         });
     //SIGN UP MODAL
-        $("#sign-up").on("click", function(e){
-            let userName = $("#userName").val().trim();
-            let password = $("#password").val().trim();
-            //push to firebase
-            database.ref().push({
-                username: userName,
-                password: password
-            });
-        });
-        // ???
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
-            //store snapshot value
-            let sv = snapshot.val();
+        $("#sign-up").on("click", function(){
+            var userName = $("#userName").val().toLowerCase().trim();
+            var password = $("#password").val().toLowerCase().trim();
 
-            let userNAme = snapshot.val().username;
-            let passWord = snapshot.val().password;
-            username = userNAme;
-            
+            var newUser = {
+                username : userName,
+                password : password
+            }
+
+            database.ref().push(newUser);
+
         });
 
         //Age of User
@@ -58,62 +51,73 @@ const config = {
         });
 
 // hide sign up button
-
-
-
-     
-
         //Sign Up requirements met?
         $('#checkbox-agree').on('click',function(){
-
-           
             // let checkBox = document.getElementById("checkbox-agree");
                 //console.log(checkBox);
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
                 $('#sign-up-slack');
-
-                $('#sign-up').show()
+                $('#sign-up').css("visibility","visible");
             }
             //At least 1 requirement not met
             else {
-               
+                $('#sign-up').css("visibility","hidden")
                 if (userAge < 13){
-
                     $('#requirement3').text('Must be over 13 years old')
                     // console.log("Must be over 13 years old");
-
-                $('#sign-up').hide()
                 }
                 else if (!$('#userName').val()){
-
                     $('#requirement1').text('Username is required')
                     // console.log("Username is required");
-                    $('#sign-up').hide()
                 }
                 else if (!$('#password').val()){
-
                     $('#requirement2').text('Password is required')
-                    $('#sign-up').hide()
                     // console.log("Password is required");
                 }
             }
         });
         //SIGN IN MODAL
             //check username & password -- allow login?
+            $("#logIn").on("click", function(){
+                let status;
+                var userInput = $('#userName2').val().toLowerCase().trim() + $('#password2').val().toLowerCase().trim();
+                database.ref().on("child_added", function(childSnapshot) {
+                    var userInfo = childSnapshot.val().username + childSnapshot.val().password;
+                    console.log(userInfo);
+                    if (userInput === userInfo){
+                        status = true;
+                        //console.log('valid user')
+                        $("#logIn").attr("href", "slackContent.html");
+                    }
+                    else{
+                        $('#invalid').css("visibility","visible");
+                        //console.log('error')
+                    }
+                })
+            });
 
 // SLACK PAGE
     //RESPONSIVE DESIGN
-        // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
+        // Keep content in window width/height
         $(document).ready(function() {
             function setHeight() {
                 let windowHeight = $(window).innerHeight();
                 $('.content-main').css('height', windowHeight);
+                let contentHeight = windowHeight - $('footer').height();
+                $('#allMessages').css('height', contentHeight);
+                $('#scroll-space').css('height', $('header').height()+25);
+
             };
             setHeight();
             function setWidth() {
                 let windowWidth = $(window).innerWidth();
                 $('html').css('width', windowWidth);
+                $('header').css('width', windowWidth);
+                $('body').css('width', windowWidth);
+                $('main').css('width', windowWidth);
+                $('.content-main').css('width', windowWidth);
+                $('footer').css('width', windowWidth);
             };
             setWidth();
             $(window).resize(function() {
@@ -121,6 +125,11 @@ const config = {
                 setWidth();
             });
         });
+        //Scroll to bottom of slack messages
+        function scrollToBottom(){
+            var allMessages = document.getElementById('allMessages');
+                allMessages.scrollTop = allMessages.scrollHeight  
+        };
 
     //PERSPECTIVE API
       let contentToAnalize = ""
@@ -163,7 +172,7 @@ const config = {
         
     //SLACK API
         // Slack event Listners
-        $('.getSlack').on('click', getMessageFromSlack);
+        // $('.getSlack').on('click', getMessageFromSlack);
 
         $('.slack-submit').on('click', function(){
             event.preventDefault();
@@ -171,6 +180,15 @@ const config = {
             postMessageToSlack(message);
             gatherBotInfomation('BA3229MDG', message);
             })
+
+        $(document).ready(function(){
+            getMessageFromSlack();
+            setTimeout(
+                function(){
+                    displayAllMessages();                    
+                },300
+            );
+        })
 
         /**
          *  This will pull the last 100 messages from slack
@@ -182,7 +200,9 @@ const config = {
         $.ajax({
             type: 'GET',
             url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-            success: function(data) {console.log(data); slackInfomation = data.messages },
+            success: function(data) {
+                console.log(data);
+                slackInfomation = data.messages },
             error: function(data){console.log(data);}
             })
         }
@@ -272,7 +292,8 @@ const config = {
                 <p class="row message-text">${message}</p>
                 <div  class="right timestamp">Time AMPM</div>
             </div>`;
-            $('#all-messages').append(template);
+            $('#allMessages').append(template);
+            scrollToBottom();
         }
 
          /**
@@ -282,17 +303,23 @@ const config = {
          * @param {*} message 
          */
         function displayCustomMessageToApp(user ,message, icon, I) {
+            let time;
+            if (moment(slackInfomation[I].ts,"X").isSame(moment().startOf('day'), 'd')){
+                time = moment(slackInfomation[I].ts,"X").format("h:mm a");    
+            }
+            else {
+                time = moment(slackInfomation[I].ts,"X").format(" MM/DD h:mm a");
+            }
             const template = `<div class="user-message">
-            <div class="row message-head">
-                <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
-                <span>${user}</span>
+              <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                        <span>${user}</span>
+                    </div>
+                    <div class="right toxicity" id="toxicity${I}"></div>
                 </div>
-                <div class="right toxicity" id="toxicity${I}"></div>
-            </div>
-            <p class="row message-text">${message}</p>
-            <div  class="right timestamp">Time AMPM</div>
+                <p class="row message-text">${message}<h8 class="right timestamp">${time}</h8></p>
             </div>`;
-            $('#all-messages').append(template);
+            $('#allMessages').append(template);
             $.ajax({
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -315,6 +342,7 @@ const config = {
                 $(`#toxicity${I}`).append(toxPercentage+"% Toxicity")
                 } 
                 });
+                scrollToBottom();
         }
 
         /**
@@ -362,8 +390,8 @@ const config = {
             }
             text = text.replace('<', '');
             text = text.replace('>', '');
-            if(text.includes('.gif')){
-                const imageElement = `<img src='${text}' >`;
+            if(text.includes('.gif')||text.includes('.jpeg')||text.includes('.bmp')||text.includes('.png')||text.includes('.tiff')||text.includes('.jpg')){
+                const imageElement = `<img class="message-img" src='${text}' >`;
                 return imageElement;
             }
 
@@ -371,7 +399,7 @@ const config = {
         }
 
 
-        $('.displaymessage').on('click', displayAllMessages);
+        // $('.displaymessage').on('click', displayAllMessages);
     
    
         gatherUserInfomation('U9ZHFFZ43')
