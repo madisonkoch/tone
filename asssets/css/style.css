@@ -325,6 +325,7 @@ h6.toxicity-text{
     #login-h1{
         font-size: 15rem;
         margin-top: 150px;
+        background-color: #a3a2a252;
     }
     #index-footer{
         position: unset;
