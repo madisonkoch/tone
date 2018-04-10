@@ -308,7 +308,7 @@ let  username = null;
                 time = moment(slackInfomation[I].ts,"X").format("h:mm a");    
             }
             else {
-                time = moment(slackInfomation[I].ts,"X").format(" MM/DD/YY h:mm a");
+                time = moment(slackInfomation[I].ts,"X").format(" MM/DD h:mm a");
             }
             const template = `<div class="user-message">
               <div class="row message-head">
