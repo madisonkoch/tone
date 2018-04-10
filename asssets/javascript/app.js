@@ -95,39 +95,6 @@ var config = {
                 });
               });
 
-    //PERSPECTIVE API
-        let contentToAnalize = ""
-
-        $('#textarea1').keyup( function(){
-            contentToAnalize = $('#textarea1').val();
-            // timeout so we don't jam the perspective API
-            setTimeout( 
-            // This Ajax call gives us the analized content from the perpective API
-                function(){ $.ajax({
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        comment: {
-                            text: contentToAnalize
-                        },
-                        languages: ["en"],
-                        requestedAttributes: {
-                            TOXICITY: {}
-                        }
-                    }),
-                    method: 'POST',
-                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
-                    success: function(response) {
-                        //console.log(response);
-                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
-                        let toxicity = response.attributeScores.TOXICITY.summaryScore.value
-                        let toxicityPercentage = (toxicity*100).toFixed(0)
-                        //console.log(toxicityPercentage)
-                        $('#percentage').text(toxicityPercentage + "% Toxic")
-                    } 
-                }); }
-            , 3000);
-        });
-        
     //SLACK API
         const username = 'test'
         const UID = 'UA0ATEGTG';
@@ -201,19 +168,20 @@ var config = {
          * @param {*} user 
          * @param {*} message 
          */
-        function displayMessageToApp(user ,message) {
-            console.log(message)
+        function displayMessageToApp(user ,message, i) {
+            console.log(message);
             const template = `<div class="user-message">
                 <div class="row message-head">
                     <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
                     <span>${user}</span>
                     </div>
-                    <div class="right toxicity"> % toxic</div>
+                    <div class="right toxicity" id="toxicity${i}"></div>
                 </div>
                 <p class="row message-text">${message}</p>
                 <div  class="right timestamp">Time AMPM</div>
             </div>`;
             $('#all-messages').append(template);
+
         }
 
         /**
@@ -224,7 +192,7 @@ var config = {
             let text = slackInfomation[0].text;
             //aditonal User varification to see if we need more user data can be done here
             const user = slackInfomation[0].username || slackInfoation[0].user
-            text = checkIfTextMessageIsImgUrl(text)
+            text = checkIfTextMessageIsImgUrl(text);
             displayMessageToApp(user, text);
         }
 
@@ -233,13 +201,37 @@ var config = {
          * 
          * 
          */
+
         function displayAllMessages() {
             for(let i = slackInfomation.length -1; i => 0; i--){
                 let text = slackInfomation[i].text;
                 //aditonal User varification to see if we need more user data can be done here
                 const user = slackInfomation[i].username || slackInfomation[i].user || slackInfomation[i].bot_id
                 text = checkIfTextMessageIsImgUrl(text);
-                displayMessageToApp(user, text);
+                $.ajax({
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        comment: {
+                            text: text
+                        },
+                        languages: ["en"],
+                        requestedAttributes: {
+                            TOXICITY: {}
+                        }
+                    }),
+                    method: 'POST',
+                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                    success: function(response) {
+                        //console.log(response);
+                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                        let tox = response.attributeScores.TOXICITY.summaryScore.value
+                        let toxPercentage = (tox*100).toFixed(0)
+                        //console.log(toxPercentage,"% Toxic")
+                        $(`#toxicity${i}`).append(toxPercentage+"% Toxicity")
+                    } 
+                });
+                displayMessageToApp(user, text, i);
+
             }
         }
 
@@ -267,4 +259,40 @@ var config = {
 
 
         $('.displaymessage').on('click', displayAllMessages);
-    
+
+
+    //PERSPECTIVE API
+        //TOXICITY OF EACH MESSAGE (see displayAllMessages function)
+        //TOXICITY OF MESSAGE BEING TYPED
+        let contentToAnalize = ""
+
+        $('#textarea1').keyup( function(){
+            contentToAnalize = $('#textarea1').val();
+            // timeout so we don't jam the perspective API
+            setTimeout( 
+            // This Ajax call gives us the analized content from the perpective API
+                function(){ $.ajax({
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        comment: {
+                            text: contentToAnalize
+                        },
+                        languages: ["en"],
+                        requestedAttributes: {
+                            TOXICITY: {}
+                        }
+                    }),
+                    method: 'POST',
+                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                    success: function(response) {
+                        //console.log(response);
+                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                        let toxicity = response.attributeScores.TOXICITY.summaryScore.value
+                        let toxicityPercentage = (toxicity*100).toFixed(0)
+                        //console.log(toxicityPercentage)
+                        $('#percentage').text(toxicityPercentage + "% Toxic")
+                    } 
+                }); }
+            , 3000);
+        });
+
