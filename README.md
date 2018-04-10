@@ -26,9 +26,10 @@
     Perspective
     Slack
 
-### New tech used:
-    Materialize CSS
-    Heroku
+### Technologies:
+    Materialize CSS         Express
+    Heroku                  Firebase
+    Node                    jQuery
     
 ### Logo:
 ![alt text](./asssets/images/logo_tone.png)
