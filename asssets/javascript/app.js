@@ -1,6 +1,7 @@
 'use strict';
 
 let slackInfomation = null;
+let  username = null;
 
 //FIREBASE CONNECTION
 const config = {
@@ -43,7 +44,8 @@ const config = {
 
             let userNAme = snapshot.val().username;
             let passWord = snapshot.val().password;
-            //console.log(userNAme);
+            username = userNAme;
+            
         });
 
         //Age of User
@@ -129,9 +131,6 @@ const config = {
         });
         
     //SLACK API
-        const username = 'test'
-        const UID = 'UA0ATEGTG';
-
         // Slack event Listners
         $('.getSlack').on('click', getMessageFromSlack);
 
@@ -195,7 +194,7 @@ const config = {
                 url: `https://slack.com/api/bots.info${SLACK_TOKEN}&bot=${bot_Id}&pretty=1`,
                 success: function(data){
                     console.log(data)
-                    const user = data.bot.name;
+                    const user = username || data.bot.name;
                     const icon = data.bot.icons.image_36;
                     displayCustomMessageToApp(user , message, icon)
                 },
