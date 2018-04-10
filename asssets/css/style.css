@@ -295,19 +295,5 @@ header{
     margin-bottom: 3px;
     text-shadow: 1px 1px 5px #000000d1;
 } */
+/* 
 
-
-@media only screen and (max-width: 695px) {
-
-    header {
-        max-width: 360px;
-    }
-
-    footer {
-        max-width: 360px;
-    }
-    
-    p {
-        max-width: 250px;
-    }
-}
