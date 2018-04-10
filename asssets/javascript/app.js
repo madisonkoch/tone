@@ -272,7 +272,9 @@ let  username = null;
                     url: `https://slack.com/api/chat.postMessage${SLACK_TOKEN}&channel=C9Z8JTEMA&text=${message}&as_user=false&username=${username}&pretty=1`,
                     error:function(error){console.log('unable to post message to slack: ' , error)}
                 });
-        }
+                $('#percentage').text('Check Yourself');
+                $('form :input').val('');
+            }
 
         /**
          * Will append a single message to the view
