@@ -176,7 +176,7 @@ const config = {
             setTimeout(
                 function(){
                     displayAllMessages();                    
-                },100
+                },300
             );
         })
 

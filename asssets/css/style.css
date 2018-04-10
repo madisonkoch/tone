@@ -29,12 +29,12 @@
     }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
-            background-color:white;
+            background-color:#ffffffc4;
             color: #919292;
             width:100%;
         }
         .modal-trigger:hover{
-            background-color:#25c1f9;
+            background-color:#25c1f9c2;
             color: white;
             }
         .modal.open{
