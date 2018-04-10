@@ -1,7 +1,7 @@
 'use strict';
 
 let slackInfomation = null;
-let  username = null;
+let  username = localStorage.currentUser;
 
 //FIREBASE CONNECTION
     const config = {
