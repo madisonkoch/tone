@@ -1,7 +1,7 @@
-h1{
-    color: #ffffff;
-    font-family: 'Poiret One', cursive;  
-}
+    h1{
+        color: #404040;
+        font-family: 'Poiret One', cursive;  
+    }
 
 /* INDEX */
     #index-body{
@@ -71,6 +71,7 @@ h1{
     .account-button{
         background-color:#7B4DFE;
     }
+    
     .create-button{
         background-color:#25c1f9;
     }

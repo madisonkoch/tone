@@ -36,7 +36,7 @@ var config = {
                 password: password
             });
         });
-        // ???
+        //
         database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
             //store snapshot value
             let sv = snapshot.val();
