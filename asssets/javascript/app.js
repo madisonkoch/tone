@@ -4,17 +4,17 @@ let slackInfomation = null;
 let  username = null;
 
 //FIREBASE CONNECTION
-const config = {
-    apiKey: "AIzaSyBw_XTxT6R_bfFIQCIsvAnbP3lUKaGPogo",
-    authDomain: "tone-app-199717.firebaseapp.com",
-    databaseURL: "https://tone-app-199717.firebaseio.com",
-    projectId: "tone-app-199717",
-    storageBucket: "tone-app-199717.appspot.com",
-    messagingSenderId: "618773555838"
-  };
-   firebase.initializeApp(config);
+    const config = {
+        apiKey: "AIzaSyA53y0mbDf5GvAuV0hgH0fREI2z0qVxwmA",
+        authDomain: "firstproject-914b7.firebaseapp.com",
+        databaseURL: "https://firstproject-914b7.firebaseio.com",
+        projectId: "firstproject-914b7",
+        storageBucket: "firstproject-914b7.appspot.com",
+        messagingSenderId: "458050612081"
+    };
+    firebase.initializeApp(config);
 
-   const database = firebase.database();
+    const database = firebase.database();
 
 //INDEX / LOGIN PAGE
     //MODAL TRIGGERS
@@ -28,24 +28,17 @@ const config = {
             dismissable: false
         });
     //SIGN UP MODAL
-        $("#sign-up").on("click", function(e){
-            let userName = $("#userName").val().trim();
-            let password = $("#password").val().trim();
-            //push to firebase
-            database.ref().push({
-                username: userName,
-                password: password
-            });
-        });
-        // ???
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot){
-            //store snapshot value
-            let sv = snapshot.val();
+        $("#sign-up").on("click", function(){
+            var userName = $("#userName").val().toLowerCase().trim();
+            var password = $("#password").val().toLowerCase().trim();
 
-            let userNAme = snapshot.val().username;
-            let passWord = snapshot.val().password;
-            username = userNAme;
-            
+            var newUser = {
+                username : userName,
+                password : password
+            }
+
+            database.ref().push(newUser);
+
         });
 
         //Age of User
@@ -65,11 +58,11 @@ const config = {
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
                 $('#sign-up-slack');
-                $('#sign-up').show()
+                $('#sign-up').css("visibility","visible");
             }
             //At least 1 requirement not met
             else {
-                $('#sign-up').hide()
+                $('#sign-up').css("visibility","hidden")
                 if (userAge < 13){
                     $('#requirement3').text('Must be over 13 years old')
                     // console.log("Must be over 13 years old");
@@ -86,6 +79,23 @@ const config = {
         });
         //SIGN IN MODAL
             //check username & password -- allow login?
+            $("#logIn").on("click", function(){
+                let status;
+                var userInput = $('#userName2').val().toLowerCase().trim() + $('#password2').val().toLowerCase().trim();
+                database.ref().on("child_added", function(childSnapshot) {
+                    var userInfo = childSnapshot.val().username + childSnapshot.val().password;
+                    console.log(userInfo);
+                    if (userInput === userInfo){
+                        status = true;
+                        //console.log('valid user')
+                        $("#logIn").attr("href", "slackContent.html");
+                    }
+                    else{
+                        $('#invalid').css("visibility","visible");
+                        //console.log('error')
+                    }
+                })
+            });
 
 // SLACK PAGE
     //RESPONSIVE DESIGN

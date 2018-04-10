@@ -48,15 +48,27 @@
         }
     /* Sign-Up Modal */
         #sign-up{
-            display: none;
+            visibility:hidden;
+            width: 100%;
+            background-color: #25c1f9c2
         }
-
+        #logIn{
+            width: 100%;
+            background-color: #25c1f9c2
+        }
+        #sign-up:hover{
+            background-color:#1d9ccac2;
+        }
         .requirement{
             color: #ff4384;
         }
     /* Sign In Modal */
         #welcome{
             text-align: center;
+        }
+        #invalid{
+            margin: unset;
+            visibility: hidden;
         }
 
 /* All Content Pages */
