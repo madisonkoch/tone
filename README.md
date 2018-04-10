@@ -1,7 +1,5 @@
 # TONE
 
-### Name of project: Tone
-
 ### Group members:
     Abe Anderson
     Madison Koch
@@ -30,7 +28,10 @@
     *Materialize CSS
     *Heroku
 
-### Sketch of interface:
+### Logo:
+![alt text](./asssets/images/logo_tone.png)
+
+### Concept Interface Sketch:
 
 ![alt text](./asssets/images/image.png)
 
