@@ -211,15 +211,15 @@ const config = {
         function displayCustomMessageToApp(user ,message, icon) {
             console.log(message)
             const template = `<div class="user-message">
-                <div class="row message-head">
-                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
-                    <span>${user}: </span> ${message}
-                    </div>
-                    <div class="right toxicity"> % toxic</div>
+            <div class="row message-head">
+                <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                <span>${user}</span>
                 </div>
-                <p class="row message-text"> This may be offensive...</p>
-                <div  class="right timestamp">Time AMPM</div>
-            </div>`;
+                <div class="right toxicity"> % toxic</div>
+            </div>
+            <p class="row message-text">${message}</p>
+            <div  class="right timestamp">Time AMPM</div>
+        </div>`;
             $('#all-messages').append(template);
         }
 
