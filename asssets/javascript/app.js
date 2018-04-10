@@ -131,6 +131,7 @@ let  username = null;
                 allMessages.scrollTop = allMessages.scrollHeight  
         };
 
+
     //PERSPECTIVE API
       let contentToAnalize = ""
       // reset function
