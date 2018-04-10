@@ -77,24 +77,17 @@ const config = {
             }
             //At least 1 requirement not met
             else {
-               
+                $('#sign-up').hide()
                 if (userAge < 13){
-
                     $('#requirement3').text('Must be over 13 years old')
                     // console.log("Must be over 13 years old");
-
-                $('#sign-up').hide()
                 }
                 else if (!$('#userName').val()){
-
                     $('#requirement1').text('Username is required')
                     // console.log("Username is required");
-                    $('#sign-up').hide()
                 }
                 else if (!$('#password').val()){
-
                     $('#requirement2').text('Password is required')
-                    $('#sign-up').hide()
                     // console.log("Password is required");
                 }
             }
