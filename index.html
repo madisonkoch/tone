@@ -15,19 +15,16 @@
 </head>
 <body id="index-body">
   <!-- Needs to go on top of body per FB docs -->
-  <script src="asssets/javascript/fbloadScripts.js"></script>
+  <!-- <script src="asssets/javascript/fbloadScripts.js"></script> -->
   <!-- Masthead start -->
   <header class="col s12">
     <h1 id="login-h1">TONE</h1>
   </header>
   <main class="container">
   <div id="spacer">
-      <p><a href="slackContent.html">Slack Page (temp link)</a></p>  
+      <!-- <p><a href="slackContent.html">Slack Page (temp link)</a></p>   -->
       <!-- <p><a href="fbContent.html">Next Page (temp link)</a></p> -->
   </div>
-      <!-- Send to slack button -->
-        <!-- <input type="text" class="slack-message">
-        <button class="slack-submit"> Send Message to Slack</button> -->
   </main> 
   <footer id="index-footer">
   <!-- Slack Sign In or Sign Up-->
@@ -42,6 +39,7 @@
               <div class="row">
                 <div class="input-field">
                   <input placeholder="Username" id="userName" type="text" class="validate">
+                  <div id="requirement1" class="requirement"></div>
                   <!-- <label for="user_name">Username:</label> -->
                 </div>
               </div>
@@ -53,12 +51,14 @@
               <div class="row">
                 <div class="input-field">
                   <input placeholder="Password" id="password" type="text" class="validate">
+                  <div id="requirement2" class="requirement"></div>
                   <!-- <label for="password">Password:</label> -->
                 </div>
               </div>
               <div class="row">
                 <div class="input-field">
                   <input placeholder="mm-dd-yyyy" id="dOB" type="date" class="validate">
+                  <div id="requirement3" class="requirement"></div>
                   <!-- <label for="d-o-b">Date of birth:</label> -->
                 </div>
               </div>

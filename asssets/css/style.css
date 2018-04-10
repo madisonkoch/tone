@@ -1,7 +1,7 @@
-h1{
-    color: #ffffff;
-    font-family: 'Poiret One', cursive;  
-}
+    h1{
+        color: #ffffffc4;
+        font-family: 'Poiret One', cursive;  
+    }
 
 /* INDEX */
     #index-body{
@@ -27,14 +27,17 @@ h1{
         margin-right:auto;
         margin-left:auto;
     }
+    label .active{
+        border-bottom: 1px solid #25c1f9;
+    }
     /* Sign-Up & Sign In buttons */
         .modal-trigger{
-            background-color:white;
+            background-color:#ffffffc4;
             color: #919292;
             width:100%;
         }
         .modal-trigger:hover{
-            background-color:#25c1f9;
+            background-color:#25c1f9c2;
             color: white;
             }
         .modal.open{
@@ -44,8 +47,12 @@ h1{
             background-color: transparent;
         }
     /* Sign-Up Modal */
-        #sign-up-slack{
-            visibility: hidden;
+        #sign-up{
+            display: none;
+        }
+
+        .requirement{
+            color: #ff4384;
         }
     /* Sign In Modal */
         #welcome{
@@ -60,8 +67,11 @@ h1{
     .content-header{
         margin-bottom:unset;
         background-color: #25c1f9;
+        background-color: #25c1f9c2;
         position: fixed;
         width: 100%;
+        padding-top:5px;
+        padding-bottom:5px;
     }
 
 /* FABs */
@@ -71,12 +81,12 @@ h1{
     .account-button{
         background-color:#7B4DFE;
     }
+    
     .create-button{
         background-color:#25c1f9;
     }
 /* Main */
     .content-main{
-        padding-top: 72px;
         padding-bottom: 85px;
     }
     .container{
@@ -90,6 +100,7 @@ h1{
     margin-bottom: 3px;
     text-shadow: 1px 1px 5px #000000d1;
     text-align: center;
+    color: #ffffffc4;
 }
 .content-div{
     background-color: #ffffff;
@@ -174,16 +185,19 @@ h6.toxicity-text{
 .chip{
     background-color:white;
 }
-#all-messages{
+.chip-img{
+    border: 3px solid transparent;
+}
+#allMessages{
     width:96%;
     margin-left:auto;
     margin-right:auto;
+    overflow: scroll;
 }
 .user-message{
     margin-bottom:10px;
-    padding-bottom:10px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 1px;
 }
 .message-head{
     margin-bottom:0;
@@ -197,11 +211,20 @@ h6.toxicity-text{
     margin-right:10px;
     color:#a0a0a0;
 }
+.timestamp{
+    margin-right:-5px;
+}
 .message-text{
-    padding-left:15px;
+    padding-left:40px;
     padding-right:15px;
     margin-top:0;
     margin-bottom:0;
+    width:100%;
+    overflow-wrap:break-word;
+}
+.message-img{
+    width:100%;
+    border-radius:3px;
 }
 /* footer */
 .message-footer{

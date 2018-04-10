@@ -5800,6 +5800,8 @@ button.btn-floating {
   background: #000;
   display: none;
   will-change: opacity;
+  
+  
 }
 
 .modal.modal-fixed-footer {
@@ -6204,7 +6206,7 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #26a69a;
+  border-bottom: 1px solid #25c1f9;
   -webkit-box-shadow: 0 1px 0 0 #26a69a;
           box-shadow: 0 1px 0 0 #26a69a;
 }
