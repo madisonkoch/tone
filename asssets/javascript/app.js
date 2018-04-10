@@ -58,21 +58,13 @@ const config = {
         });
 
 // hide sign up button
-
-
-
-     
-
         //Sign Up requirements met?
         $('#checkbox-agree').on('click',function(){
-
-           
             // let checkBox = document.getElementById("checkbox-agree");
                 //console.log(checkBox);
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
                 $('#sign-up-slack');
-
                 $('#sign-up').show()
             }
             //At least 1 requirement not met
@@ -170,7 +162,7 @@ const config = {
         
     //SLACK API
         // Slack event Listners
-        $('.getSlack').on('click', getMessageFromSlack);
+        // $('.getSlack').on('click', getMessageFromSlack);
 
         $('.slack-submit').on('click', function(){
             event.preventDefault();
@@ -178,6 +170,15 @@ const config = {
             postMessageToSlack(message);
             gatherBotInfomation('BA3229MDG', message);
             })
+
+        $(document).ready(function(){
+            getMessageFromSlack();
+            setTimeout(
+                function(){
+                    displayAllMessages();                    
+                },100
+            );
+        })
 
         /**
          *  This will pull the last 100 messages from slack
@@ -300,13 +301,13 @@ const config = {
                 time = moment(slackInfomation[I].ts,"X").format(" MM/DD/YY h:mm a");
             }
             const template = `<div class="user-message">
-            <div class="row message-head">
-                <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
-                <span>${user}</span>
+              <div class="row message-head">
+                    <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
+                        <span>${user}</span>
+                    </div>
+                    <div class="right toxicity" id="toxicity${I}"></div>
                 </div>
-                <div class="right toxicity" id="toxicity${I}"></div>
-            </div>
-            <p class="row message-text">${message}<h8 class="right toxicity">(${time})</h8></p>
+                <p class="row message-text">${message}<h8 class="right timestamp">${time}</h8></p>
             </div>`;
             $('#allMessages').append(template);
             $.ajax({
@@ -388,7 +389,7 @@ const config = {
         }
 
 
-        $('.displaymessage').on('click', displayAllMessages);
+        // $('.displaymessage').on('click', displayAllMessages);
     
    
         gatherUserInfomation('U9ZHFFZ43')
