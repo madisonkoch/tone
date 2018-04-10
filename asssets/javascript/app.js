@@ -241,12 +241,27 @@ var config = {
         $('.displaymessage').on('click', displayAllMessages);
     
     //PERSPECTIVE API
+
         let contentToAnalize = ""
+
+
+    // reset fucntion
+
 
         $('#textarea1').keyup( function(){
             contentToAnalize = $('#textarea1').val();
             // timeout so we don't jam the perspective API
+          
+            if( $(this).val().length === 0 ) {
+                $('#percentage').text('Check Yourself')
+            }
+
+            else {
+
+
             setTimeout( 
+
+
             // This Ajax call gives us the analized content from the perpective API
                 function(){ $.ajax({
                     contentType: "application/json",
@@ -267,8 +282,15 @@ var config = {
                         let toxicity = response.attributeScores.TOXICITY.summaryScore.value
                         let toxicityPercentage = (toxicity*100).toFixed(0)
                         //console.log(toxicityPercentage)
-                        $('#percentage').text(toxicityPercentage + "% Toxic")
+                       
+                       
+                       
+                        $('#percentage').text(toxicityPercentage + "% Toxic");
                     } 
-                }); }
-            , 3000);
+                });
+            
+            } , 3000);  
+
+        };
+
         });
