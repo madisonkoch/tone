@@ -30,10 +30,12 @@ var config = {
         $("#sign-up").on("click", function(e){
             let userName = $("#userName").val().trim();
             let password = $("#password").val().trim();
+            let email = $("#email").val().trim();
             //push to firebase
             database.ref().push({
                 username: userName,
-                password: password
+                password: password,
+                email: email
             });
         });
         // ???
@@ -43,7 +45,10 @@ var config = {
 
             let userNAme = snapshot.val().username;
             let passWord = snapshot.val().password;
+            let email = snapshot.val().email;
             //console.log(userNAme);
+            return(userName);
+            return(passWord);
         });
 
         //Age of User
@@ -60,7 +65,7 @@ var config = {
             let checkBox = document.getElementById("checkbox-agree");
                 //console.log(checkBox);
             // Requirements met
-            if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
+            if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && $('#email').val() && userAge >= 13) {
                 $('#sign-up-slack').css("visibility","visible");
             }
             //At least 1 requirement not met
@@ -75,10 +80,35 @@ var config = {
                 else if (!$('#pasword').val()){
                     console.log("no password");
                 }
+                else if (!$('#email').val()){
+                    console.log("no email");
+                }
             }
         });
+
+            //create user in firebase
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+              });
+
         //SIGN IN MODAL
             //check username & password -- allow login?
+        $("#logIn").on('click', function(){
+            let logIn = document.getElementById("login");
+                //console.log(logIn);
+                //requirements for log in
+        })
+
+            //chech user against usernames and passwords stored in firebase
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+              });
 
 // SLACK PAGE
     //RESPONSIVE DESIGN
