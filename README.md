@@ -25,13 +25,15 @@
     > their words, but the tone behind them can be toxic.
 
 ### APIs used:
-    * Perspective
-    * Slack
+    Perspective
+    Slack
 
 ### New tech used:
-    * Materialize CSS
-    * Heroku
+    Materialize CSS
+    Heroku
+    
+### Logo:
+![alt text](./asssets/images/logo_tone.png)
 
 ### Sketch of interface:
-
 ![alt text](./asssets/images/image.png)
