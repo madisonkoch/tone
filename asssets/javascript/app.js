@@ -146,8 +146,6 @@ var config = {
         }
 
         /**
-<<<<<<< HEAD
-=======
          * This will gather all the infomation on the user from slack
          * 
          * @param {*} UID user id from slack
@@ -172,7 +170,6 @@ var config = {
             }
 
         /**
->>>>>>> fe2a6c47d4da7182dfba7fac09815a9e1c09c603
          * This will take the given message and post it to slack
          * 
          * @param {*} message string message you want posted to slack
