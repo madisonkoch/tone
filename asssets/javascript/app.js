@@ -125,26 +125,40 @@ var config = {
                 });
               });
 
+    //PERSPECTIVE API
+        let contentToAnalize = ""
+
+        $('#textarea1').keyup( function(){
+            contentToAnalize = $('#textarea1').val();
+            // timeout so we don't jam the perspective API
+            setTimeout( 
+            // This Ajax call gives us the analized content from the perpective API
+                function(){ $.ajax({
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        comment: {
+                            text: contentToAnalize
+                        },
+                        languages: ["en"],
+                        requestedAttributes: {
+                            TOXICITY: {}
+                        }
+                    }),
+                    method: 'POST',
+                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                    success: function(response) {
+                        //console.log(response);
+                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                        let toxicity = response.attributeScores.TOXICITY.summaryScore.value
+                        let toxicityPercentage = (toxicity*100).toFixed(0)
+                        //console.log(toxicityPercentage)
+                        $('#percentage').text(toxicityPercentage + "% Toxic")
+                    } 
+                }); }
+            , 3000);
+        });
+        
     //SLACK API
-        // Sample of API response data
-        var slackStuff = {
-            has_more : false,
-            messages:[
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2CTDWTT|Tone>", bot_id: "BA2CTDWTT", bot_link: "<https://tone-check-your-self.slack.com/services/BA2CTDWTT|Tone>", type: "message", subtype: "bot_add"},
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA28BTCDN|Tone>", bot_id: "BA28BTCDN", bot_link: "<https://tone-check-your-self.slack.com/services/BA28BTCDN|Tone>", type: "message", subtype: "bot_add"},
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA2UVRGDQ|Tone>", bot_id: "BA2UVRGDQ", bot_link: "<https://tone-check-your-self.slack.com/services/BA2UVRGDQ|Tone>", type: "message", subtype: "bot_add"},
-            {text: "All Your Base", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1523054094.000342"},
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA3H8DQG7|Tone>", bot_id: "BA3H8DQG7", bot_link: "<https://tone-check-your-self.slack.com/services/BA3H8DQG7|Tone>", type: "message", subtype: "bot_add"},
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA188M5UH|Tone>", bot_id: "BA188M5UH", bot_link: "<https://tone-check-your-self.slack.com/services/BA188M5UH|Tone>", type: "message", subtype: "bot_add"},
-            {text: "added an integration to this channel: <https://ton…heck-your-self.slack.com/services/BA1U68H7X|Tone>", bot_id: "BA1U68H7X", bot_link: "<https://tone-check-your-self.slack.com/services/BA1U68H7X|Tone>", type: "message", subtype: "bot_add"},
-            {text: "ttt", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898467.000043"},
-            {text: "test", bot_id: "B9ZKDAUTX", type: "message", subtype: "bot_message", ts: "1522898305.000118"},
-            {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886843.000203"},
-            {type: "message", user: "U9YQ9BQAU", text: "test hello", ts: "1522886841.000201"},
-            {type: "message", user: "U9YQ9BQAU", text: "hello", ts: "1522886834.000047"}]
-        };
-
-
         const username = 'test'
         const UID = 'UA0ATEGTG';
 
@@ -284,35 +298,3 @@ var config = {
 
         $('.displaymessage').on('click', displayAllMessages);
     
-    //PERSPECTIVE API
-        let contentToAnalize = ""
-
-        $('#textarea1').keyup( function(){
-            contentToAnalize = $('#textarea1').val();
-            // timeout so we don't jam the perspective API
-            setTimeout( 
-            // This Ajax call gives us the analized content from the perpective API
-                function(){ $.ajax({
-                    contentType: "application/json",
-                    data: JSON.stringify({
-                        comment: {
-                            text: contentToAnalize
-                        },
-                        languages: ["en"],
-                        requestedAttributes: {
-                            TOXICITY: {}
-                        }
-                    }),
-                    method: 'POST',
-                    url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
-                    success: function(response) {
-                        //console.log(response);
-                        //console.log(response.attributeScores.TOXICITY.summaryScore.value);
-                        let toxicity = response.attributeScores.TOXICITY.summaryScore.value
-                        let toxicityPercentage = (toxicity*100).toFixed(0)
-                        //console.log(toxicityPercentage)
-                        $('#percentage').text(toxicityPercentage + "% Toxic")
-                    } 
-                }); }
-            , 3000);
-        });
