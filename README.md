@@ -18,21 +18,24 @@
     >honest with ourselves, we're the worst jusdges of ourselves - no objectivity.
 
 ### Description:
-    This app is intended to give individuals unbiased feedback on how toxic the message they're about to send could be & show how toxic messages from others are to increase their awareness of how not just their words, but the tone behind them can be toxic.
+    > This app is intended to give individuals unbiased feedback on how toxic the message they're about to
+    > send could be & show how toxic messages from others are to increase their awareness of how not just 
+    > their words, but the tone behind them can be toxic.
 
 ### APIs used:
-    *Perspective
-    *Slack
+    Perspective
+    Slack
 
 ### New tech used:
-    *Materialize CSS
-    *Heroku
+    Materialize CSS
+    Heroku
+    
+### Logo:
+![alt text](./asssets/images/logo_tone.png)
+
 
 ### Logo:
 ![alt text](./asssets/images/logo_tone.png)
 
 ### Concept Interface Sketch:
-
 ![alt text](./asssets/images/image.png)
-
-
