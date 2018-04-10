@@ -1,6 +1,7 @@
 'use strict'
 
 let slackInfomation = null;
+let  username = null;
 
 //FIREBASE CONNECTION
 var config = {
@@ -43,7 +44,8 @@ var config = {
 
             let userNAme = snapshot.val().username;
             let passWord = snapshot.val().password;
-            //console.log(userNAme);
+            username = userNAme;
+            
         });
 
         //Age of User
@@ -96,9 +98,6 @@ var config = {
               });
 
     //SLACK API
-        const username = 'test'
-        const UID = 'UA0ATEGTG';
-
         // Slack event Listners
         $('.getSlack').on('click', getMessageFromSlack);
 
@@ -147,6 +146,33 @@ var config = {
         }
 
         /**
+<<<<<<< HEAD
+=======
+         * This will gather all the infomation on the user from slack
+         * 
+         * @param {*} UID user id from slack
+         * @return jsoon Object
+         * Main list of the key values that will be most used
+         *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
+         *  real_name,real_name_normalized}
+         */
+        function gatherBotInfomation(bot_Id, message) {
+            $.ajax({
+                method:'GET',
+                url: `https://slack.com/api/bots.info${SLACK_TOKEN}&bot=${bot_Id}&pretty=1`,
+                success: function(data){
+                    console.log(data)
+                    const user = username || data.bot.name;
+                    const icon = data.bot.icons.image_36;
+                    displayCustomMessageToApp(user , message, icon)
+                },
+                error:function(error){
+                    console.log('error Unable to gather infomation with the given user ID: ' ,error)}
+                });
+            }
+
+        /**
+>>>>>>> fe2a6c47d4da7182dfba7fac09815a9e1c09c603
          * This will take the given message and post it to slack
          * 
          * @param {*} message string message you want posted to slack
