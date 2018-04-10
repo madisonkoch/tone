@@ -1,7 +1,7 @@
 'use strict';
 
 let slackInfomation = null;
-let  username = null;
+let  username = 'tone';
 
 //FIREBASE CONNECTION
     const config = {
@@ -233,7 +233,7 @@ let  username = null;
             });
         }
 
-        /**
+        /** 
          * This will gather all the infomation on the user from slack
          * 
          * @param {*} UID user id from slack
