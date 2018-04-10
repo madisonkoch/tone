@@ -205,13 +205,14 @@ max-width: 250px;
     border: 3px solid transparent;
 }
 .chip img{
-    border-radius: 50% 2% 50% 2%;
+    border-radius: 50% 50% 50% 2%;
 }
 #allMessages{
     width:96%;
     margin-left:auto;
     margin-right:auto;
     overflow: scroll;
+    overflow-x: hidden;
 }
 .user-message{
     margin-bottom:10px;
@@ -269,31 +270,114 @@ max-width: 250px;
     bottom: 30px;
     right: 15px;
 }
+.slack-submit:hover{
+    background-color:#25c1f9c2;
+}
 #send-icon{
     margin: unset;
     margin-left: 10px;
     margin-right: 10px;
     color: #ff4384;
 }
-/* #perspective{
-    padding-top:2px;
-    height:28px;
-} */
+
+/* MEDIA QUERIES */
+@media only screen and (min-width:460px){
+    div#allMessages {
+        width: 80%;
+    }
+    .form-div{
+        width:80%;
+    }
+    .slack-submit{
+        position: unset;
+        bottom: 0px;
+        right: 0px;
+        float:right;
+        width:90%;
+        height:45px;
+        border-radius:20px 20px 20px 3px;
+        margin-left:15px;
+    }
+    #send-icon{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.col.s2.right.sub-btn{
+        width:10%;
+        padding-right: unset;
+    }
+    #textarea1{
+        width:90%;
+    }
+    #message-space{
+        padding-right:unset;
+        padding-left:unset;
+    }
+    .message-img{
+        max-width:360px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .modal-div{
+        width: 100%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    #login-h1{
+        font-size: 15rem;
+        margin-top: 150px;
+    }
+    #index-footer{
+        position: unset;
+    }
+    #index-modals{
+        width:100%;
+    }
+    main{
+        padding-left:150px;
+        padding-right:150px;
+    }
+
+    #textarea1{
+        width:90%;
+    }
+    .slack-submit{
+        position: unset;
+        bottom: 0px;
+        right: 0px;
+        float:right;
+        width:100%;
+        height:45px;
+        border-radius:20px 20px 20px 3px;
+    }
+    #send-icon{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.col.s2.right.sub-btn{
+        width:10%;
+    }
+    .form-div{
+        width:58%;
+    }
+}
 
 /* Content - Facebook Page */
-/* #fb-body{
-    background-color: #ffffff;
-}
-header{
-    margin-bottom:unset;
-    background-color: #c7c7c7;
-}
-#fb-h1{
-    margin: unset;
-    font-size: 3rem;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    text-shadow: 1px 1px 5px #000000d1;
-} */
-/* 
-
+    /* #fb-body{
+        background-color: #ffffff;
+    }
+    header{
+        margin-bottom:unset;
+        background-color: #c7c7c7;
+    }
+    #fb-h1{
+        margin: unset;
+        font-size: 3rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 1px 1px 5px #000000d1;
+    } */
