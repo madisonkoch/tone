@@ -84,16 +84,25 @@ const config = {
 
 // SLACK PAGE
     //RESPONSIVE DESIGN
-        // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
+        // Keep content in window width/height
         $(document).ready(function() {
             function setHeight() {
                 let windowHeight = $(window).innerHeight();
                 $('.content-main').css('height', windowHeight);
+                let contentHeight = windowHeight - $('footer').height();
+                $('#allMessages').css('height', contentHeight);
+                $('#scroll-space').css('height', $('header').height()+25);
+
             };
             setHeight();
             function setWidth() {
                 let windowWidth = $(window).innerWidth();
                 $('html').css('width', windowWidth);
+                $('header').css('width', windowWidth);
+                $('body').css('width', windowWidth);
+                $('main').css('width', windowWidth);
+                $('.content-main').css('width', windowWidth);
+                $('footer').css('width', windowWidth);
             };
             setWidth();
             $(window).resize(function() {
@@ -101,6 +110,11 @@ const config = {
                 setWidth();
             });
         });
+        //Scroll to bottom of slack messages
+        function scrollToBottom(){
+            var allMessages = document.getElementById('allMessages');
+                allMessages.scrollTop = allMessages.scrollHeight  
+        };
 
     //PERSPECTIVE API
       let contentToAnalize = ""
@@ -252,7 +266,8 @@ const config = {
                 <p class="row message-text">${message}</p>
                 <div  class="right timestamp">Time AMPM</div>
             </div>`;
-            $('#all-messages').append(template);
+            $('#allMessages').append(template);
+            scrollToBottom();
         }
 
          /**
@@ -272,7 +287,7 @@ const config = {
             <p class="row message-text">${message}</p>
             <div  class="right timestamp">Time AMPM</div>
             </div>`;
-            $('#all-messages').append(template);
+            $('#allMessages').append(template);
             $.ajax({
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -295,6 +310,7 @@ const config = {
                 $(`#toxicity${I}`).append(toxPercentage+"% Toxicity")
                 } 
                 });
+                scrollToBottom();
         }
 
         /**
@@ -343,7 +359,7 @@ const config = {
             text = text.replace('<', '');
             text = text.replace('>', '');
             if(text.includes('.gif')){
-                const imageElement = `<img src='${text}' >`;
+                const imageElement = `<img class="message-img" src='${text}' >`;
                 return imageElement;
             }
 
