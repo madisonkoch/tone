@@ -51,6 +51,9 @@ var config = {
             return(passWord);
         });
 
+        let userID = userName;
+        console.log(userID);
+
         //Age of User
         let userAge;
         $('#dOB').change(function(){
@@ -100,6 +103,7 @@ var config = {
             let logIn = document.getElementById("login");
                 //console.log(logIn);
                 //requirements for log in
+                
         })
 
             //chech user against usernames and passwords stored in firebase
