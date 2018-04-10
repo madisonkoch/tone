@@ -85,72 +85,61 @@ const config = {
 // SLACK PAGE
     //RESPONSIVE DESIGN
         // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
-            $(document).ready(function() {
-                function setHeight() {
-                  let windowHeight = $(window).innerHeight();
-                  $('.content-main').css('height', windowHeight);
-                };
+        $(document).ready(function() {
+            function setHeight() {
+                let windowHeight = $(window).innerHeight();
+                $('.content-main').css('height', windowHeight);
+            };
+            setHeight();
+            function setWidth() {
+                let windowWidth = $(window).innerWidth();
+                $('html').css('width', windowWidth);
+            };
+            setWidth();
+            $(window).resize(function() {
                 setHeight();
-                
-                $(window).resize(function() {
-                  setHeight();
-                });
-              });
+                setWidth();
+            });
+        });
 
-      //PERSPECTIVE API
-
+    //PERSPECTIVE API
       let contentToAnalize = ""
-
-
       // reset function
-  
-  
-          $('#textarea1').keyup( function(){
-              contentToAnalize = $('#textarea1').val();
-              // timeout so we don't jam the perspective API
-            
-              if( $(this).val().length === 0 ) {
-                  $('#percentage').text('Check Yourself')
-              }
-  
-              else {
-  
-  
-              setTimeout( 
-  
-  
-              // This Ajax call gives us the analized content from the perpective API
-                  function(){ $.ajax({
-                      contentType: "application/json",
-                      data: JSON.stringify({
-                          comment: {
-                              text: contentToAnalize
-                          },
-                          languages: ["en"],
-                          requestedAttributes: {
-                              TOXICITY: {}
-                          }
-                      }),
-                      method: 'POST',
-                      url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
-                      success: function(response) {
-                          //console.log(response);
-                          //console.log(response.attributeScores.TOXICITY.summaryScore.value);
-                          let toxicity = response.attributeScores.TOXICITY.summaryScore.value
-                          let toxicityPercentage = (toxicity*100).toFixed(0)
-                          //console.log(toxicityPercentage)
-                         
-                         
-                         
-                          $('#percentage').text(toxicityPercentage + "% Toxic");
-                      } 
-                  });
-              
-              } , 3000);  
-  
-          };
-  
-          });
+        $('#textarea1').keyup( function(){
+            contentToAnalize = $('#textarea1').val();
+            // timeout so we don't jam the perspective API
+            if( $(this).val().length === 0 ) {
+                $('#percentage').text('Check Yourself')
+            }
+            else {
+                setTimeout( 
+                // This Ajax call gives us the analized content from the perpective API
+                  function(){
+                     $.ajax({
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            comment: {
+                                text: contentToAnalize
+                            },
+                            languages: ["en"],
+                            requestedAttributes: {
+                                TOXICITY: {}
+                            }
+                        }),
+                        method: 'POST',
+                        url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                        success: function(response) {
+                            //console.log(response);
+                            //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                            let toxicity = response.attributeScores.TOXICITY.summaryScore.value
+                            let toxicityPercentage = (toxicity*100).toFixed(0)
+                            //console.log(toxicityPercentage)                         
+                            $('#percentage').text(toxicityPercentage + "% Toxic");
+                        } 
+                    });
+                } , 3000);  
+            };
+        });
         
     //SLACK API
         // Slack event Listners
@@ -187,6 +176,8 @@ const config = {
          *  object profile { display_name,display_name_normalized,image_24,image_32,image_48,image_72,image_192,image_512,
          *  real_name,real_name_normalized}
          */
+        let I;
+
         function gatherUserInfomation(UID, message) {
         $.ajax({
             method:'GET',
@@ -194,7 +185,8 @@ const config = {
             success: function(data){
                 const user = data.profile.display_name || data.profile.real_name;
                 const icon = data.profile.image_48;
-                displayCustomMessageToApp(user , message, icon)
+                I = $('.user-message').length;
+                displayCustomMessageToApp(user , message, icon, I)
             },
             error:function(error){
                 console.log('error Unable to gather infomation with the given user ID: ' ,error)}
@@ -218,7 +210,8 @@ const config = {
                     console.log(data)
                     const user = username || data.bot.name;
                     const icon = data.bot.icons.image_36;
-                    displayCustomMessageToApp(user , message, icon)
+                    I = $('.user-message').length;
+                    displayCustomMessageToApp(user , message, icon, I)
                 },
                 error:function(error){
                     console.log('error Unable to gather infomation with the given user ID: ' ,error)}
@@ -247,14 +240,14 @@ const config = {
          * @param {*} user 
          * @param {*} message 
          */
-        function displayMessageToApp(user ,message) {
+        function displayMessageToApp(user ,message ,i) {
             console.log(message)
             const template = `<div class="user-message">
                 <div class="row message-head">
                     <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
                     <span>${user}</span>
                     </div>
-                    <div class="right toxicity"> % toxic</div>
+                    <div class="right toxicity" id="toxicity${i}"></div>
                 </div>
                 <p class="row message-text">${message}</p>
                 <div  class="right timestamp">Time AMPM</div>
@@ -268,18 +261,40 @@ const config = {
          * @param {*} user 
          * @param {*} message 
          */
-        function displayCustomMessageToApp(user ,message, icon) {
+        function displayCustomMessageToApp(user ,message, icon, I) {
             const template = `<div class="user-message">
             <div class="row message-head">
                 <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
                 <span>${user}</span>
                 </div>
-                <div class="right toxicity"> % toxic</div>
+                <div class="right toxicity" id="toxicity${I}"></div>
             </div>
             <p class="row message-text">${message}</p>
             <div  class="right timestamp">Time AMPM</div>
-        </div>`;
+            </div>`;
             $('#all-messages').append(template);
+            $.ajax({
+                contentType: "application/json",
+                data: JSON.stringify({
+                comment: {
+                text: message
+                },
+                languages: ["en"],
+                requestedAttributes: {
+                TOXICITY: {}
+                }
+                }),
+                method: 'POST',
+                url: 'https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=AIzaSyC_mGbSsEJnpL8tD7BnO5jRXS_uTPMyFwE',
+                success: function(response) {
+                //console.log(response);
+                //console.log(response.attributeScores.TOXICITY.summaryScore.value);
+                let tox = response.attributeScores.TOXICITY.summaryScore.value
+                let toxPercentage = (tox*100).toFixed(0)
+                //console.log(toxPercentage,"% Toxic")
+                $(`#toxicity${I}`).append(toxPercentage+"% Toxicity")
+                } 
+                });
         }
 
         /**
