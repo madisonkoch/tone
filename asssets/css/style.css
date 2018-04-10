@@ -178,9 +178,12 @@ h6.toxicity-text{
     width:96%;
     margin-left:auto;
     margin-right:auto;
+    background-color: white;
+    border-radius: 20px;
 }
 .user-message{
     margin-bottom:10px;
+    padding-bottom:10px;
 }
 .message-head{
     margin-bottom:0;
