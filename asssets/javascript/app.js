@@ -189,7 +189,9 @@ const config = {
         $.ajax({
             type: 'GET',
             url: SLACK_URL + SLACK_TOKEN + SLACK_CHANNEL,
-            success: function(data) {console.log(data); slackInfomation = data.messages },
+            success: function(data) {
+                console.log(data);
+                slackInfomation = data.messages },
             error: function(data){console.log(data);}
             })
         }
@@ -290,6 +292,13 @@ const config = {
          * @param {*} message 
          */
         function displayCustomMessageToApp(user ,message, icon, I) {
+            let time;
+            if (moment(slackInfomation[I].ts,"X").isSame(moment().startOf('day'), 'd')){
+                time = moment(slackInfomation[I].ts,"X").format("h:mm a");    
+            }
+            else {
+                time = moment(slackInfomation[I].ts,"X").format(" MM/DD/YY h:mm a");
+            }
             const template = `<div class="user-message">
             <div class="row message-head">
                 <div class="chip username"><img class="chip-img" src="${icon}" alt="Contact Person">
@@ -297,8 +306,7 @@ const config = {
                 </div>
                 <div class="right toxicity" id="toxicity${I}"></div>
             </div>
-            <p class="row message-text">${message}</p>
-            <div  class="right timestamp">Time AMPM</div>
+            <p class="row message-text">${message}<h8 class="right toxicity">(${time})</h8></p>
             </div>`;
             $('#allMessages').append(template);
             $.ajax({

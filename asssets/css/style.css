@@ -1,5 +1,5 @@
     h1{
-        color: #404040;
+        color: #ffffffc4;
         font-family: 'Poiret One', cursive;  
     }
 
@@ -182,6 +182,9 @@ h6.toxicity-text{
 .chip{
     background-color:white;
 }
+.chip-img{
+    border: 3px solid transparent;
+}
 #allMessages{
     width:96%;
     margin-left:auto;
@@ -192,7 +195,7 @@ h6.toxicity-text{
     margin-bottom:10px;
     padding-bottom:10px;
     background-color: white;
-    border-radius: 15px 15px 15px 5px;
+    border-radius: 20px 20px 20px 1px;
 }
 .message-head{
     margin-bottom:0;
@@ -208,7 +211,6 @@ h6.toxicity-text{
 }
 .message-text{
     padding-left:15px;
-    padding-right:15px;
     margin-top:0;
     margin-bottom:0;
     width:100%;
