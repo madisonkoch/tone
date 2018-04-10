@@ -81,6 +81,20 @@ const config = {
             //check username & password -- allow login?
 
 // SLACK PAGE
+    //RESPONSIVE DESIGN
+        // Set .ontent-main div to window height (keeps messages from getting cut off by footer/message input)
+            $(document).ready(function() {
+                function setHeight() {
+                  let windowHeight = $(window).innerHeight();
+                  $('.content-main').css('height', windowHeight);
+                };
+                setHeight();
+                
+                $(window).resize(function() {
+                  setHeight();
+                });
+              });
+
     //SLACK API
         // Sample of API response data
         var slackStuff = {
@@ -178,11 +192,11 @@ const config = {
             const template = `<div class="user-message">
                 <div class="row message-head">
                     <div class="chip username"><img class="chip-img" src="https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg" alt="Contact Person">
-                    <span>${user}: </span> ${message}
+                    <span>${user}</span>
                     </div>
                     <div class="right toxicity"> % toxic</div>
                 </div>
-                <p class="row message-text"> This may be offensive...</p>
+                <p class="row message-text">${message}</p>
                 <div  class="right timestamp">Time AMPM</div>
             </div>`;
             $('#all-messages').append(template);
