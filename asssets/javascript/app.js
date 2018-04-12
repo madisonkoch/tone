@@ -1,7 +1,7 @@
 'use strict';
 
 let slackInfomation = null;
-let  username = 'tone';
+let  username = localStorage.currentUser;
 
 //FIREBASE CONNECTION
     const config = {
@@ -36,9 +36,6 @@ let  username = 'tone';
                 username : userName,
                 password : password
             }
-
-            database.ref().push(newUser);
-
         });
 
         //Age of User
@@ -58,7 +55,19 @@ let  username = 'tone';
             // Requirements met
             if ($(':checkbox').is(':checked') && $('#userName').val() && $('#password').val() && userAge >= 13) {
                 $('#sign-up-slack');
-                $('#sign-up').css("visibility","visible");
+                database.ref().on("child_added", function(childSnapshot) {
+                    var knownUsers = childSnapshot.val().username;
+                    console.log(knownUsers);
+                    if ( $('#userName').val().toLowerCase().trim()!== knownUsers){
+                        $('#sign-up').css("visibility","visible");
+                        //add to local storage
+                        localStorage.currentUser = $('#userName').val().toLowerCase().trim();
+                        console.log("current user",localStorage.currentUser)
+                     }
+                     else {
+                        $('#requirement1').text('Username is unavailable.')
+                     }
+                });
             }
             //At least 1 requirement not met
             else {
@@ -87,7 +96,12 @@ let  username = 'tone';
                     console.log(userInfo);
                     if (userInput === userInfo){
                         status = true;
+                        //add to local storage
+                        localStorage.currentUser = $('#userName2').val().toLowerCase().trim();
+                        console.log("current user",localStorage.currentUser)
+
                         //console.log('valid user')
+
                         $("#logIn").attr("href", "slackContent.html");
                     }
                     else{
@@ -130,6 +144,7 @@ let  username = 'tone';
             var allMessages = document.getElementById('allMessages');
                 allMessages.scrollTop = allMessages.scrollHeight  
         };
+
 
     //PERSPECTIVE API
       let contentToAnalize = ""
